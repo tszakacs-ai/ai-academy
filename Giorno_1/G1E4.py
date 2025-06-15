@@ -1,4 +1,4 @@
-# Codice sporco da ripulire
+# Il codice sporco da ripulire
 
 global_value = 0 # variabile globale usata a caso
 
