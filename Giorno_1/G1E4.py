@@ -56,6 +56,8 @@ def somma_e_controlla_positivi(a, b, c, d):
     """
     if a > 0 and b > 0 and c > 0 and d > 0:
         print("Tutti positivi.")
+    else:
+        print("Non tutti positivi.")
     return a + b + c + d
 
 def analizza_e_stampa_info_numeri(lista):
@@ -97,10 +99,10 @@ if __name__ == "__main__":
     print("Analisi valori lista:")
     analizza_valori_lista(x, y, z)
 
-    print("\nSomma e controllo positivi:")
-    somma_e_controlla_positivi(1, 2, 3, 4)
+    print("Somma e controllo positivi:")
+    somma_e_controlla_positivi(1, 2, -4, 4)
 
-    print("\nAnalizza e stampa info numeri:")
+    print("Analizza e stampa info numeri:")
     analizza_e_stampa_info_numeri([10, -5, 102, 3])
 
-    print("\nFine programma")
+    print("Fine programma")
