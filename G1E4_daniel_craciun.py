@@ -1,30 +1,28 @@
 """
-Example of refactoring a "dirty" code-base:
-- Elimination of global variables
-- Use of clear names and short functions
-- Removal of duplication and dead code
-- Simplification of nested structures
-- Separation of logic/calculation from input/output
-- NumPy-style docstrings
+Module for value computation and analysis.
+
+This module provides functions to compute values based on input lists,
+analyze positivity, and print reports. All functions follow clean code
+principles and include NumPy-style docstrings.
 """
 
-def calculate_values(list_x, list_y, increment):
+def compute_values(list_x, list_y, increment):
     """
-    Calculates a list of values based on defined rules for elements of list_x and list_y.
+    Compute a list of values based on rules applied to elements of list_x and list_y.
 
     Parameters
     ----------
     list_x : list of int or float
-        List of first input values.
+        First input values.
     list_y : list of int or float
-        List of second input values (same length as list_x).
+        Second input values (same length as list_x).
     increment : int or float
         Constant value to add in certain conditions.
 
     Returns
     -------
     list of int or float
-        List of calculated values.
+        Computed values.
     """
     results = []
     for x, y in zip(list_x, list_y):
@@ -37,9 +35,62 @@ def calculate_values(list_x, list_y, increment):
         results.append(result)
     return results
 
+def all_positive(*args):
+    """
+    Check if all provided values are positive.
+
+    Parameters
+    ----------
+    *args : int or float
+        Any number of numeric arguments.
+
+    Returns
+    -------
+    bool
+        True if all values are positive, False otherwise.
+    """
+    return all(a > 0 for a in args)
+
+def analyze_numbers(numbers):
+    """
+    Analyze a list of numbers: calculate total, print parity, print each element,
+    and highlight very large numbers.
+
+    Parameters
+    ----------
+    numbers : list of int or float
+        List of values.
+
+    Returns
+    -------
+    int or float
+        Calculated total (sum of positives minus negatives).
+    """
+    total = 0
+    for el in numbers:
+        if el > 0:
+            total += el
+        else:
+            total -= el
+
+    for el in numbers:
+        if el % 2 == 0:
+            print("Even:", el)
+        else:
+            print("Odd:", el)
+
+    for el in numbers:
+        print("Element:", el)
+
+    for el in numbers:
+        if el > 100:
+            print("Very large:", el)
+
+    return total
+
 def print_analysis(values):
     """
-    Analyzes and prints specific messages about the calculated values.
+    Print analysis messages for a list of values.
 
     Parameters
     ----------
@@ -58,80 +109,19 @@ def print_analysis(values):
         else:
             print(f"Value: {value}")
 
-def all_positive(*args):
-    """
-    Checks if all provided values are positive.
-
-    Parameters
-    ----------
-    *args : int or float
-        Any number of numeric arguments.
-
-    Returns
-    -------
-    bool
-        True if all values are positive, False otherwise.
-    """
-    return all(a > 0 for a in args)
-
-def calculate_total(lst):
-    """
-    Calculates the total of a list by adding positives and subtracting negatives.
-
-    Parameters
-    ----------
-    lst : list of int or float
-        List of values.
-
-    Returns
-    -------
-    int or float
-        Calculated total.
-    """
-    total = 0
-    for el in lst:
-        if el > 0:
-            total += el
-        else:
-            total -= el
-    return total
-
-def print_report(lst):
-    """
-    Prints various analyses on the elements of the list.
-
-    Parameters
-    ----------
-    lst : list of int or float
-        List of values.
-
-    Returns
-    -------
-    None
-    """
-    for el in lst:
-        if el % 2 == 0:
-            print("Even:", el)
-        else:
-            print("Odd:", el)
-    for el in lst:
-        print("Element:", el)
-    for el in lst:
-        if el > 100:
-            print("Very large:", el)
-
 def main():
-    # Example of running the complete program
-    x = [3, 10, 7, 21]
-    y = [8, 6, 9, 1]
+    """
+    Main execution function.
+    """
+    x = [5, 12, 8, 15]
+    y = [6, 4, 7, 2]
     increment = 10
 
-    values = calculate_values(x, y, increment)  # Main logic, short and clear function
-    print_analysis(values)                      # Output separation
+    values = compute_values(x, y, increment)
+    print_analysis(values)
     print("All positive?", all_positive(*x, *y, increment))
-    total = calculate_total(values)
+    total = analyze_numbers(values)
     print("Total:", total)
-    print_report(values)
 
 if __name__ == "__main__":
     main()
