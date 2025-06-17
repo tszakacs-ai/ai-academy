@@ -1,20 +1,12 @@
 # Il codice sporco da ripulire
 
-global_value = 0 # variabile globale usata a caso
+
 
 def data(x, y, z):
     temp = []
     # codice morto
     # print("Questo era un vecchio debug")
 
-    for i in range(len(x)):
-        if x[i] > 10:
-            temp.append(x[i] + y[i] + z)
-        else:
-            if y[i] > 5:
-                temp.append(x[i] * 2 + y[i])
-            else:
-                temp.append(0)
     for i in range(len(x)):
         if x[i] > 10:
             temp.append(x[i] + y[i] + z)
