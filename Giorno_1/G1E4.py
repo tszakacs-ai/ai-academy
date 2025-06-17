@@ -1,7 +1,6 @@
 # Il codice sporco da ripulire
 
 
-
 def data(x, y, z):
     temp = []
     # codice morto
@@ -25,14 +24,11 @@ def data(x, y, z):
             else:
                 print("Valore: ", temp[i])
 
-    useless = 5  # parametro inutilizzato
     return temp
 
 def foo(a, b, c, d):
-    if a > 0:
-        if b > 0:
-            if c > 0:
-                print("Tutti positivi")
+    if a > 0 and b > 0 and c > 0:
+        print("Tutti positivi")
     return a+b+c+d
 
 def funzione_che_esamina_i_numeri(lista):
@@ -42,23 +38,19 @@ def funzione_che_esamina_i_numeri(lista):
             total += el
         else:
             total -= el
-    for el in lista:
+
         if el % 2 == 0:
             print("Pari:", el)
         else:
             print("Dispari:", el)
-    for el in lista:
+
         print("Elemento:", el)
-    for el in lista:
+
         if el > 100:
             print("Molto grande:", el)
-    # codice morto
-    # return 123
+    
     result = total
     return result
 
-# codice inutilizzato
-# def mai_usata():
-#     pass
 
 print("Fine programma")
