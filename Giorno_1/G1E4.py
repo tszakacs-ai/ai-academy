@@ -89,15 +89,15 @@ def analizza_e_stampa_info_numeri(lista):
     result = total
     return result
 
-if __name__ == "__main__":
+def main():
     """
     Esempio di utilizzo delle funzioni definite nel file.
     """
     x = [12, 5, 8]
     y = [7, 3, 10]
-    z = 4
+    incremento = 4
     print("Analisi valori lista:")
-    analizza_valori_lista(x, y, z)
+    analizza_valori_lista(x, y, incremento)
 
     print("Somma e controllo positivi:")
     somma_e_controlla_positivi(1, 2, -4, 4)
@@ -106,3 +106,7 @@ if __name__ == "__main__":
     analizza_e_stampa_info_numeri([10, -5, 102, 3])
 
     print("Fine programma")
+    
+if __name__ == "__main__":
+    main()
+
