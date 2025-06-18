@@ -1,1 +1,1 @@
-Salvate qio per favore il vostro lavoro sui segmenti e personas con ChatGPT
+Per favore, salvate qui il vostro lavoro sui segmenti e personas con ChatGPT.
