@@ -175,3 +175,4 @@ Bundle discount for Android smartphone + smart home device + 3-month Google One 
 
 **Hypothetical Response:**  
 _"This is exactly the kind of offer I look for. I’ve been meaning to upgrade my phone and get another smart plug for my setup — so if I can get both with a discount and added cloud storage, that’s a no-brainer. I appreciate offers that give me real functionality without the gimmicks. Android just gets it — freedom, compatibility, and value."_  
+
