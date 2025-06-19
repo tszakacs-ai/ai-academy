@@ -10,8 +10,9 @@ def valida_prompt(prompt):
         "ignora istruzioni",
         "resetta ruolo",
         "password",
-        ...
-        # AGGIUNGI ALTRE PAROLE CHIAVE QUI
+        "aggiorna ruolo",
+        "viola regolamento",
+        "elimina dati"
     ]
     
     # 2. Controllo presenza parole vietate
