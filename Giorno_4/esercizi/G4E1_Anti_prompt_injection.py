@@ -18,7 +18,7 @@ def valida_prompt(prompt):
     # 2. Controllo presenza parole vietate
     for parola in blacklist:
         # COMPLETA: controlla se la parola è presente nel prompt (case-insensitive)
-        if ...:
+        if parola.lower() in prompt.lower():
             raise ValueError(f"Prompt bloccato: contiene '{parola}'")
     
     # 3. (FACOLTATIVO) Limite sulla lunghezza del prompt
