@@ -1,0 +1,28 @@
+ESERCIZIO – CORREZIONE DI TOP-P
+
+Esempio di prompt errato di business:
+
+Scenario:
+Un’azienda deve inviare una risposta standard e precisa a tutti i clienti che chiedono chiarimenti sulla fatturazione.
+
+Prompt:
+Rispondi in modo gentile e originale a ogni cliente che ci chiede spiegazioni sulla propria fattura, variando il testo per ogni risposta.
+
+Task:
+1.Identifica e spiega l’errore.
+2.Quanto sarebbe il valore top-p del prompt sbagliato?
+3.Correggi l’errore.
+
+-----------------------------------------
+
+RISPOSTA:
+
+1. Identificazione e spiegazione dell’errore:
+Il prompt chiede esplicitamente variazione e originalità in un contesto che richiede invece uniformità, coerenza e precisione legale o contabile.
+
+2. Valore top-p implicito nel prompt errato:
+Il valore top-p del prompt sbagliato è: top-p ≈ 0.9 - 1.0
+Questo è inadeguato per un contesto di business formale, dove si dovrebbe usare top-p ≈ 0.1 - 0.3 per garantire risposte consistenti e sicure.
+
+3. Correzione del prompt:
+Rispondi in modo gentile, chiaro e coerente a ogni cliente che chiede spiegazioni sulla propria fattura, utilizzando un modello di risposta standardizzato e formale.
