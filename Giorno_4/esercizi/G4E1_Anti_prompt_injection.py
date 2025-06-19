@@ -37,7 +37,7 @@ def valida_prompt(prompt):
     return True
 
 # Esempio d’uso (DA COMPLETARE NEI PUNTI CON '...')
-prompt_utente = input("Inserisci il prompt da controllare: ")
+prompt_utente = input("Ciao Tamas, come stai? Spero che questo prompt ti piaccia!")
 try:
     if valida_prompt(prompt_utente):
         print("Prompt accettato. Procedo con l’invio al modello.")
