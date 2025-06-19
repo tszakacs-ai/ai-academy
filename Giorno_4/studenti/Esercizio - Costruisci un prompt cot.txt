@@ -1,0 +1,20 @@
+ESERCIZIO: COSTRUISCI UN PROMPT COT
+
+Task:
+Immagina di dover aiutare un compagno a risolvere questo problema:
+Un’azienda acquista 5 computer a 720 euro ciascuno e riceve uno sconto totale di 400 euro sull’intero acquisto. Quanto ha pagato in tutto?
+
+Istruzione:
+Costruisci un prompt per ChatGPT che chieda di risolvere il problema spiegando tutti i passaggi, non solo il risultato finale.
+Deve essere un prompt chiaro, completo e specifico per ottenere una risposta “step-by-step”.
+
+-------------------------------------------------------------------------------------------
+
+
+PROMPT:
+Devo aiutare un compagno a risolvere questo problema: 
+Un’azienda acquista 5 computer a 720 euro ciascuno e riceve uno sconto totale di 400 euro sull'intero acquisto. Quanto ha pagato in tutto?
+Potresti spiegare come hai ottenuto la risposta passo per passo? 
+
+RISPOSTA:
+https://chatgpt.com/s/t_6853d951fcf08191a8b16408b3988f71
