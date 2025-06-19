@@ -1,10 +1,7 @@
+import re
 
 def valida_prompt(prompt):
      # 0. Scrivi prompt base per il controllo
-    """
-    Controlla il prompt prima di inviarlo ...
-    
-    """
     if prompt is None or prompt.strip() == "":
         raise ValueError("Prompt non può essere vuoto")
 
@@ -29,6 +26,28 @@ def valida_prompt(prompt):
     # COMPLETA: controlla se il prompt è troppo lungo
     if len(prompt) > max_length:
         raise ValueError("Prompt troppo lungo")
+    
+    # 4. (FACOLTATIVO) Altri controlli (struttura, presenza variabili non consentite, ecc.)
+    injection_patterns = [
+        "execute", "exec", "esegui", "run",
+        "sovrascrivi", "overwrite", "delete", "elimina",
+        "rm ", "del ", "format", "formatta",
+        "system", "shell", "cmd", "powershell"
+    ]
+
+    suspicious_commands = [p for p in injection_patterns if p in prompt.lower()]
+    
+    if suspicious_commands:
+        critical_paths = [
+            r'[/\\](?:bin|sbin|usr|etc|system32|windows)[/\\]',  # Directory di sistema
+            r'[/\\](?:\.\.?[/\\]){2,}',  # Directory traversal
+            r'[a-zA-Z]:[/\\](?:windows|program files|users)[/\\]',  # Path Windows critici
+            r'[/\\](?:home|root|var|tmp)[/\\]\w+',  # Path Unix critici
+        ]
+
+        for pattern in critical_paths:
+                if re.search(pattern, prompt, re.IGNORECASE):
+                    raise ValueError(f"Prompt bloccato: rilevata possibile comando di injection")
 
     # Se supera tutti i controlli
     return True
