@@ -1,5 +1,5 @@
 ## Federico:
-dammi un pormpt professionale per definire prompt engineering. formulata bene con risultati professionali
+dammi un prompt professionale per definire prompt engineering. formulata bene con risultati professionali
 
 ## gpt:
 Ecco un prompt professionale e ben formulato per definire il prompt engineering, adatto a contesti lavorativi, accademici o di consulenza:
