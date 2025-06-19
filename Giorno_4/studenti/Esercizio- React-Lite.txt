@@ -1,0 +1,38 @@
+ESERCIZIO – REACT-LITE
+
+Definizione:
+ ReAct-lite utilizza i vantaggi del ReAct in modo più semplice e compatto.
+
+Esercizio:
+Crea un prompt ben pensato, che da un prompt ReAct traduce la versione lite.
+Devi testare e valutare se il prompt funziona bene.
+Il prompt da modificare fa parte del prompt stesso.
+
+Domanda:
+Come si chiama il metodo, quando un prompt gestisce, modifica o genera prompt? 
+
+-----------------------------------------------------------------------------
+
+
+PROMPT:
+
+Sei uno specialista in ottimizzazione di prompt ReAct. Ti viene fornito un prompt strutturato in stile ReAct (che include ragionamento e azione). Il tuo compito è tradurlo in una versione lite, più compatta e diretta, che mantenga l’intento originale ma senza ridondanze o passaggi troppo dettagliati.
+
+Il prompt da semplificare sarà incluso nel tuo stesso input, racchiuso tra i marcatori [[PROMPT]].
+
+1. Analizza il contenuto.
+
+2. Crea una versione semplificata.
+
+3. Mantieni chiarezza, funzionalità e coerenza.
+
+Restituisci solo la versione lite.
+
+[[PROMPT]]
+{Inserisci qui il prompt ReAct originale da semplificare}
+[[/PROMPT]]"
+
+
+
+RISPOSTA:
+https://chatgpt.com/s/t_6853ffed701881919618e1e9a4daed9f
