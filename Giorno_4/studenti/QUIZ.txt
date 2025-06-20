@@ -1,0 +1,29 @@
+QUIZ: RICONOSCI IL TIPO DI PROMPT
+
+Quiz: Che tipo di prompt è?
+Leggi questi prompt e indica se sono:
+A.Instruction
+B.Few-shot
+C.Chain-of-thought
+
+1. Scrivi un’email formale per richiedere informazioni su un corso universitario.
+2. Completa la sequenza:
+ Cane → Dog
+ Gatto → Cat
+ Cavallo → …
+3. Risolvi il problema: Se ho 20 euro e spendo 7 euro per il pranzo e 4 euro per un libro, quanti soldi mi restano? Spiega ogni passaggio del calcolo.
+4. Traduci queste parole:
+ Sole → Sun
+ Luna → Moon
+ Mare → …
+ Cielo → …
+5. Trova il numero mancante nella serie 2, 4, 8, 16, ___. Mostra come arrivi alla soluzione.
+6. Scrivi una poesia di 4 righe sul tema dell’inverno. 
+
+
+1 = A
+2 = B
+3 = C
+4 = B
+5 = C
+6 = A

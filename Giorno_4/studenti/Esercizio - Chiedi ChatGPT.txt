@@ -1,0 +1,15 @@
+PROMPT: 
+Mi serve un modo scrivere un prompt per definire "prompt engineering". Potresti formularmela bene? Vorrei un prompt che possa dare risultati professionali
+
+RISPOSTA:
+Prompt consigliato:
+
+"Fornisci una definizione professionale, accurata e aggiornata di 'prompt engineering', spiegando il concetto in un contesto di intelligenza artificiale generativa. Includi i suoi principali obiettivi, le tecniche comuni utilizzate e la sua importanza nello sviluppo e nell'utilizzo efficace di modelli linguistici come GPT. Se possibile, inserisci esempi pratici di applicazione."
+
+
+
+PROMPT:
+Potresti ora rispondere al prompt che mi hai fornito?
+
+RISPOSTA:
+https://chatgpt.com/s/t_6853cf0b482481918c3e5e466140f338

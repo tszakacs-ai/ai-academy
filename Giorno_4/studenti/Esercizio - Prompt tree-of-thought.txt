@@ -1,0 +1,50 @@
+Quando potrebbe servirvi una risposta strutturata Tree-of-Thought nella vostra attività?
+Scrivi due casi d’uso da qualsiasi settore.
+Scrivi il prompt per rispondere.
+
+---------------------------------------
+
+
+- Caso d’uso 1: Settore legale – analisi di clausole contrattuali complesse
+
+ - Esempio: Valutare se una clausola contrattuale è equa, ambigua o rischiosa per una delle parti.
+
+ - Uso di Tree-of-Thought permette di analizzare passo dopo passo:
+
+  - Scomposizione della clausola in concetti chiave
+  - Analisi legale di ogni parte
+  - Identificazione dei rischi
+  - Valutazione di scenari alternativi
+  - Proposta di miglioramento
+
+ - PROMPT:
+“Sei un consulente legale. Analizza la seguente clausola contrattuale usando un ragionamento ad albero (Tree-of-Thought).
+
+1. Scomponi la clausola in elementi principali.
+2. Analizza per ciascun elemento se è chiaro, equo e vantaggioso per entrambe le parti.
+3. Valuta i rischi in diversi scenari pratici.
+4. Proponi una versione migliorata. Clausola: ‘Il fornitore potrà sospendere il servizio in caso di pagamento ritardato, a sua esclusiva discrezione.’”
+
+
+---
+
+
+- Caso d’uso 2: Settore sanità – diagnosi differenziale
+ - Esempio: Supportare il medico nell’identificare la diagnosi più probabile tra varie ipotesi cliniche.
+
+ - Uso di Tree-of-Thought consente di:
+
+  - Esaminare i sintomi
+  - Considerare più diagnosi possibili
+  - Escludere progressivamente le meno probabili
+  - Arrivare alla più coerente
+  - Suggerire accertamenti diagnostici
+
+ - PROMPT:
+“Sei un medico specialista. Data una serie di sintomi, esegui una diagnosi differenziale strutturata secondo Tree-of-Thought.
+
+1. Elenca i sintomi principali.
+2. Proponi almeno 3 ipotesi diagnostiche.
+3. Valuta pro e contro di ciascuna.
+4. Escludi progressivamente quelle meno compatibili.
+5. Indica quella più probabile e suggerisci test di conferma (Sintomi: febbre da 3 giorni, tosse secca, dolore toracico moderato, dispnea sotto sforzo.).”
