@@ -30,7 +30,7 @@ def valida_prompt(prompt):
     # 4. (FACOLTATIVO) Altri controlli (struttura, presenza variabili non consentite, ecc.)
     min_length = 10  # es: minimo 10 caratteri
     # Controlla se il prompt è troppo corto
-    if len(prompt) > min_length:
+    if len(prompt) < min_length:
         raise ValueError("Prompt troppo corto")
 
     # Se supera tutti i controlli
