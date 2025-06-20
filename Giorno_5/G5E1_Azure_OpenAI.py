@@ -2,8 +2,8 @@ import openai
 
 # Crea il client Azure OpenAI
 client = openai.AzureOpenAI(
-    api_key="LA_TUA_API_KEY",  # <-- La tua chiave API di Azure OpenAI
-    azure_endpoint="IL_TUO_API_ENDPOINT", # <-- Il tuo  API endpoint di Azure OpenAI
+    api_key="1hXcKdMliWRMC5rzKTY3omTf1PDcSwqfE7IcJnhAlqcJHX2E4NUIJQQJ99BFACfhMk5XJ3w3AAAAACOGg77H",  # <-- La tua chiave API di Azure OpenAI
+    azure_endpoint="https://andre-mc4pjn8f-swedencentral.cognitiveservices.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview", # <-- Il tuo  API endpoint di Azure OpenAI
     api_version="2024-12-01-preview",  # <-- La versione dal portale Azure
 )
 
