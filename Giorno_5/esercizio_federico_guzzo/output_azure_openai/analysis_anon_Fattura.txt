@@ -1,0 +1,10 @@
+{
+    "tipo_documento": "Fattura",
+    "riassunto": "Il documento è una fattura emessa da SmartDocs Srl, datata 20/06/2025, per un totale di € 671,00. La fattura include dettagli sui servizi forniti e le modalità di pagamento.",
+    "punti_chiave": [
+        "Totale fattura: € 671,00",
+        "Pagamento da effettuare entro 30 giorni",
+        "Dettagli per il bonifico bancario inclusi"
+    ],
+    "bozza_risposta": "Gentile Cliente, la ringraziamo per la sua comunicazione. Abbiamo ricevuto la sua fattura e stiamo procedendo con l'elaborazione. Se ha bisogno di ulteriori informazioni, non esiti a contattarci."
+}

@@ -1,0 +1,10 @@
+{
+    "tipo_documento": "Nota di Credito",
+    "riassunto": "Il documento è una nota di credito emessa da [NOME_O[INDIRIZZO]GANIZZAZIONE] per un servizio non usufruito, con un importo totale di € 50,00. L'importo sarà scalato dalla prossima fattura del cliente.",
+    "punti_chiave": [
+        "Nota di credito per servizio non usufruito",
+        "Importo totale: € 50,00",
+        "L'importo verrà scalato dalla prossima fattura"
+    ],
+    "bozza_risposta": "Gentile Cliente, abbiamo ricevuto la sua nota di credito e la stiamo elaborando. La informiamo che l'importo di € 50,00 sarà scalato dalla sua prossima fattura. Per ulteriori informazioni, non esiti a contattarci. Cordiali saluti."
+}

@@ -1,0 +1,10 @@
+{
+    "tipo_documento": "Sconosciuto",
+    "riassunto": "Il documento riguarda un incontro programmato con [NOME_PERSONA] presso [NOME_ORGANIZZAZIONE]. La data dell'incontro è fissata per il 12 [NOME_ORGANIZZAZIONE]zo.",
+    "punti_chiave": [
+        "Incontro programmato con [NOME_PERSONA]",
+        "Luogo: [NOME_ORGANIZZAZIONE]",
+        "Data: 12 [NOME_ORGANIZZAZIONE]zo"
+    ],
+    "bozza_risposta": "Gentile [NOME_PERSONA],\n\nLa ringraziamo per la comunicazione riguardante l'incontro programmato. Confermiamo la ricezione della sua richiesta e stiamo elaborando i dettagli necessari.\n\nCordiali saluti,\n[IL_TUO_NOME]"
+}
