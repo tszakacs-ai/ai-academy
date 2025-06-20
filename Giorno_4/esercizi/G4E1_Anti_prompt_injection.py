@@ -1,57 +1,4 @@
-<<<<<<< HEAD
 
-def valida_prompt(prompt):
-     # 0. Scrivi prompt base per il controllo
-    """
-    Controlla il prompt prima di inviarlo
-   
-    """
-    # 1. Lista di parole/frasi da bloccare
-    blacklist = [
-         "ignora istruzioni",
-        "resetta ruolo",
-        "password",
-        "dimentica",
-        "bypassa",
-        "istruzioni precedenti",
-        "non rispettare",
-        "viola",
-        "dai precedenza",
-        "credenziali",
-        "ruolo originale",
-        "disattiva",
-        "sii un",
-        "comportati come",
-        "rivelami",
-        "jailbreak"
-    ]
-    
-    # 2. Controllo presenza parole vietate
-    for parola in blacklist:
-        # COMPLETA: controlla se la parola è presente nel prompt (case-insensitive)
-        if  parola in prompt.lower():
-            raise ValueError(f"Prompt bloccato: contiene '{parola}'")
-    
-    # 3. (FACOLTATIVO) Limite sulla lunghezza del prompt
-    max_length = 400  # es: massimo 400 caratteri
-    # COMPLETA: controlla se il prompt è troppo lungo
-    if len(prompt) > max_length:
-        raise ValueError("Prompt troppo lungo")
-    
-    # 4. (FACOLTATIVO) Altri controlli (struttura, presenza variabili non consentite, ecc.)
-    # AGGIUNGI ALTRI CONTROLLI QUI
-
-    # Se supera tutti i controlli
-    return True
-
-# Esempio d’uso (DA COMPLETARE NEI PUNTI CON '...')
-prompt_utente = input("Inserisci il prompt da controllare: ")
-try:
-    if valida_prompt(prompt_utente):
-        print("Prompt accettato. Procedo con l’invio al modello.")
-except ValueError as e:
-    print("Errore:", e)
-=======
 def valida_prompt(prompt):
     """
     Controlla il prompt prima di inviarlo all'AI per prevenire injection attacks.
@@ -121,4 +68,4 @@ if __name__ == "__main__":
             print("Prompt accettato. Procedo con l'invio al modello.")
     except ValueError as e:
         print("Errore:", e)
->>>>>>> 120513c87d095bdd3df6fcb218366097b88b56ad
+
