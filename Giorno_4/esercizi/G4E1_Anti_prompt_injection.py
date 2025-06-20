@@ -1,38 +1,44 @@
-
 def valida_prompt(prompt):
-     # 0. Scrivi prompt base per il controllo
     """
-    Controlla il prompt prima di inviarlo ...
-   
+    Controlla il prompt prima di inviarlo:
+    - Blocca parole/frasi vietate
+    - Controlla la lunghezza massima
+    - (Facoltativo) Altri controlli
     """
     # 1. Lista di parole/frasi da bloccare
     blacklist = [
         "ignora istruzioni",
         "resetta ruolo",
         "password",
-        ...
-        # AGGIUNGI ALTRE PAROLE CHIAVE QUI
+        "token",
+        "bypass",
+        "prompt injection",
+        "esegui codice pericoloso",
+        "comando nascosto",
+        "sistema operativo",
+        "shell",
+        "sudo",
+        "root"
     ]
     
-    # 2. Controllo presenza parole vietate
+    # 2. Controllo presenza parole vietate (case-insensitive)
+    prompt_lower = prompt.lower()
     for parola in blacklist:
-        # COMPLETA: controlla se la parola è presente nel prompt (case-insensitive)
-        if ...:
+        if parola in prompt_lower:
             raise ValueError(f"Prompt bloccato: contiene '{parola}'")
     
-    # 3. (FACOLTATIVO) Limite sulla lunghezza del prompt
+    # 3. Limite sulla lunghezza del prompt
     max_length = 400  # es: massimo 400 caratteri
-    # COMPLETA: controlla se il prompt è troppo lungo
-    if ...:
+    if len(prompt) > max_length:
         raise ValueError("Prompt troppo lungo")
     
-    # 4. (FACOLTATIVO) Altri controlli (struttura, presenza variabili non consentite, ecc.)
-    # AGGIUNGI ALTRI CONTROLLI QUI
+    if "${" in prompt:
+        raise ValueError("Prompt contiene variabili non consentite (${...})")
 
     # Se supera tutti i controlli
     return True
 
-# Esempio d’uso (DA COMPLETARE NEI PUNTI CON '...')
+# Esempio d’uso
 prompt_utente = input("Inserisci il prompt da controllare: ")
 try:
     if valida_prompt(prompt_utente):
