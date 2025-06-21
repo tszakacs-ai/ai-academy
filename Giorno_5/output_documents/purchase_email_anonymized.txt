@@ -1,24 +1,24 @@
-Dear Procurement [ORG],
+Dear Procurement [ORGANIZATION],
 
 Please find below the details of the new purchase order.
 
 Order Number: PO-20250619  
 Date: June 19, 2025  
-Supplier: [ORG]  
+Supplier: [ORGANIZATION]  
 Contact Person: [PERSON]  
 Bankcode: [BANKCODE]  
 Taxcode: [TAXCODE]  
-Delivery Address: 1600 [LOC], [LOC], [LOC]  
+Delivery Address: 1600 [LOCALITY], [LOCALITY], [LOCALITY]  
 Shipping Date: June 25, 2025  
 
 Ordered Items:  
-- 10 x [ORG]  
-- 5 x [ORG]  
+- 10 x [ORGANIZATION]  
+- 5 x [ORGANIZATION]  
 
 Total Amount: USD 12,540.00  
 
-Please ensure that the shipment arrives on time. For any queries, contact [PERSON] from our [ORG].  
+Please ensure that the shipment arrives on time. For any queries, contact [PERSON] from our [ORGANIZATION].  
 
 Best regards,  
-[ORG]  
-[ORG]  
+[ORGANIZATION]  
+[ORGANIZATION]  

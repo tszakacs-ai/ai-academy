@@ -1,17 +1,12 @@
-import ssl
-import os
+import argparse
 import json
 from transformers import pipeline
-
-# SSL
-ssl._create_default_https_context = ssl._create_unverified_context
-os.environ["REQUESTS_CA_BUNDLE"] = r"C:\\Users\\SE645QY\\custom-ca-bundle.pem"
 
 class NERExtractor:
     def __init__(self):
         """Initialize the NER pipeline using a lightweight English model."""
 
-        # English NER model dslim/bert-base-NER
+        # Pipeline to use dslim/bert-base-NER English model
         self.ner_pipe = pipeline(
             task="token-classification",
             model="dslim/bert-base-NER",
@@ -36,8 +31,8 @@ class NERExtractor:
         """
         result = {
             "PERSON": [],
-            "ORG": [],
-            "LOC": [],
+            "ORGANIZATION": [],
+            "LOCALITY": [],
             "DATE": [],
             "BANKCODE": [],
             "TAXCODE": [],
@@ -48,12 +43,12 @@ class NERExtractor:
             tag = ent["entity_group"]
             word = ent["word"].strip()
 
-            if tag == "PER":
+            if tag == "PERSON":
                 result["PERSON"].append(word)
             elif tag == "ORG":
-                result["ORG"].append(word)
+                result["ORGANIZATION"].append(word)
             elif tag == "LOC":
-                result["LOC"].append(word)
+                result["LOCALITY"].append(word)
             elif tag == "DATE":
                 result["DATE"].append(word)
             elif tag == ["BANKCODE"]:
@@ -89,7 +84,6 @@ class NERExtractor:
         return self.extract_entities(text)
 
 if __name__ == "__main__":
-    import argparse
     parser = argparse.ArgumentParser(description="Extract NER entities from a text file and output JSON.")
     parser.add_argument("document_path", nargs="?", default="document.txt", help="Path to the input document.txt file")
     args = parser.parse_args()
