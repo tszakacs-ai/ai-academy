@@ -1,0 +1,11 @@
+Dear [PERSON] Law Firm,
+
+My name is [PERSON], born in [LOC] on 07/22/1979, currently residing at [LOC] 12, 09100 [LOC].  
+[ORG] am contacting you regarding the legal issue involving [ORG], based in [LOC], where [ORG] previously worked from 2018 to 2023.
+
+My personal data includes tax code [TAXCODE] and [BANKCODE].  
+Please confirm receipt of this message and inform me about the next steps.
+
+Sincerely,  
+[PERSON]  
+[EMAIL]  
