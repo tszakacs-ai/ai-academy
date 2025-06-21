@@ -1,3 +1,4 @@
+import ssl
 import os
 import json
 import re
@@ -6,6 +7,7 @@ import openai
 from typing import Union
 from dotenv import load_dotenv
 from src.ner_model import NERExtractor
+
 
 class EmailAnonymizer:
     """
@@ -23,6 +25,13 @@ class EmailAnonymizer:
         output_folder : str
             Path to the folder where anonymized output will be saved.
         """
+
+        # Confgure SSL certificate
+        load_dotenv()
+        ssl._create_default_https_context = ssl._create_unverified_context
+        ssl_certificate = os.getenv("CA_BUNDLE")
+        os.environ["REQUESTS_CA_BUNDLE"] = ssl_certificate
+
         # 1 STEP. Create output folder if it does not exist
         self.input_folder = input_folder
         self.output_folder = output_folder
@@ -34,7 +43,6 @@ class EmailAnonymizer:
             print(f"Output folder already exists: {self.output_folder}")
 
         # 2 STEP. Configure environment and OpenAI client
-        load_dotenv()
         azure_endpoint = os.getenv("AZURE_ENDPOINT")
         azure_api_key = os.getenv("AZURE_API_KEY")
 
@@ -91,7 +99,7 @@ class EmailAnonymizer:
                 redacted_text = re.sub(escaped_value, placeholder, redacted_text)
         return redacted_text
 
-    # 6 STEP. Iteration over all files in the input folder to
+    # 6 STEP. Iteration over all files in the input folder to do the following steps:
     def main(self) -> None:
         """
         Iteration over all files in the input folder to:
