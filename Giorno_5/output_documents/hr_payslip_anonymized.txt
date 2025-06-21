@@ -1,0 +1,13 @@
+```
+Dear [ORG] HR [ORG],
+
+I am [PERSON] ([PERSON]@outlook.it), hired on [DATE], working at the [LOC] office.  
+My tax ID is [TAXCODE] and my bank account for salary payments is [IBAN].
+
+I would like to ask whether the [DATE] income statement (CU) is available and if it will be uploaded to the [ORG] platform.
+
+Thank you in advance.
+
+Kind regards,  
+[PERSON]
+```
