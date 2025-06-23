@@ -210,10 +210,10 @@ def stampa_report(lista):
         if el > 100:
             print("Molto grande:", el)
 
-# Mancano dati esempi e l'avvio del programma
-
 def main():
-    # Esempio di esecuzione del programma completo
+    """
+    Funzione principale per eseguire il programma.
+    """
     x = [5, 12, 8, 15]
     y = [6, 4, 7, 2]
     incremento = 10
@@ -224,10 +224,8 @@ def main():
     totale = calcola_totale(valori)
     print("Totale:", totale)
     stampa_report(valori)
+    print("Programma completato con successo.")  # Messaggio finale chiaro
 
 if __name__ == "__main__":
     main()
-
-
-print("Fine programma")  # [STAMPA NON MOTIVATA] – da eliminare o spostare in main/log
 
