@@ -1,0 +1,6 @@
+1. A. Instruction - Il prompt dà un'istruzione diretta: 'Scrivi un’email formale...'.
+2. B. Few-shot - Fornisce esempi prima di chiedere di completare la sequenza.
+3. C. Chain-of-thought - Richiede di spiegare ogni passaggio del ragionamento.
+4. B. Few-shot - Mostra esempi di traduzione prima di chiedere di completare.
+5. C. Chain-of-thought - Chiede di mostrare il ragionamento per trovare la risposta.
+6. A. Instruction - È un comando diretto: 'Scrivi una poesia...'.

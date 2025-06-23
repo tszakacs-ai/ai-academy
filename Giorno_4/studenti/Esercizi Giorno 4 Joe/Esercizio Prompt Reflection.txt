@@ -1,0 +1,22 @@
+Esercizio: Prompt Reflection
+
+📌 Cos'è un Prompt Reflection?
+Un prompt reflection è una tecnica progettata per guidare un modello AI a riflettere criticamente sulla propria risposta. L'obiettivo è aumentare l'accuratezza e l'affidabilità del modello, incoraggiandolo a fare autocritica, identificare errori, proporre miglioramenti o alternative.
+
+🧱 Struttura di base di un Prompt Reflection:
+1. Chiedi al modello di generare una prima risposta al problema.
+2. Invitalo a rileggere e valutare criticamente la propria risposta.
+3. Chiedi di correggere eventuali errori, proporre miglioramenti o suggerire un’alternativa.
+
+📌 Frasi utili da includere:
+- Risolvi il problema, poi verifica se la risposta è corretta e, se necessario, correggila.
+- Dopo aver risposto, rileggi e spiega eventuali punti deboli o alternative migliori.
+- Fornisci una risposta, poi rifletti e suggerisci come potrebbe essere migliorata.
+
+📚 Esempi di Prompt Reflection:
+
+🔹 Esempio 1:
+"Risolvi il seguente problema matematico: qual è la somma dei primi 100 numeri interi positivi? Dopo aver fornito la risposta, rileggi il tuo ragionamento e verifica se ci sono errori o modi più efficienti per arrivare al risultato."
+
+🔹 Esempio 2:
+"Scrivi una breve descrizione del concetto di overfitting in machine learning. Poi rifletti sulla tua spiegazione: è chiara? Hai tralasciato aspetti importanti? Proponi una versione migliorata se necessario."
