@@ -1,0 +1,9 @@
+Buongiorno,
+La nostra soluzione è adottare il modello NER dslim/bert-base-NER,
+questo perchè è perfetto per il compito richiesto da voi, ossia quello di anonimizzare
+i documenti. 
+Il programma è stato testato internamente alla nostra azienda, per tanto aspettiamo un vostro riscontro
+non appena riuscirete a verificare il corretto funzionamento del programma.
+Cordiali Saluti
+Lorenzo
+*Firma Aziendale*
