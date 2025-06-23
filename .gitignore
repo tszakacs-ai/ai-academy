@@ -1,0 +1,32 @@
+# Ambiente virtuale
+env/
+.venv/
+ 
+# File temporanei e cache
+__pycache__/
+*.py[cod]
+*.pyo
+ 
+# File di log
+*.log
+ 
+# Impostazioni di editor/IDE
+.vscode/
+.idea/
+*.swp
+ 
+# File di sistema
+.DS_Store
+Thumbs.db
+ 
+# Output di Jupyter Notebook
+.ipynb_checkpoints/
+ 
+# Configurazioni di ambiente (opzionale)
+.env
+.env.*
+ 
+# Build
+build/
+dist/
+*.egg-info/
