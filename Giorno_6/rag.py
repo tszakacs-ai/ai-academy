@@ -78,7 +78,7 @@ class AzureFoundryOpenAIClient:
  
         return risultati
  
-# Esempio d’uso
+
 if __name__ == "__main__":
     client = AzureFoundryOpenAIClient()
     client.classifica_documenti()
