@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from itertools import combinations
 
-# Carica le variabili da .env
+
 load_dotenv()
 
 # Frasi da confrontare
