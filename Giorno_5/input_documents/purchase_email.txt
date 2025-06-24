@@ -1,25 +1,26 @@
-Dear Procurement Team,
+Gentile Team Acquisti,
 
-Please find below the details of the new purchase order.
+di seguito i dettagli del nuovo ordine di acquisto.
 
-Order Number: PO-20250619
-Date: June 19, 2025
-Supplier: Acme Corporation
-Contact Person: John Smith
-Bankcode: IT141234567890
-Taxcode: CTR90E15B38N
-Delivery Address: 1600 Amphitheatre Parkway, Mountain View, CA
-Shipping Date: June 25, 2025
+Numero Ordine: PO-20250619
+Data: 19 Giugno 2025
+Fornitore: Acme Corporation
+Persona di riferimento: John Smith
+Codice bancario: IT141234567890
+Codice fiscale: CTR90E15B38N
+Indirizzo di consegna: 1600 Amphitheatre Parkway, Mountain View, CA
+Data di spedizione: 25 Giugno 2025
 
-Ordered Items:
-- 10 x HP EliteBook 840 G8
-- 5 x Logitech MX Master 3S
+Articoli ordinati:
 
-Total Amount: USD 12,540.00
+10 x HP EliteBook 840 G8
 
+5 x Logitech MX Master 3S
 
-Please ensure that the shipment arrives on time. For any queries, contact Sarah Johnson from our Logistics Department.
+Importo totale: USD 12.540,00
 
-Best regards,
+Vi preghiamo di assicurarvi che la spedizione arrivi puntualmente. Per qualsiasi domanda, contattare Sarah Johnson del nostro Dipartimento Logistica.
+
+Cordiali saluti,
 Alice Brown
 Microsoft Corporation

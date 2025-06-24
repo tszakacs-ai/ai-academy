@@ -1,11 +1,11 @@
-Dear Dr. [MISC],
+"[PER],
 
-My name is [MISC], born in [LOCALITY] on [DATE], currently residing at [LOCALITY] [MISC], [MISC] [LOCALITY].
+mi chiamo [PER], nato a [LOC] il [DATE], attualmente residente in [LOC] 24, 20121 [LOC].
 
-I am writing regarding an incorrect credit on my bank account [BANKCODE] held at [ORGANIZATION].  
-Attached is a copy of my tax code: [TAXCODE].
+Le scrivo in merito a un accredito errato sul mio conto bancario [IBAN] presso la [ORG].  
+In allegato trova una copia del mio codice fiscale: [CODICE FISCALE].
 
-Looking forward to your reply. Best regards,  
-[MISC]  
-[MISC]  
-Phone: [MISC]  
+In attesa di un suo riscontro, porgo cordiali saluti.  
+[PER]  
+[EMAIL]  
+Telefono: [PHONE]"  
