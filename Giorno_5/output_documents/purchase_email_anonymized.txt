@@ -1,24 +1,25 @@
-Dear Procurement [ORGANIZATION],
+"[ORG],
 
-Please find below the details of the new purchase order.
+di seguito i dettagli del nuovo ordine di acquisto.
 
-Order Number: PO-20250619  
-Date: June 19, 2025  
-Supplier: [ORGANIZATION]  
-Contact Person: [PERSON]  
-Bankcode: [BANKCODE]  
-Taxcode: [TAXCODE]  
-Delivery Address: 1600 [LOCALITY], [LOCALITY], [LOCALITY]  
-Shipping Date: June 25, 2025  
+Numero Ordine: [ORDER]
+Data: [DATE]
+Fornitore: [ORG]
+Persona di riferimento: [PER]
+Codice bancario: [BANK]
+Codice fiscale: [TAX]
+Indirizzo di consegna: [LOC], [LOC], [LOC]
+Data di spedizione: [DATE]
 
-Ordered Items:  
-- 10 x [ORGANIZATION]  
-- 5 x [ORGANIZATION]  
+Articoli ordinati:
 
-Total Amount: USD 12,540.00  
+10 x [ITEM]
+5 x [ITEM]
 
-Please ensure that the shipment arrives on time. For any queries, contact [PERSON] from our [ORGANIZATION].  
+Importo totale: [CURRENCY] [AMOUNT]
 
-Best regards,  
-[ORGANIZATION]  
-[ORGANIZATION]  
+Vi preghiamo di assicurarvi che la spedizione arrivi puntualmente. Per qualsiasi domanda, contattare [PER] del nostro [ORG].
+
+Cordiali saluti,  
+[PER]  
+[ORG]"
