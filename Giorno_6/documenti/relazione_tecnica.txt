@@ -1,0 +1,12 @@
+RELAZIONE TECNICA – PROGETTO ALPHA
+Data: 10 giugno 2025
+Redatto da: Ufficio Ricerca e Sviluppo
+
+1. Introduzione
+Il progetto Alpha ha l’obiettivo di sviluppare un prototipo di drone per applicazioni agricole...
+2. Metodologia
+Sono stati condotti test in laboratorio su tre versioni del motore elettrico...
+3. Risultati
+Il prototipo presenta un’autonomia media di 45 min con carico di 2 kg...
+4. Conclusioni e prossimi passi
+
