@@ -30,7 +30,7 @@ def valida_prompt(prompt):
             raise ValueError(f"Prompt bloccato: contiene '{parola}'")
 
     # 3. Limite sulla lunghezza del prompt
-    max_length = 400  # caratteri
+    max_length = 400 
     if len(prompt) > max_length:
         raise ValueError("Prompt troppo lungo")
 
