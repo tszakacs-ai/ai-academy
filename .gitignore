@@ -1,4 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+# Ambiente virtuale
+env/
+.venv/
+
+# File temporanei e cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# File di log
+*.log
+
+# Impostazioni di editor/IDE
+
+>>>>>>> 80aad0304c64ff2e103ef790931afaf073a69ac6
 # ❌ File di ambiente (contengono segreti)
 .env
 .env.*
@@ -14,12 +31,8 @@ __pycache__/
 *.pyd
 *.so
 
-# ❌ Cartelle virtual environment
-.venv/
-venv/
-ENV/
-env/
 
+<<<<<<< HEAD
 # ❌ File di log
 *.log
 
@@ -67,3 +80,8 @@ build/
 dist/
 *.egg-info/
 >>>>>>> exercise/rag-matteo_loi
+=======
+# ❌ Output temporanei
+*.bak
+*.tmp
+>>>>>>> 80aad0304c64ff2e103ef790931afaf073a69ac6
