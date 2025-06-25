@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ❌ File di ambiente (contengono segreti)
 .env
 .env.*
@@ -26,10 +27,43 @@ env/
 .ipynb_checkpoints/
 
 # ❌ File di configurazione degli editor
+=======
+# Ambiente virtuale
+env/
+.venv/
+
+# File temporanei e cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# File di log
+*.log
+
+# Impostazioni di editor/IDE
+>>>>>>> exercise/rag-matteo_loi
 .vscode/
 .idea/
 *.swp
 
+<<<<<<< HEAD
 # ❌ Output temporanei
 *.bak
 *.tmp
+=======
+# File di sistema
+.DS_Store
+Thumbs.db
+
+# Output di Jupyter Notebook
+.ipynb_checkpoints/
+
+# Configurazioni di ambiente (opzionale)
+.env
+.env.*
+
+# Build
+build/
+dist/
+*.egg-info/
+>>>>>>> exercise/rag-matteo_loi
