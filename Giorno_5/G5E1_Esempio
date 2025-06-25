@@ -1,0 +1,146 @@
+from azure_openai_client import AzureOpenAIClient, quick_chat
+
+def esempio_base():
+    """Esempio base di utilizzo"""
+    print("=== ESEMPIO BASE ===")
+    
+    # Crea client
+    client = AzureOpenAIClient()
+    
+    # Chat semplice
+    response = client.simple_chat(
+        user_message="Spiegami cos'è l'intelligenza artificiale in 2 frasi",
+        system_message="Sei un esperto di AI che spiega concetti complessi in modo semplice",
+        temperature=0.7,
+        max_tokens=150
+    )
+    
+    print(f"Risposta: {response}")
+
+
+def esempio_conversazione():
+    """Esempio di conversazione con cronologia"""
+    print("\n=== ESEMPIO CONVERSAZIONE ===")
+    
+    client = AzureOpenAIClient()
+    history = []
+    
+    # Prima domanda
+    response1, history = client.conversation_chat(
+        conversation_history=history,
+        new_user_message="Qual è il tuo colore preferito?",
+        system_message="Sei un assistente amichevole"
+    )
+    print(f"User: Qual è il tuo colore preferito?")
+    print(f"AI: {response1}")
+    
+    # Seconda domanda (con contesto)
+    response2, history = client.conversation_chat(
+        conversation_history=history,
+        new_user_message="Perché hai scelto quel colore?",
+        system_message="Sei un assistente amichevole"
+    )
+    print(f"User: Perché hai scelto quel colore?")
+    print(f"AI: {response2}")
+
+
+def esempio_parametri_avanzati():
+    """Esempio con parametri avanzati"""
+    print("\n=== ESEMPIO PARAMETRI AVANZATI ===")
+    
+    client = AzureOpenAIClient()
+    
+    # Messaggio con parametri specifici
+    messages = [
+        {"role": "system", "content": "Sei un poeta che scrive solo in rima"},
+        {"role": "user", "content": "Scrivi una breve poesia sul mare"}
+    ]
+    
+    response = client.chat_completion(
+        messages=messages,
+        model="gpt-4o",
+        temperature=0.9,  # Più creativo
+        max_tokens=200,
+        top_p=0.95,
+        frequency_penalty=0.3,  # Riduce ripetizioni
+        presence_penalty=0.1
+    )
+    
+    print(f"Poesia: {response}")
+
+
+def esempio_uso_come_modulo():
+    """Esempio di utilizzo come modulo importato"""
+    print("\n=== ESEMPIO USO COME MODULO ===")
+    
+    # Uso rapido senza creare client esplicitamente
+    response = quick_chat(
+        user_message="Dimmi 3 curiosità sui pinguini",
+        system_message="Sei un biologo marino esperto",
+        temperature=0.5,
+        max_tokens=300
+    )
+    
+    print(f"Curiosità sui pinguini: {response}")
+
+
+def esempio_gestione_errori():
+    """Esempio di gestione errori"""
+    print("\n=== ESEMPIO GESTIONE ERRORI ===")
+    
+    try:
+        client = AzureOpenAIClient()
+        
+        # Test con parametri non validi
+        response = client.simple_chat(
+            user_message="",  # Messaggio vuoto
+            temperature=3.0   # Temperatura non valida
+        )
+        
+    except ValueError as e:
+        print(f"Errore di validazione: {e}")
+    except Exception as e:
+        print(f"Errore generico: {e}")
+
+
+def esempio_streaming():
+    """Esempio di streaming response"""
+    print("\n=== ESEMPIO STREAMING ===")
+    
+    client = AzureOpenAIClient()
+    
+    messages = [
+        {"role": "system", "content": "Sei uno storyteller"},
+        {"role": "user", "content": "Racconta una breve favola"}
+    ]
+    
+    # Streaming response
+    stream = client.chat_completion(
+        messages=messages,
+        stream=True,
+        max_tokens=300
+    )
+    
+    print("Storia (streaming):")
+    for chunk in stream:
+        if chunk.choices[0].delta.content is not None:
+            print(chunk.choices[0].delta.content, end='', flush=True)
+    print("\n")
+
+
+if __name__ == "__main__":
+    try:
+        # Esegui tutti gli esempi
+        esempio_base()
+        esempio_conversazione()
+        esempio_parametri_avanzati()
+        esempio_uso_come_modulo()
+        esempio_gestione_errori()
+        esempio_streaming()
+        
+    except Exception as e:
+        print(f"Errore durante l'esecuzione degli esempi: {e}")
+        print("\nControlla la configurazione in .env:")
+        print("- AZURE_OPENAI_API_KEY")
+        print("- AZURE_OPENAI_ENDPOINT")
+        print("- AZURE_OPENAI_MODEL_NAME")

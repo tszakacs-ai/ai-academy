@@ -160,3 +160,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# QUESTO PROGRAMMA è COLLEGATO CON app.py per avere l'interfaccia Streamlit

@@ -1,5 +1,5 @@
 import streamlit as st
-from ex_langchain import SimpleRAG
+from G6E1_Rag import SimpleRAG
 import os
 
 st.set_page_config(page_title="RAG PDF Chat", layout="wide")
