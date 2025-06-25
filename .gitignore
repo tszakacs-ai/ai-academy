@@ -1,3 +1,17 @@
+# Ambiente virtuale
+env/
+.venv/
+
+# File temporanei e cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# File di log
+*.log
+
+# Impostazioni di editor/IDE
+
 # ❌ File di ambiente (contengono segreti)
 .env
 .env.*
@@ -13,22 +27,6 @@ __pycache__/
 *.pyd
 *.so
 
-# ❌ Cartelle virtual environment
-.venv/
-venv/
-ENV/
-env/
-
-# ❌ File di log
-*.log
-
-# ❌ Jupyter Notebook checkpoint
-.ipynb_checkpoints/
-
-# ❌ File di configurazione degli editor
-.vscode/
-.idea/
-*.swp
 
 # ❌ Output temporanei
 *.bak
