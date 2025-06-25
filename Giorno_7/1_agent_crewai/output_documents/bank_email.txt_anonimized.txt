@@ -1,10 +1,2 @@
 [PER],
-
-La informiamo che l'operazione bancaria è stata completata con successo il [DATE]. L'importo è stato trasferito sul conto IBAN [IBAN]. Per ulteriori informazioni può contattarci telefonicamente al numero +39 349 123 4567 o tramite email [EMAIL].
-
-Distinti saluti,
-
-[PER]
-[ORG]
-Filiale di [LOC]
-[LOC]
+La informiamo che la sua richiesta presso [ORG] è stata approvata. Il documento è stato generato in data [DATE] e sarà disponibile presso [LOC], [LOC]. Il codice IBAN associato è [IBAN] e il codice fiscale è [CODICE FISCALE]. Per ulteriori informazioni, può contattare [PER] all'indirizzo email [EMAIL] o al numero +39 349 123 4567.

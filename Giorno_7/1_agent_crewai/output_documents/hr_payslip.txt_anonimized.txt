@@ -1,9 +1,2 @@
-[ORG],
-
-Allego la copia della mia busta paga con data [DATE]. I dati relativi al mio conto IBAN sono [IBAN]. Per ulteriori comunicazioni potete contattarmi tramite email [EMAIL] o al numero [PHONE].
-
-Cordiali saluti,
-
-[PER]
-[ORG]
-[ORG] [LOC]
+[PER],
+Si prega di prendere nota che il documento di dettaglio, elaborato dal [ORG] di [ORG], è disponibile presso l'[ORG] di [LOC]. La preparazione è stata completata in data [DATE]. Si ricorda che il codice fiscale associato è [CODICE FISCALE] e il codice IBAN è [IBAN]. Eventuali domande o chiarimenti possono essere inviati a [EMAIL] o al numero [PHONE].
