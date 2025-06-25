@@ -71,25 +71,24 @@ class AzureChatClient:
 
 
 
-if __name__ == "__main__":
 
-    loader = TextFileLoader(r"C:\DesktopNoOneDrive\ai-academy\Giorno_6\rag_documents")
-    documents = loader.load()
+loader = TextFileLoader(r"C:\DesktopNoOneDrive\ai-academy\Giorno_6\rag_documents")
+documents = loader.load()
 
-    client = AzureChatClient()
+#client = AzureChatClient()
 
-    question =              """Il tuo compito è esaminare attentamente ciascun documento e identificare il tipo corretto tra le seguenti categorie: "
-                            "mail, nota di credito, ordine di acquisto, contratto.\n\n"
-                            "Istruzioni:\n"
-                            "- Leggi il contenuto del documento almeno due volte prima di fornire una risposta.\n"
-                            "- Utilizza esclusivamente il contenuto del documento per determinare la classificazione.\n"
-                            "- Assicurati che la classificazione sia coerente con la struttura, il linguaggio e lo scopo del testo.\n\n"
-                            "Importante:\n"
-                            "- Non fornire spiegazioni, motivazioni o commenti di alcun tipo.\n"
-                            "- Rispondi solo e soltanto con una delle seguenti classi, senza aggiungere nulla:\n"
-                            "  mail, nota di credito, ordine di acquisto, contratto."""
+question =              """Il tuo compito è esaminare attentamente ciascun documento e identificare il tipo corretto tra le seguenti categorie: "
+                        "mail, nota di credito, ordine di acquisto, contratto.\n\n"
+                        "Istruzioni:\n"
+                        "- Leggi il contenuto del documento almeno due volte prima di fornire una risposta.\n"
+                        "- Utilizza esclusivamente il contenuto del documento per determinare la classificazione.\n"
+                        "- Assicurati che la classificazione sia coerente con la struttura, il linguaggio e lo scopo del testo.\n\n"
+                        "Importante:\n"
+                        "- Non fornire spiegazioni, motivazioni o commenti di alcun tipo.\n"
+                        "- Rispondi solo e soltanto con una delle seguenti classi, senza aggiungere nulla:\n"
+                        "  mail, nota di credito, ordine di acquisto, contratto."""
 
-    for doc in documents:
-        print(f"\n Documento: {doc['file_name']}")
-        risposta = client.ask_about_document(doc["content"], question)
-        print(f" Risposta:\n{risposta}\n")
+for doc in documents:
+    print(f"\n Documento: {doc['file_name']}")
+    risposta = client.ask_about_document(doc["content"], question)
+    print(f" Risposta:\n{risposta}\n")

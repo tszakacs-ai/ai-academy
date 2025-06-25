@@ -79,13 +79,10 @@ class LangchainAdaWrapper(Embeddings):
 
 
 class ChatCompletionModel(AIProjectClientDefinition):
-    def __init__(self, client_class: AIProjectClientDefinition, model_name: str = "gpt-4o", content: str = "", question: str = ""):
+    def __init__(self, client_class: AIProjectClientDefinition, model_name: str = "gpt-4o"):
         self.client = client_class.client
         self.model_name = model_name
         self.azure_client = client_class.client.inference.get_azure_openai_client(api_version="2025-01-01-preview")
-        self.content = content
-        self.question = question
-
 
     def ask_about_document(self, content: str, question: str) -> str:
         messages = [

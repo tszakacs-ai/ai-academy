@@ -13,6 +13,8 @@ project = AIProjectClient(
     credential=DefaultAzureCredential()
 )
 
+
+
 models = project.inference.get_azure_openai_client(api_version="2024-10-21")
 
 

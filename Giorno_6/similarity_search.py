@@ -57,3 +57,10 @@ for i, j in combinations(range(len(frasi)), 2):
 
 
 
+
+
+
+
+
+
+
