@@ -1,0 +1,11 @@
+{
+    "tipo_documento": "Email",
+    "riassunto": "Il cliente, [NOME_PER[NOME_ORGANIZZAZIONE]ONA], contatta il supporto di SmartDocs Srl per richiedere un aggiornamento delle coordinate bancarie relative alla fattura N. 734/2025. Viene fornito un nuovo IBAN e richiesto di disattivare quello precedente.",
+    "punti_chiave": [
+        "Richiesta di aggiornamento coordinate bancarie",
+        "Disattivazione dell'IBAN IT60X0542811101000000123456",
+        "Nuovo IBAN fornito: IT12Y0306909606100000012345",
+        "Contatto telefonico fornito: 333 1234567"
+    ],
+    "bozza_risposta": "Gentile [NOME_PER[NOME_ORGANIZZAZIONE]ONA],\n\nLa ringraziamo per averci contattato. Abbiamo ricevuto la sua richiesta di aggiornamento delle coordinate bancarie e stiamo procedendo con l'elaborazione. La informeremo non appena l'operazione sarà completata.\n\nCordiali saluti,\nIl team di SmartDocs Srl"
+}

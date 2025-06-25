@@ -1,0 +1,10 @@
+{
+    "tipo_documento": "Ordine di Acquisto",
+    "riassunto": "Il documento rappresenta un ordine di acquisto per un servizio denominato 'Shield'. Viene richiesta l'emissione di una fattura a seguito dell'ordine.",
+    "punti_chiave": [
+        "Richiesta di emissione fattura per ordine",
+        "Servizio ordinato: 'Shield'",
+        "Conferma che indirizzo di fatturazione e spedizione coincidono"
+    ],
+    "bozza_risposta": "Gentile [NOME_PERSONA],\n\nLa ringraziamo per il suo ordine. Confermiamo la ricezione della sua richiesta e stiamo procedendo con l'elaborazione. Le faremo sapere non appena la fattura sarà emessa.\n\nCordiali saluti,\nSmartDocs Srl"
+}
