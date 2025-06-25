@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import openai
+
+# Crea il client Azure OpenAI
+client = openai.AzureOpenAI(
+    api_key="C8S512wLEOSuyuZX1i5ueaftcSi6TWULTippFXTf5MscLGJEzTDyJQQJ99BFACHYHv6XJ3w3AAAAACOGLI5p",  # <-- La tua chiave API di Azure OpenAI
+    azure_endpoint="https://academy-giorno5.openai.azure.com/", # <-- Il tuo  API endpoint di Azure OpenAI
+    api_version="2024-12-01-preview",  # <-- La versione dal portale Azure
+)
+
+response = client.chat.completions.create(
+    model="o4-mini",  # <-- Il nome esatto del deployment in Azure
+    messages=[
+        {"role": "system", "content": "Sei un assistente AI."},
+        {"role": "user", "content": "Qual è la capitale dell'Italia?"}
+    ],
+    max_completion_tokens=256,
+    temperature=1,
+)
+
+=======
+>>>>>>> main
 import openai
 
 # Crea il client Azure OpenAI
@@ -17,4 +41,8 @@ response = client.chat.completions.create(
     temperature=1,
 )
 
+<<<<<<< HEAD
+=======
+>>>>>>> features/joanna-benkakitie
+>>>>>>> main
 print(response.choices[0].message.content)
