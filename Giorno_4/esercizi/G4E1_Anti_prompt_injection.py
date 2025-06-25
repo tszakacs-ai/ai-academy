@@ -1,4 +1,3 @@
-
 def valida_prompt(prompt):
      # 0. Scrivi prompt base per il controllo
     """
