@@ -7,7 +7,11 @@ from langchain_community.llms import HuggingFacePipeline
 from transformers import pipeline
  
 # 1. Carica documenti
-files = ["Giorno_6/Mail.txt", "Giorno_6/nota.txt", "Giorno_6/Fattura.txt"]
+files = [
+    "RAGDocs/daniel_craciun_conferma_ordine.txt",
+    "RAGDocs/daniel_craciun_nota_di_credito.txt",
+    "RAGDocs/daniel_craciun_contratto_di_assunzione.txt"
+]
 documents = []
 for file in files:
     loader = TextLoader(file, encoding="utf-8")

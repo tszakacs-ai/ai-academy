@@ -26,3 +26,6 @@ crew = Crew(
     agents=[planner],
     tasks=[task_planner]
 )
+
+result = crew.kickoff()
+print(result)
