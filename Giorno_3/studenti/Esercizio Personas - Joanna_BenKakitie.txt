@@ -143,26 +143,3 @@ Formato: Kit prodotto + packaging pop
 Messaggio: "Il tuo primo kit smart, tutto incluso."
 CTA: "Scopri il bundle per iniziare senza stress."
 Obiettivo: Facilità, prezzo contenuto, appeal estetico
-
-
-------------------------------------------
-
-
-4. Presentazione finale
-• Presenta il risultato al team marketing:
-▪ Elenco segmenti con motivazione
-▪ Schede personas
-▪ Prompt usati e output di ChatGPT
-▪ Campagne suggerite
-
-
-📌 Schede personas:
-(Include descrizioni sopra o stampa slide)
-
-📌 Prompt usati:
-(Includi i prompt copiati sopra)
-
-📌 Campagne suggerite:
-2 campagne per ciascuna persona
-
-Bonus: inserisci un grafico tipo matrice “Coinvolgimento vs Potenziale Spesa”
