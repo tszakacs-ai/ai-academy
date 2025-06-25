@@ -1,0 +1,42 @@
+Contratto di Fornitura Servizi Digitali  
+Numero Contratto: SD-2025-0217  
+Data: 15 Marzo 2025
+
+Tra:
+
+SMARTDOCS S.r.l.  
+con sede legale in Via Leonardo da Vinci 24, 20133 Milano (MI)  
+P.IVA 09876543210  
+di seguito denominata “Fornitore”
+
+e
+
+Mario Rossi  
+Codice Fiscale: RSSMRA85M01H501Z  
+Residente in: Via Garibaldi 10, 20121 Milano (MI)  
+di seguito denominato “Cliente”
+
+**Articolo 1 – Oggetto del contratto**  
+Il presente contratto ha per oggetto l’erogazione da parte del Fornitore di servizi digitali per la gestione elettronica di documenti, archiviazione sicura, firma digitale e conservazione sostitutiva.
+
+**Articolo 2 – Durata**  
+Il contratto ha durata annuale, con decorrenza dal 15 Marzo 2025 e rinnovo automatico salvo disdetta con almeno 30 giorni di preavviso.
+
+**Articolo 3 – Corrispettivo e Pagamento**  
+Il Cliente si impegna a corrispondere un canone mensile di € 39,90 IVA esclusa, mediante addebito su conto corrente bancario.
+
+**Articolo 4 – Coordinate Bancarie**  
+Le coordinate bancarie comunicate inizialmente dal Cliente per l’addebito automatico sono:  
+IBAN: IT60X0542811101000000123456  
+
+Eventuali variazioni delle coordinate bancarie dovranno essere comunicate per iscritto almeno 5 giorni lavorativi prima del prossimo addebito previsto.
+
+**Articolo 5 – Clausola Privacy**  
+Le parti dichiarano di aver preso visione dell’informativa sulla privacy ai sensi del GDPR. I dati personali verranno trattati esclusivamente per finalità contrattuali.
+
+**Articolo 6 – Foro competente**  
+Per ogni controversia è competente il Foro di Milano.
+
+Firmato digitalmente  
+SMARTDOCS Srl – Rappresentante Legale  
+Mario Rossi – Cliente
