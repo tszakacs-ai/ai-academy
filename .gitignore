@@ -11,22 +11,23 @@ __pycache__/
 *.log
 
 # Impostazioni di editor/IDE
-.vscode/
-.idea/
-*.swp
 
-# File di sistema
-.DS_Store
-Thumbs.db
-
-# Output di Jupyter Notebook
-.ipynb_checkpoints/
-
-# Configurazioni di ambiente (opzionale)
+# ❌ File di ambiente (contengono segreti)
 .env
 .env.*
 
-# Build
-build/
-dist/
-*.egg-info/
+# ❌ File temporanei del sistema operativo
+.DS_Store
+Thumbs.db
+
+# ❌ File di Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+
+# ❌ Output temporanei
+*.bak
+*.tmp
