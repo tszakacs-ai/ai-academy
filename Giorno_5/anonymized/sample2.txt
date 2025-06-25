@@ -1,0 +1,5 @@
+Documento: Nota di credito n. NC-2024/07  
+Cliente: [Azienda_1]  
+Importo: -€1.200,00  
+Motivo: Reso merce difettosa – ordine #4421  
+Data emissione: 03/05/2024 

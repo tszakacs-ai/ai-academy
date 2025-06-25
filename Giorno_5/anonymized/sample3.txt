@@ -1,0 +1,9 @@
+Ordine d’acquisto n. PO-1023  
+Cliente: [Azienda_1] S.r.l.  
+IBAN: [IT64***********************]
+Indirizzo:  [Luogo_1], 31, 20121 [Luogo_2]
+Prodotti ordinati:  
+- 10x Modulo sensore M4  
+- 5x Interfaccia CAN  
+Totale: €3.520,00  
+Consegna prevista: 10/06/2024  

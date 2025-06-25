@@ -1,0 +1,9 @@
+Ordine d’acquisto n. PO-1023  
+Cliente: BetaTech S.r.l.  
+IBAN: IT64C0542811101SBZ7HSFFSYS1
+Indirizzo:  Via della Moscova, 31, 20121 Milano MI
+Prodotti ordinati:  
+- 10x Modulo sensore M4  
+- 5x Interfaccia CAN  
+Totale: €3.520,00  
+Consegna prevista: 10/06/2024  
