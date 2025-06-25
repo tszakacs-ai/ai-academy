@@ -1,0 +1,35 @@
+# ❌ File di ambiente (contengono segreti)
+.env
+.env.*
+
+# ❌ File temporanei del sistema operativo
+.DS_Store
+Thumbs.db
+
+# ❌ File di Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# ❌ Cartelle virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# ❌ File di log
+*.log
+
+# ❌ Jupyter Notebook checkpoint
+.ipynb_checkpoints/
+
+# ❌ File di configurazione degli editor
+.vscode/
+.idea/
+*.swp
+
+# ❌ Output temporanei
+*.bak
+*.tmp
