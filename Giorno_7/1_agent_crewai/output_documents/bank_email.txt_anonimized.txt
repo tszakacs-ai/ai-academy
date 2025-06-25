@@ -1,0 +1,10 @@
+[PER],
+
+La informiamo che l'operazione bancaria è stata completata con successo il [DATE]. L'importo è stato trasferito sul conto IBAN [IBAN]. Per ulteriori informazioni può contattarci telefonicamente al numero +39 349 123 4567 o tramite email [EMAIL].
+
+Distinti saluti,
+
+[PER]
+[ORG]
+Filiale di [LOC]
+[LOC]

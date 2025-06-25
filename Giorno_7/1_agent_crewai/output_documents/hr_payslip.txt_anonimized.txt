@@ -1,0 +1,9 @@
+[ORG],
+
+Allego la copia della mia busta paga con data [DATE]. I dati relativi al mio conto IBAN sono [IBAN]. Per ulteriori comunicazioni potete contattarmi tramite email [EMAIL] o al numero [PHONE].
+
+Cordiali saluti,
+
+[PER]
+[ORG]
+[ORG] [LOC]
