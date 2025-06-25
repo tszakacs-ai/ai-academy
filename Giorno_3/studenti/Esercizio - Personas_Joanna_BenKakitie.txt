@@ -1,0 +1,168 @@
+Scenario – Il mercato di partenza
+Immagina di lavorare per EcoSmartHome, una startup che vende online prodotti innovativi per la casa:
+• lampadine smart, sensori di risparmio energetico, termostati intelligenti, prese Wi-Fi, kit domotici “fai da te”.
+Negli ultimi mesi, le vendite sono cresciute, ma il team marketing vuole capire meglio i clienti per lanciare campagne mirate e personalizzare l’offerta.
+
+Sono disponibili i seguenti dati aggregati (per ciascun cliente):
+• Frequenza di acquisto (bassa/media/alta)
+• Spesa media per ordine (bassa/media/alta)
+• Prodotti preferiti (illuminazione, risparmio energetico, automazione)
+• Canale di acquisto (solo online / anche negozio fisico)
+• Utilizzo app EcoSmartHome (mai / saltuariamente / spesso)
+
+
+Problema: Il management chiede di:
+
+1. Identificare almeno 3 segmenti di clienti a partire dai dati disponibili.
+2. Descrivere per ogni segmento una “buyer persona” dettagliata, con nome, età stimata, motivazioni, abitudini, bisogni, barriere e frase tipica.
+3. Usare ChatGPT per arricchire la descrizione delle personas e ottenere suggerimenti per campagne mirate.
+
+____________________________________________________________________________________
+
+
+1. Analisi e segmentazione
+
+---
+
+Segmento 1 – “Smart Lovers”
+Profilo: Acquisto frequente, spesa media/alta, preferenza per automazione, uso frequente dell'app
+Motivazione: Sono clienti esperti e appassionati di tecnologia, interessati a semplificare la gestione della casa
+Canale: Principalmente online
+
+Segmento 2 – “Eco Risparmiatori”
+Profilo: Acquisto medio, spesa medio-bassa, preferenza per risparmio energetico, uso saltuario dell'app
+Motivazione: Interessati a ridurre i costi delle bollette e l’impatto ambientale
+Canale: Online e fisico
+
+Segmento 3 – “Curiosi Occasionali”
+Profilo: Acquisto basso, spesa bassa, preferenza per illuminazione smart, uso app assente o minimo
+Motivazione: Clienti esplorativi che provano prodotti singoli, a volte per moda
+Canale: Solo online
+
+
+------------------------------------------
+
+
+2. Schede personas
+
+---
+
+Persona 1: Luca, lo Smart Lover
+Età: 38 anni
+Motivazioni: Ama la tecnologia, vuole una casa automatizzata e connessa, apprezza il controllo remoto
+Abitudini: Naviga su forum tech, usa l’app tutti i giorni, acquista in anticipo
+Bisogni: Soluzioni integrate e compatibili, innovazione costante
+Barriere: Tempi di attivazione complessi
+Frase tipica: “Posso controllare tutto con un click”
+
+Persona 2: Marta, l’Eco Risparmiatrice
+Età: 45 anni
+Motivazioni: Risparmiare sulle bollette e aiutare l’ambiente
+Abitudini: Legge guide su efficienza energetica, cerca offerte
+Bisogni: Facilità d’uso, affidabilità, supporto clienti
+Barriere: Prezzo iniziale, timore che non faccia davvero risparmiare
+Frase tipica: “Se mi fa risparmiare energia, mi interessa”
+
+Persona 3: Giulia, la Curiosa Occasionale
+Età: 27 anni
+Motivazioni: Vuole provare novità senza impegno
+Abitudini: Guarda TikTok e video di influencer tech
+Bisogni: Prodotti facili, economici e “cool”
+Barriere: Non è disposta a investire molto
+Frase tipica: “Vediamo se è davvero smart come dicono!”
+
+
+------------------------------------------
+
+
+3. Interazione con ChatGPT
+
+# Prompt:
+Crea una buyer persona per il segmento clienti con acquisto frequente, spesa alta, preferenza per prodotti di automazione e uso frequente dell’app EcoSmartHome. Includi: nome, età stimata, motivazioni, abitudini, bisogni, barriere, frase tipica e una breve storia.
+
+Crea una buyer persona per il segmento clienti con acquisto medio, spesa medio-bassa, preferenza per risparmio energetico e uso saltuario dell'app EcoSmartHome. Includi: nome, età stimata, motivazioni, abitudini, bisogni, barriere, frase tipica e una breve storia.
+
+Crea una buyer persona per il segmento clienti con aAcquisto basso, spesa bassa, preferenza per illuminazione smart, uso dell'app EcoSmartHome assente o minimo. Includi: nome, età stimata, motivazioni, abitudini, bisogni, barriere, frase tipica e una breve storia.
+
+---
+
+# Output ChatGPT 
+
+1.  Luca – Lo Smart Lover
+Età: 38 anni
+Motivazioni: Vuole una casa intelligente e iperconnessa
+Canale: Online
+App: Utilizzata spesso
+
+- Campagna 1 – “Tutto sotto controllo”
+Formato: Email + demo interattiva
+Messaggio: "Scopri il nuovo hub EcoSmartPro: luci, clima e sicurezza in un solo tocco."
+CTA: "Prova ora la demo e configura la tua casa smart in 60 secondi."
+Obiettivo: Cross-selling di dispositivi compatibili
+
+- Campagna 2 – “Programma Upgrade Smart+”
+Formato: Programma fedeltà personalizzato
+Messaggio: "Hai già una casa intelligente. Ora rendila straordinaria."
+CTA: "Unisciti al piano Upgrade Smart+ e ottieni accesso anticipato ai nuovi prodotti."
+Obiettivo: Upselling per utenti avanzati con sconto VIP
+
+
+2. Marta – L’Eco Risparmiatrice
+Età: 45 anni
+Motivazioni: Risparmio energetico, impatto ambientale
+Canale: Online e negozio fisico
+App: Uso saltuario
+
+- Campagna 1 – “La bolletta intelligente”
+Formato: Infografica + articolo educativo
+Messaggio: "Con EcoSmartHome puoi risparmiare fino al 30% sui consumi. Scopri come."
+CTA: "Leggi la guida gratuita all'efficienza energetica."
+Obiettivo: Educazione + trust-building → Conversione
+
+- Campagna 2 – “Sconto Verde”
+Formato: Promo stagionale
+Messaggio: "Scegli prodotti a basso consumo e risparmia subito."
+CTA: "Fino al 20% di sconto su tutti i dispositivi green."
+Obiettivo: Incentivare il primo acquisto/riacquisto
+
+
+3. Giulia – La Curiosa Occasionale
+Età: 27 anni
+Motivazioni: Curiosità, tendenza, minimal effort
+Canale: Solo online
+App: Mai o raramente usata
+
+- Campagna 1 – “Provami!”
+Formato: Video TikTok + link al mini-shop
+Messaggio: "Installi in 30 secondi. E dici addio agli interruttori."
+CTA: "Prova ora la lampadina smart più amata dal web."
+Obiettivo: Far leva sull’impulsività e viralità
+
+- Campagna 2 – “EcoSmart Flash Box”
+Formato: Kit prodotto + packaging pop
+Messaggio: "Il tuo primo kit smart, tutto incluso."
+CTA: "Scopri il bundle per iniziare senza stress."
+Obiettivo: Facilità, prezzo contenuto, appeal estetico
+
+
+------------------------------------------
+
+
+4. Presentazione finale
+• Presenta il risultato al team marketing:
+▪ Elenco segmenti con motivazione
+▪ Schede personas
+▪ Prompt usati e output di ChatGPT
+▪ Campagne suggerite
+
+
+📌 Schede personas:
+(Include descrizioni sopra o stampa slide)
+
+📌 Prompt usati:
+(Includi i prompt copiati sopra)
+
+📌 Campagne suggerite:
+2 campagne per ciascuna persona
+
+Bonus: inserisci un grafico tipo matrice “Coinvolgimento vs Potenziale Spesa”
