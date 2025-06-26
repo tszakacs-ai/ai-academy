@@ -1,0 +1,11 @@
+Dear Dr. [MISC],
+
+My name is [MISC], born in [LOCALITY] on [DATE], currently residing at [LOCALITY] [MISC], [MISC] [LOCALITY].
+
+I am writing regarding an incorrect credit on my bank account [BANKCODE] held at [ORGANIZATION].  
+Attached is a copy of my tax code: [TAXCODE].
+
+Looking forward to your reply. Best regards,  
+[MISC]  
+[MISC]  
+Phone: [MISC]  
