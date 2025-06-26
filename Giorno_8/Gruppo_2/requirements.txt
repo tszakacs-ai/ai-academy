@@ -1,0 +1,5 @@
+crewai
+crewai-tools
+openai
+transformers
+python-dotenv
