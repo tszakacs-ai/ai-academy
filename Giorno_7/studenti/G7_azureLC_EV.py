@@ -9,10 +9,10 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
 # === CONFIGURAZIONE API AZURE ===
-load_dotenv(dotenv_path=r"C:\Users\BG726XR\OneDrive - EY\Desktop\academy_profice\ai-academy-1\.env")
+load_dotenv()
 
 llm = AzureChatOpenAI(
-    deployment_name="gpt-4o",
+    deployment_name=os.getenv("gpt-4o"),
     openai_api_base=os.getenv("AZURE_ENDPOINT_4o"),
     openai_api_version="2024-12-01-preview",
     openai_api_key=os.getenv("AZURE_API_KEY_4o"),
@@ -78,25 +78,22 @@ def invia_messaggio():
     output_text.config(state=tk.DISABLED)
     input_text.delete("1.0", tk.END)
 
+# === INTERFACCIA GRAFICA ===
+window = tk.Tk()
+window.title("Azure Chatbot LangChain")
+window.geometry("900x600")
 
+input_label = tk.Label(window, text="Testo anonimizzato:", font=("Arial", 12))
+input_label.pack(pady=5)
+input_text = scrolledtext.ScrolledText(window, height=6, wrap=tk.WORD, font=("Arial", 11))
+input_text.pack(padx=10, fill=tk.BOTH)
 
-if __name__ == "__main__":
-    # === INTERFACCIA GRAFICA ===
-    window = tk.Tk()
-    window.title("Azure Chatbot LangChain")
-    window.geometry("900x600")
+send_button = tk.Button(window, text="Invia", command=invia_messaggio, font=("Arial", 12), bg="#0078D4", fg="white")
+send_button.pack(pady=10)
 
-    input_label = tk.Label(window, text="Testo anonimizzato:", font=("Arial", 12))
-    input_label.pack(pady=5)
-    input_text = scrolledtext.ScrolledText(window, height=6, wrap=tk.WORD, font=("Arial", 11))
-    input_text.pack(padx=10, fill=tk.BOTH)
+output_label = tk.Label(window, text="Output analisi:", font=("Arial", 12))
+output_label.pack(pady=5)
+output_text = scrolledtext.ScrolledText(window, height=20, wrap=tk.WORD, font=("Arial", 11), state=tk.DISABLED)
+output_text.pack(padx=10, fill=tk.BOTH, expand=True)
 
-    send_button = tk.Button(window, text="Invia", command=invia_messaggio, font=("Arial", 12), bg="#0078D4", fg="white")
-    send_button.pack(pady=10)
-
-    output_label = tk.Label(window, text="Output analisi:", font=("Arial", 12))
-    output_label.pack(pady=5)
-    output_text = scrolledtext.ScrolledText(window, height=20, wrap=tk.WORD, font=("Arial", 11), state=tk.DISABLED)
-    output_text.pack(padx=10, fill=tk.BOTH, expand=True)
-
-    window.mainloop()
+window.mainloop()
