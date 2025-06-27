@@ -1,0 +1,21 @@
+ESERCIZIO – REACT-LITE
+
+1. Definizione:
+ReAct-lite è una versione semplificata del framework ReAct (Reasoning + Acting), che mantiene i vantaggi della combinazione tra ragionamento e azione, ma in forma più compatta e diretta. È utile per creare prompt più leggeri e facilmente interpretabili, mantenendo la capacità di guidare il modello attraverso pensieri e azioni.
+
+2. Esempio:
+
+Prompt ReAct:
+Domanda: Quanti giorni ci sono in un anno bisestile?
+Pensiero: Un anno normale ha 365 giorni. Un anno bisestile ha un giorno in più.
+Azione: Calcolo 365 + 1
+Risultato: 366
+Risposta: Un anno bisestile ha 366 giorni.
+
+Prompt ReAct-lite:
+Domanda: Quanti giorni ci sono in un anno bisestile?
+Risposta (con ragionamento): Un anno normale ha 365 giorni, ma un anno bisestile ha un giorno in più, quindi 366.
+
+3. Domanda:
+Come si chiama il metodo, quando un prompt gestisce, modifica o genera prompt?
+Risposta: Prompt Engineering.
