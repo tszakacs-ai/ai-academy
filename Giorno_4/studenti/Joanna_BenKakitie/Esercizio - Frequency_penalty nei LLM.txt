@@ -1,0 +1,33 @@
+ESERCIZIO - FREQUENCY_PENALTY NEI LLM
+
+Esempio di prompt errato di business:
+
+Scenario:
+Devi preparare brevi descrizioni da inserire nel sito web per una nuova linea di prodotti, ciascuna descrizione deve essere interessante e diversa.
+
+Prompt fornito (da correggere):
+“Scrivi una breve descrizione per ciascun prodotto della nuova linea:
+• Shampoo FreshClean
+• Balsamo FreshClean
+• Gel FreshClean
+Le descrizioni devono mettere in evidenza il nome FreshClean e i benefici di ciascun prodotto.”
+
+----------------------------------------------
+
+
+- ERRORE:
+Il prompt chiede esplicitamente di ripetere il nome "FreshClean" in ogni descrizione, ma non specifica come evitare ripetizioni eccessive o formule ridondanti.
+
+- PROMPT CORRETTO (ottimizzato per varietà)
+Prompt migliorato:
+“Scrivi una breve descrizione unica e interessante per ciascun prodotto della nuova linea FreshClean:
+• Shampoo
+• Balsamo
+• Gel
+Metti in evidenza i benefici specifici di ciascun prodotto, menzionando il nome ‘FreshClean’ in modo naturale ma senza ripetizioni forzate.
+Ogni descrizione deve essere differente nello stile e nel linguaggio.”
+
+- RISPOSTA:
+ - FreshClean Shampoo: Rinfresca e purifica ogni ciocca, lasciando i capelli leggeri e pieni di vita. Ideale per un uso quotidiano energizzante.
+ - FreshClean Balsamo: Una coccola idratante che districa senza appesantire. Per capelli morbidi, lisci e profumati.
+ - FreshClean Gel: Definizione flessibile e tenuta duratura. Lo styling diventa naturale, senza residui né rigidità.
