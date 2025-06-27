@@ -1,17 +1,22 @@
 import openai
+from get_text import get_text
+
+
+content = get_text("cleaned_output.txt")
+content += "\nQual è il titolo azionario che è stato acquistato di più?"
 
 # Crea il client Azure OpenAI
 client = openai.AzureOpenAI(
-    api_key="LA_TUA_API_KEY",  # <-- La tua chiave API di Azure OpenAI
-    azure_endpoint="IL_TUO_API_ENDPOINT", # <-- Il tuo  API endpoint di Azure OpenAI
-    api_version="2024-12-01-preview",  # <-- La versione dal portale Azure
+    api_key="your_api_key_here",  
+    azure_endpoint="your_azure_endpoint_here",  
+    api_version="your_api_version_here"  
 )
 
 response = client.chat.completions.create(
-    model="o4-mini",  # <-- Il nome esatto del deployment in Azure
+    model="o4-mini",  
     messages=[
         {"role": "system", "content": "Sei un assistente AI."},
-        {"role": "user", "content": "Qual è la capitale dell'Italia?"}
+        {"role": "user", "content": content}
     ],
     max_completion_tokens=256,
     temperature=1,

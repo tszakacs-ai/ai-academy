@@ -1,0 +1,19 @@
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+
+sentences = ["Luca bought a new car", "Luca is buying a new car", "Today is a rainy day"]
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+embeddings = model.encode(sentences)
+
+# Calcola la matrice di similarità del coseno
+similarity_matrix = cosine_similarity(embeddings)
+
+print("Matrice di similarità:")
+print(similarity_matrix)
+print()
+
+print("Similarità tra le frasi:")
+for i in range(len(sentences)):
+    for j in range(i+1, len(sentences)):
+        similarity = similarity_matrix[i][j]
+        print(f"'{sentences[i]}' vs '{sentences[j]}': {similarity:.4f}")
