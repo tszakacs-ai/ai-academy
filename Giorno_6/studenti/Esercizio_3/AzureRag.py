@@ -215,12 +215,12 @@ class AzureRAGSystem:
         dichiaralo esplicitamente. Cita sempre da quale documento proviene l'informazione."""
         
         user_prompt = f"""Contesto:
-    {context}
+        {context}
 
-    Domanda: {query}
+        Domanda: {query}
 
-    Rispondi alla domanda basandoti esclusivamente sul contesto fornito sopra. 
-    Se citi informazioni, indica da quale documento provengono."""
+        Rispondi alla domanda basandoti esclusivamente sul contesto fornito sopra. 
+        Se citi informazioni, indica da quale documento provengono."""
         
         # Genera la risposta con GPT-4
         response = self.client.chat.completions.create(
