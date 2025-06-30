@@ -4,6 +4,10 @@ import tiktoken
 from openai import AzureOpenAI
 import faiss
 import pickle
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain.memory import ChatMessageHistory
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableWithMessageHistory
 
 class AzureRAGSystem:
     """Sistema RAG utilizzando Azure OpenAI per embeddings e generazione"""
@@ -118,9 +122,7 @@ class AzureRAGSystem:
         embeddings = []
         
         for i, chunk in enumerate(all_chunks):
-            if i % 10 == 0:
-                print(f"Processati {i}/{len(all_chunks)} chunk")
-            
+            print(f"Processati {i}/{len(all_chunks)} chunk")         
             embedding = self.get_embedding(chunk['text'])
             embeddings.append(embedding)
         
@@ -237,30 +239,3 @@ class AzureRAGSystem:
             'sources': sources,
             'tokens_used': response.usage.total_tokens
         }
-    
-    def save_index(self, filepath: str):
-        """Salva l'indice e i documenti su disco"""
-        data = {
-            'documents': self.documents,
-            'embeddings': self.embeddings
-        }
-        
-        # Salva i dati
-        with open(filepath + '.pkl', 'wb') as f:
-            pickle.dump(data, f)
-        
-        # Salva l'indice FAISS
-        if self.index is not None:
-            faiss.write_index(self.index, filepath + '.index')
-    
-    def load_index(self, filepath: str):
-        """Carica l'indice e i documenti da disco"""
-        # Carica i dati
-        with open(filepath + '.pkl', 'rb') as f:
-            data = pickle.load(f)
-        
-        self.documents = data['documents']
-        self.embeddings = data['embeddings']
-        
-        # Carica l'indice FAISS
-        self.index = faiss.read_index(filepath + '.index')

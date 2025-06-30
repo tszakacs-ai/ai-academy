@@ -1,12 +1,12 @@
 import re
-from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+from transformers import BertTokenizerFast, BertForTokenClassification, pipeline
 from config import *
 
 class NERAnonymizer:
     def __init__(self, model_path: str):
         # NER model initialization
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-        self.model = AutoModelForTokenClassification.from_pretrained(model_path)
+        self.tokenizer = BertTokenizerFast.from_pretrained("osiria/bert-italian-cased-ner")
+        self.model = BertForTokenClassification.from_pretrained("osiria/bert-italian-cased-ner")
         self.ner_pipeline = pipeline(
             "ner",
             model=self.model,
@@ -49,21 +49,3 @@ class NERAnonymizer:
             outfile.write(anon_text)
 
         print(f"Anonymized document saved: {output_path}")
-
-
-if __name__ == "__main__":
-
-    model_path = MODEL_PATH
-    try:
-        anonymizer = NERAnonymizer(model_path)
-
-        print(anonymizer.extract_entities("Sample text with Mario Rossi and IT60X0542811101000000123456"))
-        anon_text = anonymizer.anonymize_text("Sample text with Mario Rossi and IT60X0542811101000000123456")
-        print(anon_text)
-
-        input_path = r"C:\Users\BG726XR\OneDrive - EY\Desktop\academy_profice\ai-academy-1\Giorno_8\Fattura.txt"
-        output_path = r"C:\Users\BG726XR\OneDrive - EY\Desktop\academy_profice\ai-academy-1\Giorno_8\FatturaAnon.txt"
-
-        anonymizer.anonymize_txt_file(input_path, output_path)
-    except Exception as e:
-        print(f"Error during initialization or execution: {e}")
