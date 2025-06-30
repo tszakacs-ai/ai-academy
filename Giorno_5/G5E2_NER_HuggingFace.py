@@ -16,4 +16,3 @@ entities = ner_pipe(text)
 # Stampa le entità riconosciute
 for ent in entities:
     print(f"{ent['word']}: {ent['entity_group']}")
-sds
