@@ -1,7 +1,16 @@
-import streamlit as st
-from typing import List, Dict, Any, Optional
+# Standard library imports
 from dataclasses import dataclass
+from typing import List, Dict, Any, Optional
+
+# Third-party imports
+import streamlit as st
+
+# Local imports
 from config import RagClients, AppConfig
+
+# =========================
+# Data Structures
+# =========================
 
 @dataclass
 class QueryResult:
@@ -11,6 +20,10 @@ class QueryResult:
     source: Optional[str] = "N/D"
     page_number: Optional[int] = None
     metadata: Optional[Dict[str, Any]] = None
+
+# =========================
+# Embedding Function
+# =========================
 
 def get_embedding(text: str, clients: RagClients, config: AppConfig) -> Optional[List[float]]:
     """Genera l'embedding per un dato testo usando il client Azure."""
@@ -27,11 +40,15 @@ def get_embedding(text: str, clients: RagClients, config: AppConfig) -> Optional
         st.error(f"❌ Errore durante la generazione dell'embedding: {e}")
         return None
 
+# =========================
+# Document Search Function
+# =========================
+
 def search_documents(query: str, clients: RagClients, config: AppConfig, top_k: int = 5) -> List[QueryResult]:
     """Cerca documenti pertinenti in Pinecone basandosi sulla query."""
     if not clients.pinecone_index or not clients.embedding_client:
         return []
-        
+    
     query_embedding = get_embedding(query, clients, config)
     if not query_embedding:
         return []
@@ -42,12 +59,10 @@ def search_documents(query: str, clients: RagClients, config: AppConfig, top_k: 
             top_k=top_k,
             include_metadata=True
         )
-        
         results = []
         for match in search_results.matches:
             metadata = match.metadata or {}
             content = str(metadata.get('text', metadata.get('content', 'Contenuto non disponibile')))
-            
             results.append(QueryResult(
                 content=content,
                 score=match.score,
@@ -59,6 +74,10 @@ def search_documents(query: str, clients: RagClients, config: AppConfig, top_k: 
     except Exception as e:
         st.error(f"❌ Errore durante la ricerca su Pinecone: {e}")
         return []
+
+# =========================
+# RAG Response Generation
+# =========================
 
 def generate_rag_response(query: str, search_results: List[QueryResult], chat_history: List[Dict], memory_updates: List[str], clients: RagClients, config: AppConfig) -> str:
     """
