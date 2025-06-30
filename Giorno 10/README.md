@@ -42,13 +42,14 @@ For a detailed architectural diagram, see [architecture_diagram.md](architecture
 - Azure OpenAI API access
 - Pinecone API access
 - Hugging Face Transformers library
+- SSL certificates (if running in corporate environment with SSL inspection)
 
 ### Setup
 
 1. Clone the repository
 ```bash
 git clone https://github.com/fedegu94/Hackaton-agentic-RAG.git
-cd moca-ai-consultant
+cd Hackaton-agentic-RAG
 ```
 
 2. Install dependencies
@@ -73,7 +74,29 @@ AZURE_EMBEDDING_API_VERSION=2023-05-15
 # Pinecone Configuration
 PINECONE_API_KEY=your-pinecone-api-key
 PINECONE_INDEX_NAME=compliance50
+
+# SSL Configuration (for corporate environments)
+SSL_CERT_PATH=/path/to/your/certificate.pem
 ```
+
+You can find a more detailed example in the `.env.example` file.
+
+### SSL Certificate Configuration
+
+If you're running this application in a corporate environment with SSL inspection (such as Zscaler):
+
+1. **Set the SSL certificate path** in your `.env` file:
+   ```
+   SSL_CERT_PATH=/path/to/your/certificate.pem
+   ```
+
+2. **Common certificate locations** that the application will check automatically:
+   - User-provided path in `SSL_CERT_PATH` environment variable
+   - User's home directory: `~/zscaler-ca-bundle.pem`
+   - Project's `certs` folder: `certs/zscaler-ca-bundle.pem`
+   - Standard system certificate store via `certifi`
+
+For more details on SSL certificate configuration and troubleshooting, see [ssl_certificates.md](docs/ssl_certificates.md).
 
 ## Usage
 
@@ -123,6 +146,12 @@ To continuously watch for new documents and anonymize them:
 python src/anonymize_service.py --watch
 ```
 
+You can also specify a custom check interval (in seconds):
+
+```bash
+python src/anonymize_service.py --watch --interval 30
+```
+
 ## Files Structure
 
 ```
@@ -135,14 +164,26 @@ python src/anonymize_service.py --watch
 ├── anonymize_mails.py       # Document anonymization engine
 ├── anonymize_service.py     # CLI tool for anonymization
 ├── requirements.txt         # Python dependencies
+├── architectural_scheme_moca.png # Architecture diagram image
 ├── architecture_diagram.md  # System architecture documentation
+├── CHANGELOG.md             # Version history and changes
 ├── README.md                # This documentation
 └── data/                    # Data directory
     ├── emails/              # Email data
-        ├── anonymized/      # Anonymized email versions
-        ├── documents/       # Original email documents
+    │   ├── anonymized/      # Anonymized email versions
+    │   └── documents/       # Original email documents
     ├── embeddings/          # Vector embeddings 
+    │   ├── chunks_with_embeddings_metadata.json
+    │   └── chunks_with_embeddings.pkl
     └── pdf_documents/       # PDF knowledge base
+└── docs/                    # Documentation
+    ├── api_reference.md
+    ├── architecture.md
+    ├── ssl_certificates.md
+    └── user_guide.md
+└── tests/                   # Test files
+    ├── test_anonymization.py
+    └── test_system.py
 ```
 
 ## Development
@@ -150,7 +191,7 @@ python src/anonymize_service.py --watch
 ### Adding New Documents
 
 To expand the knowledge base with new regulatory documents:
-1. Add PDF files to the `pdf_documents` folder
+1. Add PDF files to the `data/pdf_documents` folder
 2. Process them for embedding using the PDF processing module
 3. Update the Pinecone vector database with new embeddings
 
@@ -159,12 +200,37 @@ To expand the knowledge base with new regulatory documents:
 To modify AI response behavior:
 1. Edit the system prompts in `rag_system.py`
 2. Adjust the number of retrieved documents through the UI sliders
+3. Modify response templates in the core RAG engine
 
 ### Customizing Anonymization
 
 To modify the anonymization behavior:
 1. Edit the patterns and anonymization rules in `anonymize_mails.py`
-2. Adjust the entity types and replacements in the `label_map` dictionary
+2. Adjust the entity types and replacements in the NER pipeline configuration
+3. Add custom regex patterns for domain-specific anonymization needs
+
+### Customizing SSL Certificate Handling
+
+To modify the SSL certificate handling for corporate environments:
+1. Edit the `find_ssl_cert()` function in `config.py` to add additional certificate paths
+2. Modify the certificate validation settings to match your organization's requirements
+3. For development in environments with SSL inspection, you may need to:
+   - Export your organization's root certificates (e.g., Zscaler certificates)
+   - Place them in one of the looked-up paths or specify via environment variable
+   - Test API connectivity with tools like `curl` using your certificate
+
+### Testing
+
+The application includes test files for various components:
+1. Run the anonymization tests to verify sensitive data detection:
+```bash
+python -m unittest tests/test_anonymization.py
+```
+
+2. Run the system tests to verify RAG functionality:
+```bash
+python -m unittest tests/test_system.py
+```
 
 ## Contributors
 
@@ -177,3 +243,5 @@ To modify the anonymization behavior:
 ---
 
 *MOCA AI Normative Consultant is a project developed as part of the AI Academy Hackathon.*
+
+*Last updated: June 30, 2025*
