@@ -7,7 +7,6 @@ from langchain.chains import RetrievalQA
 from langchain_community.llms import HuggingFacePipeline
 from transformers import pipeline
 
-
 def load_documents(file_paths):
     print("📄 Caricamento documenti...")
     documents = []
