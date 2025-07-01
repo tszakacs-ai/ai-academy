@@ -1,0 +1,11 @@
+# Usa un'immagine base Python leggera
+FROM python:3.11-slim
+
+# Copia il file Python nel container
+COPY main.py /app/main.py
+
+# Imposta la directory di lavoro
+WORKDIR /app
+
+# Imposta il comando di default per eseguire lo script
+CMD ["python", "main.py"]

@@ -1,0 +1,43 @@
+# Core dependencies per il sistema RAG
+openai>=1.0.0
+azure-identity>=1.15.0
+
+# NLP e Machine Learning
+transformers>=4.36.0
+torch>=2.0.0
+numpy>=1.24.0
+tiktoken>=0.5.0
+
+# Ricerca vettoriale e similarity
+faiss-cpu>=1.7.4
+
+# Web framework per l'interfaccia Streamlit
+streamlit>=1.28.0
+
+# Gestione configurazione e environment
+python-dotenv>=1.0.0
+
+# Utilities per file e path
+pathlib2>=2.3.7
+
+# Data processing
+pickle5>=0.0.12
+
+# Date e time utilities
+python-dateutil>=2.8.2
+
+# JSON processing avanzato (già incluso in Python standard library, ma specificato per chiarezza)
+
+# Regex avanzato (già incluso in Python standard library)
+
+# Logging utilities (già incluso in Python standard library)
+
+# Optional: per sviluppo e testing
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Note per l'installazione:
+# 1. Se utilizzi una GPU NVIDIA, sostituisci faiss-cpu con faiss-gpu
+# 2. Per sistemi con memoria limitata, considera l'utilizzo di transformers con ottimizzazioni
+# 3. Su sistemi Windows, potrebbe essere necessario installare Microsoft C++ Build Tools per alcuni pacchetti
