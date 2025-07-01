@@ -1,0 +1,31 @@
+ESERCIZIO - PRESENCE_PENALTY NEI LLM
+
+Istruzioni:
+1.Immagina di chiedere a ChatGPT:
+Suggerisci idee per attività originali da proporre a un team aziendale durante una giornata di formazione.
+2.Qui sotto trovi due possibili risposte generate con valori diversi di presence_penalty.
+
+• Leggi attentamente entrambe le risposte.
+• Prova a capire quale delle due è stata generata con un presence_penalty più alto.
+• Spiega il perché della tua scelta.
+
+Risposta A:
+• “Giochi di ruolo aziendali su gestione del tempo;
+• laboratorio di brainstorming sulle strategie di comunicazione;
+• quiz a squadre sulla mission aziendale;
+• sessione di brainstorming di idee innovative;
+• laboratorio creativo sulle presentazioni efficaci.”
+
+Risposta B:
+• “Giochi di ruolo aziendali su gestione del tempo;
+• giochi di ruolo sulla comunicazione;
+• giochi di ruolo per il problem solving;
+• laboratorio di brainstorming sulle strategie di comunicazione;
+• laboratorio di brainstorming sulla gestione dei conflitti.”
+
+
+--------------------------------------------------
+
+
+SOLUZIONE:
+La Risposta A ha una presence_penalty più alto perché, in confronto alla Risposta B, ci sono meno ripetizioni nella risposta generata.

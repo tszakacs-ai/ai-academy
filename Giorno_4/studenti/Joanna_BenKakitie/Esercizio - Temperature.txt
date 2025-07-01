@@ -1,0 +1,21 @@
+ESERCIZIO - TEMPERATURE
+
+Istruzioni:
+ Per ciascuno dei seguenti scenari d’uso di ChatGPT in azienda:
+1.Individua il valore numerico di temperature che useresti (esempi: 0.0, 0.2, 0.7, 1.0).
+2.Giustifica brevemente la tua scelta spiegando quale risultato ti aspetti (precisione, creatività, sicurezza…).
+
+
+Scenari:
+A. Scrivere una risposta tecnica formale a un cliente importante.
+B. Generare proposte creative per il titolo di una nuova campagna marketing.
+C. Estrarre e riepilogare dati chiave da un report finanziario.
+D. Creare un breve testo di apertura per una presentazione aziendale innovativa.
+
+
+
+RISPOSTE:
+A = 0.0, sicurezza
+B = 1.0, creatività
+C = 0.2, precisione
+D = 0.7, innovativo

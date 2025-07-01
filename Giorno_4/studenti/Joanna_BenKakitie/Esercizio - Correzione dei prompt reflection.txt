@@ -1,0 +1,124 @@
+ESERCIZIO – CORREZZIONE DI PROMPT REFLECTION
+
+Correggi e spiega gli errori nel prompt:
+
+Rispondi al seguente problema:
+Spiega quanto ha pagato un cliente se ha comprato 4 libri, ogni libro costa 20 euro, ma forse c’è uno sconto del 10%.
+
+Scrivi la soluzione e poi rifletti se hai risposto in modo semplice per un bambino delle elementari, oppure se la tua risposta è adatta a un insegnante.
+Infine, correggi eventuali errori e suggerisci una soluzione alternativa, includendo anche la spiegazione dettagliata dei passaggi di calcolo.
+
+---
+
+SOLUZIONE:
+
+-ERRORI:
+Il prompt e ambiguo perché il "forse" è vago e crea incertezza sull’applicazione dello sconto.
+
+- CORREZIONE:
+Un cliente compra 4 libri al prezzo di 20 euro ognuno. In alcuni casi, può ricevere uno sconto del 10% sull'intero acquisto. Calcola quanto ha pagato il cliente senza sconto e con lo sconto del 10%.
+
+- RISPOSTA:
+a) Senza sconto:
+Facciamo una moltiplicazione:
+
+4 libri × 20 euro = 80 euro
+
+Quindi, senza sconto il cliente paga 80 euro.
+
+b) Con uno sconto del 10%:
+Quando c’è uno sconto del 10%, significa che si tolgono 10 euro ogni 100 euro.
+Quindi, calcoliamo il 10% di 80 euro:
+
+10% di 80 = 8 euro
+
+Ora togliamo lo sconto:
+
+80 euro – 8 euro = 72 euro
+
+Quindi i risultati sono:
+- Senza sconto: 80 euro
+- Con sconto: 72 euro
+
+La risposta è ben spiegata e può essere capito da un bambino delle elementari.
+
+- RISPOSTA (alternativa):
+a) Calcolo del totale senza sconto: Totale = 4 × 20 = 80 euro
+b) Calcolo dello sconto del 10%: Sconto = 10% di 80 = 10/100 × 80 = 8
+c) Prezzo finale con lo sconto: Prezzo finale = 80 - 8 = 72 euro
+
+Risultato finale:
+- Totale senza sconto: 80 euro
+- Totale con sconto del 10%: 72 euro
+
+Per un insegnante il linguaggio matematico e con le definizioni sono più precisi.
+
+--------------------------------------------------------------
+
+
+Correggi e spiega gli errori nel prompt:
+
+Leggi il seguente problema e rispondi:
+‘Un gruppo compra 12 biglietti del cinema a 8 euro ciascuno. Calcola la spesa totale.’
+Dopo aver dato la risposta, spiega se hai fatto tutti i passaggi oppure se potevi anche saltare qualche passaggio per fare più in fretta, poi scrivi la risposta anche in inglese e, se vuoi, in modo più formale per un documento aziendale. Infine, rifletti su quali informazioni aggiuntive avresti potuto chiedere all’utente e riscrivi il problema con una domanda diversa.
+
+---
+
+SOLUZIONE:
+
+- ERRORI:
+
+ - Struttura disorganizzata: Le richieste sono tutte in una frase lunga, difficile da seguire.
+ - Ambuiguità: “se vuoi” (scrivi in modo formale) è vago e rende la richiesta opzionale.
+
+- CORREZIONE:
+1. Leggi e risolvi il seguente problema:
+
+Un gruppo ha acquistato 12 biglietti del cinema al costo di 8 euro ciascuno. Calcola la spesa totale.
+
+2. Scrivi i passaggi del calcolo in modo chiaro. Indica se hai mostrato tutti i passaggi o se avresti potuto saltarne qualcuno per velocizzare.
+
+3. Traduce la risposta anche in inglese, mantenendo lo stesso livello di chiarezza.
+
+4. (Facoltativo) Scrivi una versione più formale e professionale, adatta a un documento aziendale.
+
+5. Rifletti: Quali altre informazioni avresti potuto chiedere all’utente per rendere il problema più completo o realistico? Ad esempio: età, sconti, tipologia di biglietto?
+
+6. Riscrivi infine il problema con una domanda diversa o più approfondita.
+
+- RISPOSTA:
+1. Calcolo: 12 biglietti × 8 euro ciascuno = 96 euro
+Il gruppo ha speso 98 euro in totale
+
+2. Riflessione sui passaggi
+In questo caso ho mostrato tutti i passaggi (moltiplicazione diretta).
+Avrei potuto anche dare direttamente la risposta (96 euro), ma mostrando il calcolo si capisce meglio da dove arriva il risultato, cosa utile soprattutto per studenti o in contesti didattici.
+
+3. Traduzione in inglese
+- Problem: A group bought 12 movie tickets, each costing 8 euros. Calculate the total cost.
+- Answer: The total cost is 96 euros.
+
+4. Versione formale per documento aziendale:
+Un gruppo di clienti ha acquistato 12 biglietti del cinema al costo unitario di €8.
+La spesa totale sostenuta per questa transazione ammonta a €96.
+
+Calcolo:
+12 × 8 = 96
+
+Questo valore rappresenta l'importo lordo pagato, escludendo eventuali sconti o tasse.
+
+5. Riflessone su informazioni aggiuntive:
+Per rendere il problema più realistico o completo, avrei potuto chiedere:
+
+- Se erano biglietti interi, ridotti, o per bambini.
+
+- Se era prevista un’offerta gruppo o uno sconto.
+
+- In quale giorno o fascia oraria sono stati acquistati (alcuni cinema hanno prezzi diversi).
+
+- Se ci sono state tasse, spese di prenotazione o costi aggiuntivi.
+
+
+6. Riscrittura alternativa del problema:
+Un’azienda ha acquistato 12 biglietti del cinema per i propri dipendenti. Ogni biglietto costa 8 euro, ma per i gruppi superiori a 10 persone è previsto uno sconto del 15% sull’intera spesa.
+Calcola quanto ha pagato in totale l’azienda dopo lo sconto.
