@@ -5,3 +5,5 @@ azure-ai-projects
 langchain
 transformers
 faiss-cpu
+langchain-community
+
