@@ -1,0 +1,15 @@
+FATTURA N. 2024/001
+    Data: 15/06/2024
+    
+    Fornitore: ABC S.r.l.
+    Via Roma 123, Milano
+    P.IVA: 12345678901
+    
+    Cliente: XYZ S.p.A.
+    Via Garibaldi 456, Roma
+    
+    Descrizione servizi:
+    - Consulenza informatica: €1.500,00
+    - IVA 22%: €330,00
+    
+    Totale: €1.830,00
