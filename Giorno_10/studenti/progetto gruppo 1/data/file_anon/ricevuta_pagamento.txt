@@ -1,0 +1,17 @@
+Ricevuta di Pagamento n. 3098 - Data: 20/06/2025
+
+Pagatore:
+Nome: [NAME]
+Codice Fiscale: RSSGPP90T10H501S
+IBAN: [IBAN]
+
+Metodo di pagamento: Bonifico Bancario
+Causale: Saldo fattura n. 2025/05
+
+Importo versato: € 1.200,00
+Data accredito: 21/06/2025
+
+Contatto cliente: giuseppe.rossi@email.it
+Telefono: +39 329 5678910
+
+Grazie per la puntualità.

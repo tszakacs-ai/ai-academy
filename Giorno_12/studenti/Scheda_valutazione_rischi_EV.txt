@@ -1,0 +1,67 @@
+Scheda di conformità AI Act: Caso applicativo NER
+
+- Categoria di rischio secondo EU AI Act: Limited Risk
+
+- Requisiti di conformità applicabili: obblighi da applicare sono:
+a. Trasparenza minima sull’uso dell’AI
+b. Gestione e qualità dei dati (solo se dati personali)
+c. Documentazione tecnica base (funzionamento e logiche del modello)
+d. Cybersecurity e controllo accessi
+e. Logging minimo per auditing interno
+
+- Misure da implementare
+Ambito                      Misura operativa
+Dati	                    Validazione di correttezza e completezza dei dati anonimizzati
+Trasparenza                 Avviso agli utenti aziendali che i documenti vengono anonimizzati con AI
+Cybersecurity               Accesso controllato al modello NER e ai dati documentali
+Logging	                    Registro base di utilizzo per auditing e troubleshooting
+Versioning	                Documentazione di versioni del modello e dataset di addestramento
+
+
+- Documentare e dimostrare la conformità
+Documento / Registro	            Contenuto principale
+Registro attività AI	            Finalità, dati trattati, versioni modello NER
+User Notice	                        Informativa agli utenti aziendali sull’uso del NER
+Log di sistema	                    Registro utilizzi e risultati anonimizzati
+Documentazione tecnica AI	        Architettura, logiche di mascheramento, testing
+
+
+
+
+
+
+
+Scheda di conformità AI Act: Caso applicativo GPT-4 in cloud
+
+- Categoria di rischio secondo EU AI Act: High Risk
+
+- Requisiti di conformità applicabili:
+a. Gestione e qualità dei dati (input e output)
+b. Documentazione tecnica e registro di conformità
+c. Valutazione dei rischi e mitigazione (AI Risk Assessment)
+d. Sorveglianza umana dei risultati
+e. Trasparenza verso l’utente
+f. Cybersecurity e gestione incidenti
+g. Logging completo delle interazioni
+h. Accuratezza e sicurezza del sistema
+
+- Misure da implementare
+
+Ambito	                        Misura operativa
+Dati	                        Validazione e filtro degli input verso GPT-4 per evitare info sensibili
+Valutazione rischi	            Stesura DPIA e AI Risk Assessment per uso GPT-4 su documenti aziendali
+Sorveglianza umana	            Supervisione dei risultati AI prima di condividerli o agire
+Trasparenza	                    User notice su uso di GPT-4 e controllo umano sulle risposte
+Cybersecurity	                Protezione API key, connessioni HTTPS e policy di accesso
+Logging	                        Registro completo di prompt, output e metadati delle chiamate GPT-4
+Versioning	                    Documentazione di versioni API GPT e configurazioni usate
+
+- Documentare e dimostrare la conformità
+
+Documento / Registro	            Contenuto principale
+Registro attività AI	            Finalità, dati trattati, API GPT-4, versioni
+DPIA	                            Valutazione privacy e mitigazione
+AI Risk Assessment	                Rischi etici, di bias e sicurezza
+User Notice	                        Informativa utente su uso di GPT-4
+Log di sistema                  	Registro interazioni AI, output generati
+Documentazione tecnica AI       	Architettura, prompt engineering, testing di validazione

@@ -1,0 +1,19 @@
+Fattura n. 2025/07 - Data: 25/06/2025
+
+Cliente:
+Nome: Laura Bianchi
+Codice Fiscale: BNCLRA85M55H501Z
+P.IVA: 12345678901
+IBAN: IT40D0306909606100000123456
+
+Indirizzo: Via Milano 45, 20100 Milano (MI)
+Email: laura.bianchi@esempio.com
+
+Descrizione servizio:
+- Consulenza fiscale annuale
+- Report di analisi costi
+
+Importo totale: € 2.350,00
+Scadenza pagamento: 10/07/2025
+
+Grazie per averci scelto.

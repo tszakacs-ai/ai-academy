@@ -37,7 +37,7 @@ origin_point = np.zeros(3)
 norm_values = np.linalg.norm(vectors_3d, axis=1, keepdims=True)
 unit_vectors = vectors_3d / norm_values 
 
-# Grafico 3D
+# Grafico
 figure = plt.figure(figsize=(8, 6))
 axis = figure.add_subplot(111, projection='3d')
 
