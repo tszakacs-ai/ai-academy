@@ -1,5 +1,6 @@
 streamlit
 python-dotenv
+torch
 azure-identity
 azure-ai-projects
 langchain
