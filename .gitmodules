@@ -1,0 +1,3 @@
+[submodule "Giorno_9/rag_azure_openai"]
+	path = Giorno_9/rag_azure_openai
+	url = https://huggingface.co/spaces/Matteo0101/ai-accademy-2

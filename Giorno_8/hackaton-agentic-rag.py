@@ -50,8 +50,6 @@ class AIProjectClientDefinition:
         )
 
 
-
-
 class AdaEmbeddingModel(AIProjectClientDefinition):
     def __init__(self, client_class: AIProjectClientDefinition, model_name: str = "text-embedding-ada-002"):
         self.client = client_class.client
@@ -78,7 +76,6 @@ class LangchainAdaWrapper(Embeddings):
     def embed_query(self, text: str) -> List[float]:
         return self.ada_model.embed_text(text)
     
-
 
 
 class TextAnonymizer:
@@ -126,7 +123,6 @@ class TextAnonymizer:
 
 
 
-
 class ChatCompletionModel(AIProjectClientDefinition):
     def __init__(self, client_class: AIProjectClientDefinition, model_name: str = "gpt-4o"):
         self.client = client_class.client
@@ -166,7 +162,6 @@ class RAGPipeline:
         ai_client = AIProjectClientDefinition()
         ada_model = AdaEmbeddingModel(ai_client)
         embedding_wrapper = LangchainAdaWrapper(ada_model)
-
 
         documents = [
             Document(page_content=doc["content"], metadata={"file_name": doc["file_name"]})
