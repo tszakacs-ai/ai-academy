@@ -1,0 +1,10 @@
+{
+    "tipo_documento": "Email",
+    "riassunto": "Il cliente, [NOME_PERSONA], contatta il supporto per richiedere chiarimenti riguardo all'importo della fattura N. 734/2025. Inoltre, desidera aggiornare le proprie coordinate bancarie per la domiciliazione dei pagamenti futuri.",
+    "punti_chiave": [
+        "Richiesta di chiarimenti sull'importo della fattura N. 734/2025",
+        "Aggiornamento delle coordinate bancarie per la domiciliazione dei pagamenti",
+        "Disattivazione del vecchio conto corrente"
+    ],
+    "bozza_risposta": "Gentile [NOME_PERSONA],\n\nLa ringraziamo per averci contattato. Abbiamo ricevuto la sua richiesta riguardo alla fattura N. 734/2025 e l'aggiornamento delle sue coordinate bancarie. Stiamo elaborando la sua richiesta e la contatteremo al più presto per fornirle i chiarimenti necessari.\n\nCordiali saluti,\nIl team di SmartDocs Srl"
+}
