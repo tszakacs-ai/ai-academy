@@ -1,0 +1,7 @@
+Puoi aiutarmi a risolvere questo problema passo dopo passo?
+Un’azienda acquista 5 computer al prezzo di 720 euro ciascuno. Riceve uno sconto totale di 400 euro sull’intero acquisto.
+Spiega ogni passaggio del calcolo:
+- Quanto sarebbe il costo totale senza lo sconto?
+- Come si applica lo sconto?
+- Qual è il prezzo finale pagato?
+Voglio capire il ragionamento, non solo il risultato.

@@ -1,0 +1,8 @@
+1. Identificazione e spiegazione dell'errore:
+Il prompt originale chiedeva di variare il testo per ogni risposta, ma in uno scenario aziendale come la fatturazione è fondamentale mantenere risposte standardizzate, chiare e coerenti. La richiesta di variazione introduce ambiguità e rischia di compromettere la professionalità e la comprensione del messaggio.
+
+2. Valore top-p stimato per il prompt sbagliato:
+Un prompt che incoraggia la creatività e la variazione testuale tende ad avere un valore top-p elevato, tipicamente compreso tra 0.9 e 1.0. Questo consente al modello di esplorare molteplici possibilità di risposta, ma non è adatto a contesti che richiedono coerenza.
+
+3. Prompt corretto:
+"Rispondi in modo chiaro, professionale e coerente a ogni cliente che chiede spiegazioni sulla propria fattura, utilizzando un testo standardizzato e preciso."

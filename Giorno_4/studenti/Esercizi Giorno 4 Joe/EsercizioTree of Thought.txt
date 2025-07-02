@@ -1,0 +1,13 @@
+ESERCIZIO - PROMPT TREE-OF-THOUGHT
+
+Quando potrebbe servirvi una risposta strutturata Tree-of-Thought nella vostra attività?
+
+📌 Caso d’uso 1: Settore Sanitario – Diagnosi differenziale
+- Descrizione: Un medico deve valutare i possibili motivi di un sintomo complesso (es. dolore toracico).
+- Prompt: “Hai davanti un paziente con dolore toracico. Elenca passo dopo passo le possibili cause, suddividendole per apparato (cardiaco, respiratorio, gastrointestinale, muscolo-scheletrico) e indicando per ciascuna i segnali clinici che aiutano a confermare o escludere l’ipotesi.”
+
+📌 Caso d’uso 2: Settore Business – Scelta strategica
+- Descrizione: Un manager deve decidere se espandere l’azienda in un nuovo mercato.
+- Prompt: “Stiamo valutando l’espansione in un nuovo mercato estero. Analizza i pro e contro considerando: 1) domanda locale, 2) concorrenza, 3) costi operativi, 4) rischi normativi. Per ogni ramo, esplora le implicazioni e suggerisci una decisione finale basata sul bilancio complessivo.”
+
+In entrambi i casi, la struttura Tree-of-Thought aiuta a esplorare **ramificazioni logiche** e a prendere decisioni più informate.
