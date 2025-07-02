@@ -1,0 +1,15 @@
+ESERCIZIO: ANALISI DI CONFORMITÀ SU UN CASO PRATICO
+
+La nostra applicazione che combina NER locale e GPT-4 cloud per analisi e risposta automatica su documenti aziendali 
+rientra nella categoria “high risk” (alto rischio), in quanto automatizza processi decisionali su dati aziendali
+e potenzialmente tratta dati personali e sensibili.
+
+Scheda di valutazione rischi, adempimenti e comunicazione
+
+| Aspetto                | Descrizione / Azione                                                                 |
+|------------------------|--------------------------------------------------------------------------------------|
+| Tier                   | High Risk (alto rischio)                                                            |
+| Obblighi applicabili   | Trasparenza, DPIA, logging, sorveglianza umana, gestione dati, documentazione       |
+| Rischi principali      | Errori AI, bias, data breach, uso improprio dei dati, dipendenza da cloud           |
+| Misure implementate    | Logging, DPIA, controlli accesso, anonimizzazione, procedure di escalation          |
+| Comunicazione utente   | Informativa su uso AI, diritti utente, canale per segnalazioni                      |
