@@ -1,7 +1,9 @@
-streamlit
-python-dotenv
-azure-identity
-azure-ai-projects
-langchain
-transformers
-faiss-cpu
+streamlit>=1.25,<2.0
+python-dotenv>=1.0
+azure-identity>=1.15,<2.0
+azure-ai-projects>=1.0.0b1,<2.0
+langchain>=0.1.16,<0.2.0
+langchain-community>=0.0.36,<0.1.0
+transformers>=4.38,<5.0
+torch>=2.0,<3.0
+faiss-cpu>=1.7,<2.0

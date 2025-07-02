@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import streamlit as st
 
 from src.rag_app_daniel_craciun.pipeline import RAGPipeline
+from src.rag_app_daniel_craciun.ai_client import AIProjectClientDefinition  # <-- Import AIClient
 
 load_dotenv()
 
@@ -30,7 +31,9 @@ def main() -> None:
     if st.sidebar.button("➕ Nuova chat"):
         new_chat_id = len(st.session_state.chats)
         try:
-            new_pipeline = RAGPipeline(folder_path)
+            # CREA L'OGGETTO AIClient (aggiungi eventuali parametri richiesti dal tuo costruttore)
+            ai_client = AIProjectClientDefinition()  # <-- Passa qui eventuali config/segreti se servono
+            new_pipeline = RAGPipeline(folder_path, ai_client)  # <-- Passa ai_client come primo argomento
         except Exception as e:
             st.sidebar.error(f"Errore creazione pipeline: {e}")
             return
