@@ -1,0 +1,378 @@
+# Classificatore SMS Spam/Ham - Versione Completa EU AI Act Compliant
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, precision_score, recall_score
+from sklearn.pipeline import Pipeline
+import re
+import warnings
+import matplotlib.pyplot as plt
+import seaborn as sns
+from datetime import datetime
+import json
+import os
+
+warnings.filterwarnings('ignore')
+
+class SMSSpamClassifier:
+    def __init__(self):
+        self.pipeline = None
+        self.training_log = []
+        self.predictions_log = []
+        self.model_metadata = {}
+        
+    def preprocess_text(self, text):
+        """Preprocessa il testo SMS"""
+        text = str(text).lower()
+        text = re.sub(r'[^a-zA-Z\s]', '', text)
+        text = re.sub(r'\s+', ' ', text).strip()
+        return text
+    
+    def load_data(self, file_path):
+        """Carica i dati dal file CSV - STEP 1 & 2"""
+        # Log del caricamento dati
+        self.log_action("data_loading", {"file_path": file_path, "timestamp": datetime.now().isoformat()})
+        
+        # Prova diversi encoding
+        encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        df = None
+        for encoding in encodings:
+            try:
+                df = pd.read_csv(file_path, encoding=encoding)
+                print(f"✓ File caricato con encoding: {encoding}")
+                break
+            except:
+                continue
+        
+        if df is None:
+            raise ValueError("Impossibile caricare il file con nessun encoding testato")
+        
+        # PREPARAZIONE DATI - STEP 2
+        print(f"Dataset originale: {df.shape}")
+        print(f"Colonne: {list(df.columns)}")
+        
+        # Auto-detection colonne
+        label_col, message_col = self._detect_columns(df)
+        
+        # Crea dataframe pulito
+        df_clean = pd.DataFrame({
+            'label': df[label_col],
+            'message': df[message_col]
+        })
+        
+        # Pulizia dati
+        df_clean = df_clean.dropna()
+        df_clean['label'] = df_clean['label'].astype(str).str.lower()
+        
+        # Analisi distribuzione
+        class_dist = df_clean['label'].value_counts()
+        print(f"Distribuzione classi:\n{class_dist}")
+        
+        # Log metadati
+        self.model_metadata.update({
+            "dataset_size": len(df_clean),
+            "class_distribution": class_dist.to_dict(),
+            "data_source": file_path,
+            "preprocessing_steps": ["lowercase", "remove_special_chars", "normalize_spaces"]
+        })
+        
+        return df_clean
+    
+    def _detect_columns(self, df):
+        """Rileva automaticamente colonne label e message"""
+        label_col = None
+        message_col = None
+        
+        for col in df.columns:
+            if df[col].dtype == 'object':
+                unique_vals = df[col].unique()
+                if any(val in str(unique_vals).lower() for val in ['spam', 'ham']):
+                    label_col = col
+                elif message_col is None:
+                    avg_length = df[col].astype(str).str.len().mean()
+                    if avg_length > 20:
+                        message_col = col
+        
+        if label_col is None or message_col is None:
+            cols = list(df.columns)
+            label_col = cols[0]
+            message_col = cols[1]
+            
+        return label_col, message_col
+    
+    def train(self, df):
+        """Addestra il modello - STEP 3"""
+        print("\nADDESTRAMENTO MODELLO")
+        start_time = datetime.now()
+        
+        # Preprocessa messaggi
+        df['processed_message'] = df['message'].apply(self.preprocess_text)
+        
+        # Split train/test - STEP 2
+        X = df['processed_message']
+        y = df['label']
+        
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=0.2, random_state=42, stratify=y
+        )
+        
+        print(f"Training set: {len(X_train)} campioni")
+        print(f"Test set: {len(X_test)} campioni")
+        
+        # Crea pipeline
+        self.pipeline = Pipeline([
+            ('tfidf', TfidfVectorizer(max_features=3000, stop_words='english', ngram_range=(1,2))),
+            ('classifier', MultinomialNB())
+        ])
+        
+        # Addestra
+        self.pipeline.fit(X_train, y_train)
+        
+        # VALUTAZIONE - STEP 4
+        y_pred = self.pipeline.predict(X_test)
+        
+        # Metriche dettagliate
+        accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average='weighted')
+        recall = recall_score(y_test, y_pred, average='weighted')
+        
+        print(f"\nMETRICHE DI PERFORMANCE:")
+        print(f"   Accuratezza: {accuracy:.3f}")
+        print(f"   Precisione:  {precision:.3f}")
+        print(f"   Recall:      {recall:.3f}")
+        
+        # Classification report dettagliato
+        print(f"\nREPORT CLASSIFICAZIONE:")
+        print(classification_report(y_test, y_pred))
+        
+        # Confusion Matrix
+        self._plot_confusion_matrix(y_test, y_pred)
+        
+        # Log training
+        training_time = (datetime.now() - start_time).total_seconds()
+        self.log_action("model_training", {
+            "accuracy": accuracy,
+            "precision": precision,
+            "recall": recall,
+            "training_time_seconds": training_time,
+            "test_size": len(X_test),
+            "timestamp": datetime.now().isoformat()
+        })
+        
+        # Salva metriche
+        self.model_metadata.update({
+            "performance_metrics": {
+                "accuracy": accuracy,
+                "precision": precision,
+                "recall": recall
+            },
+            "training_completed": datetime.now().isoformat()
+        })
+        
+        return accuracy
+    
+    def _plot_confusion_matrix(self, y_true, y_pred):
+        """Visualizza confusion matrix"""
+        plt.figure(figsize=(8, 6))
+        cm = confusion_matrix(y_true, y_pred)
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+                    xticklabels=['Ham', 'Spam'], yticklabels=['Ham', 'Spam'])
+        plt.title('Confusion Matrix')
+        plt.ylabel('Vero')
+        plt.xlabel('Predetto')
+        plt.tight_layout()
+        plt.savefig('confusion_matrix.png', dpi=300, bbox_inches='tight')
+        plt.show()
+        print("Confusion matrix salvata come 'confusion_matrix.png'")
+    
+    def predict(self, message):
+        """Predice spam/ham con logging"""
+        if self.pipeline is None:
+            raise ValueError("Modello non addestrato")
+        
+        processed = self.preprocess_text(message)
+        prediction = self.pipeline.predict([processed])[0]
+        probabilities = self.pipeline.predict_proba([processed])[0]
+        
+        classes = self.pipeline.classes_
+        spam_idx = list(classes).index('spam') if 'spam' in classes else 0
+        spam_prob = probabilities[spam_idx]
+        
+        result = {
+            'prediction': prediction,
+            'spam_probability': spam_prob,
+            'confidence': max(probabilities),
+            'original_message': message,
+            'timestamp': datetime.now().isoformat()
+        }
+        
+        # Log predizione
+        self.predictions_log.append(result)
+        
+        return result
+    
+    def log_action(self, action_type, data):
+        """Sistema di logging per audit"""
+        log_entry = {
+            "action": action_type,
+            "timestamp": datetime.now().isoformat(),
+            "data": data
+        }
+        self.training_log.append(log_entry)
+    
+    def generate_audit_report(self):
+        """Genera report di audit completo - STEP 7 & 8"""
+        print("\n" + "="*60)
+        print("REPORT DI AUDIT E DOCUMENTAZIONE")
+        print("="*60)
+        
+        # Informazioni generali del modello
+        print(f"\n🔍 METADATI DEL MODELLO:")
+        print(f"   Dataset size: {self.model_metadata.get('dataset_size', 'N/A')}")
+        print(f"   Distribuzione classi: {self.model_metadata.get('class_distribution', 'N/A')}")
+        print(f"   Accuratezza: {self.model_metadata.get('performance_metrics', {}).get('accuracy', 'N/A'):.3f}")
+        
+        # Analisi dei rischi
+        self._analyze_risks()
+        
+        # Bias analysis
+        self._analyze_bias()
+        
+        # Salva documentazione
+        self._save_documentation()
+        
+        return self.model_metadata
+    
+    def _analyze_risks(self):
+        """Analisi dei rischi - STEP 6"""
+        print(f"\n  ANALISI DEI RISCHI:")
+        print(f"   FALSI POSITIVI: SMS legittimi classificati come spam")
+        print(f"   • Rischio: Perdita di comunicazioni importanti")
+        print(f"   • Impatto: Cliente potrebbe perdere notifiche critiche")
+        print(f"   • Mitigazione: Soglia di confidenza, review umana")
+        
+        print(f"\n   FALSI NEGATIVI: SMS spam classificati come legittimi")
+        print(f"   • Rischio: Spam raggiunge gli utenti")
+        print(f"   • Impatto: Esperienza utente degradata, possibili truffe")
+        print(f"   • Mitigazione: Monitoraggio continuo, feedback utenti")
+    
+    def _analyze_bias(self):
+        """Analisi bias e discriminazione"""
+        print(f"\n ANALISI BIAS E DISCRIMINAZIONE:")
+        print(f"   • Dataset language bias: Principalmente inglese")
+        print(f"   • Temporal bias: Dati potrebbero essere datati")
+        print(f"   • Content bias: Bias verso terminologia specifica")
+        print(f"   • Raccomandazione: Test periodici su diverse popolazioni")
+    
+    def _save_documentation(self):
+        """Salva documentazione completa"""
+        doc = {
+            "model_metadata": self.model_metadata,
+            "training_log": self.training_log,
+            "predictions_sample": self.predictions_log[-10:] if self.predictions_log else [],
+            "generated_at": datetime.now().isoformat()
+        }
+        
+        with open('sms_classifier_documentation.json', 'w') as f:
+            json.dump(doc, f, indent=2, default=str)
+        print(f"\nDocumentazione salvata in 'sms_classifier_documentation.json'")
+
+def analyze_eu_ai_act_compliance():
+    """Analisi completa conformità EU AI Act - STEP 5"""
+    print("\n" + "="*60)
+    print("🇪🇺 ANALISI CONFORMITÀ EU AI ACT")
+    print("="*60)
+    
+    print(f"""
+    CLASSIFICAZIONE DEL RISCHIO:
+   • Categoria: RISCHIO LIMITATO (Art. 52 EU AI Act)
+   • Tipo: Sistema di classificazione automatica
+   • Settore: Comunicazioni/Marketing
+   • Obblighi: Informazione agli utenti sull'uso dell'AI
+
+    REQUISITI OBBLIGATORI:
+    Trasparenza: Sistema deve informare utenti dell'uso AI
+    Supervisione umana: Controllo umano raccomandato
+    Accuratezza: Performance documentate e monitorate
+    Robustezza: Gestione input anomali
+    Documentazione: Training, dati, performance documentati
+
+      OBBLIGHI DI TRASPARENZA (Art. 13):
+   1. Informare utenti che interagiscono con sistema AI
+   2. Fornire informazioni chiare sul funzionamento
+   3. Permettere identificazione decisioni automatizzate
+   4. Diritto di spiegazione delle decisioni
+
+     DOCUMENTAZIONE RICHIESTA:
+   • Descrizione dettagliata del sistema
+   • Dati di training utilizzati
+   • Metriche di performance
+   • Log delle decisioni (audit trail)
+   • Processo di gestione dei rischi
+   • Test di bias e discriminazione
+
+     GOVERNANCE E CONTROLLO:
+   • Responsabile della conformità designato
+   • Processo di monitoraggio continuo
+   • Procedura di gestione reclami
+   • Audit interni periodici
+   • Aggiornamento documentazione
+
+     SANZIONI IN CASO DI NON CONFORMITÀ:
+   • Fino a 15M€ o 3% fatturato annuo globale
+   • Obbligo di cessazione uso del sistema
+   • Sanzioni amministrative accessorie
+""")
+
+def main():
+    print("SMS SPAM CLASSIFIER - EU AI ACT COMPLIANT")
+    print("="*50)
+    
+    # Il file scaricato da Kaggle
+    file_path = "spam.csv"
+    
+    classifier = SMSSpamClassifier()
+    
+    # STEP 1 & 2: Carica e prepara dati
+    print("\nSTEP 1-2: CARICAMENTO E PREPARAZIONE DATI")
+    df = classifier.load_data(file_path)
+    
+    # STEP 3: Addestra modello
+    print("\nSTEP 3: ADDESTRAMENTO MODELLO")
+    accuracy = classifier.train(df)
+    
+    # STEP 4: Già incluso nel training (metriche)
+    
+    # STEP 5: Analisi EU AI Act
+    print("\n🇪🇺 STEP 5: ANALISI EU AI ACT")
+    analyze_eu_ai_act_compliance()
+    
+    # STEP 6-8: Audit e documentazione
+    print("\nSTEP 6-8: AUDIT E DOCUMENTAZIONE")
+    classifier.generate_audit_report()
+    
+    # Test interattivo
+    print("\nTEST INTERATTIVO")
+    print("Scrivi un messaggio per testare (o 'quit' per uscire):")
+    
+    while True:
+        message = input("\n> ")
+        if message.lower() == 'quit':
+            break
+        
+        if message.strip():
+            result = classifier.predict(message)
+            print(f"Predizione: {result['prediction'].upper()}")
+            print(f"Spam probability: {result['spam_probability']:.3f}")
+            print(f"Confidence: {result['confidence']:.3f}")
+    
+    print("\n Esercizio completato! File generati:")
+    print("   - confusion_matrix.png")
+    print("   - sms_classifier_documentation.json")
+
+if __name__ == "__main__":
+    main()

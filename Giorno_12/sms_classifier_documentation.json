@@ -1,0 +1,45 @@
+{
+  "model_metadata": {
+    "dataset_size": 5572,
+    "class_distribution": {
+      "ham": 4825,
+      "spam": 747
+    },
+    "data_source": "spam.csv",
+    "preprocessing_steps": [
+      "lowercase",
+      "remove_special_chars",
+      "normalize_spaces"
+    ],
+    "performance_metrics": {
+      "accuracy": 0.9713004484304932,
+      "precision": 0.9719117794613658,
+      "recall": 0.9713004484304932
+    },
+    "training_completed": "2025-07-02T15:50:48.053348"
+  },
+  "training_log": [
+    {
+      "action": "data_loading",
+      "timestamp": "2025-07-02T15:50:37.670218",
+      "data": {
+        "file_path": "spam.csv",
+        "timestamp": "2025-07-02T15:50:37.670198"
+      }
+    },
+    {
+      "action": "model_training",
+      "timestamp": "2025-07-02T15:50:48.053333",
+      "data": {
+        "accuracy": 0.9713004484304932,
+        "precision": 0.9719117794613658,
+        "recall": 0.9713004484304932,
+        "training_time_seconds": 9.886225,
+        "test_size": 1115,
+        "timestamp": "2025-07-02T15:50:48.053315"
+      }
+    }
+  ],
+  "predictions_sample": [],
+  "generated_at": "2025-07-02T15:50:48.059963"
+}
