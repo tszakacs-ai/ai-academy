@@ -1,6 +1,5 @@
 from typing import List
 from langchain.embeddings.base import Embeddings
-
 from .ai_client import AIProjectClientDefinition
 
 class GenericEmbeddingModel:
@@ -8,18 +7,14 @@ class GenericEmbeddingModel:
         self,
         ai_client: AIProjectClientDefinition,
         model_name: str = None,
-        api_version: str = None,
     ):
         self.client = ai_client.client
         self.model_name = model_name or "text-embedding-ada-002"
-        self.api_version = api_version or "2023-05-15"
-        self.azure_client = getattr(
-            self.client.inference, "get_azure_openai_client", lambda **kwargs: self.client
-        )(api_version=self.api_version)
 
     def embed_text(self, text: str) -> list[float]:
-        response = self.azure_client.embeddings.create(
-            input=[text], model=self.model_name
+        response = self.client.embeddings.create(
+            input=[text],
+            model=self.model_name,
         )
         return response.data[0].embedding
 
