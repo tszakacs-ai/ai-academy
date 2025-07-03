@@ -1,0 +1,102 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import LinearSVC
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
+from collections import Counter
+import matplotlib.pyplot as plt
+import os
+
+# Funzione per generare SMS finti (simulazione data augmentation)
+def genera_sms_fake(label, n=10):
+    if label == 'spam':
+        base = [
+            "Hai vinto un premio! Clicca qui.",
+            "Offerta esclusiva solo per te.",
+            "Rispondi subito per ricevere un regalo.",
+            "Il tuo conto è stato bloccato, aggiorna i dati.",
+            "Complimenti! Sei stato selezionato.",
+            "Ricevi soldi facili ora!",
+            "Ultima occasione per partecipare.",
+            "Clicca per sbloccare il tuo premio.",
+            "Hai un messaggio importante in sospeso.",
+            "Offerta limitata, agisci ora!"
+        ]
+    else:
+        base = [
+            "Ciao, come stai?",
+            "Ci vediamo domani?",
+            "Ricordati della riunione alle 15.",
+            "Buongiorno, a che ora arrivi?",
+            "Grazie per il tuo aiuto!",
+            "Ti chiamo più tardi.",
+            "Hai preso il pane?",
+            "A presto!",
+            "Fammi sapere quando sei libero.",
+            "Buon compleanno!"
+        ]
+    # Se n > 10, ripeti e taglia
+    sms_list = (base * ((n // len(base)) + 1))[:n]
+    return pd.DataFrame({'label': [label]*len(sms_list), 'message': sms_list})
+
+# Carica dataset originale
+df = pd.read_csv('Giorno_13/spam.csv', encoding='latin1')
+df = df[['v1', 'v2']].rename(columns={'v1': 'label', 'v2': 'message'})
+df = df.dropna(subset=['message'])
+df['message'] = df['message'].str.lower()
+
+# Scegli quanti nuovi dati generare (es: 10% del dataset originale)
+percentuale_nuovi = 0.1
+n_nuovi_spam = max(1, int(df[df['label'] == 'spam'].shape[0] * percentuale_nuovi))
+n_nuovi_ham = max(1, int(df[df['label'] == 'ham'].shape[0] * percentuale_nuovi))
+
+# Genera nuovi SMS spam e ham (finti)
+nuovi_spam = genera_sms_fake('spam', n_nuovi_spam)
+nuovi_ham = genera_sms_fake('ham', n_nuovi_ham)
+
+# Unisci i nuovi dati al dataset originale
+df_aug = pd.concat([df, nuovi_spam, nuovi_ham], ignore_index=True)
+print(f"Nuovo dataset: {df_aug.shape[0]} messaggi")
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(df_aug['message'], df_aug['label'], test_size=0.2, random_state=42)
+
+# TfidfVectorizer
+vectorizer = TfidfVectorizer(stop_words='english')
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+# Modello SVM
+model = LinearSVC()
+model.fit(X_train_vec, y_train)
+
+# Predizioni
+y_pred = model.predict(X_test_vec)
+
+# Report
+print(classification_report(y_test, y_pred))
+
+# Matrice di confusione
+cm = confusion_matrix(y_test, y_pred, labels=['ham', 'spam'])
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['ham', 'spam'])
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Matrice di Confusione (Fine-tuning)")
+plt.show()
+
+# Valuta nuovi messaggi da file di testo
+test_file = 'Giorno_13/messaggi test.txt'
+if os.path.exists(test_file):
+    with open(test_file, encoding='utf-8') as f:
+        nuovi_messaggi = [line.strip().lower() for line in f if line.strip()]
+
+    nuovi_messaggi_vec = vectorizer.transform(nuovi_messaggi)
+    predizioni = model.predict(nuovi_messaggi_vec)
+
+    for msg, pred in zip(nuovi_messaggi, predizioni):
+        print(f"[{pred.upper()}] {msg}")
+
+    conteggio = Counter(predizioni)
+    print(f"\nTotale HAM: {conteggio.get('ham', 0)}")
+    print(f"Totale SPAM: {conteggio.get('spam', 0)}")
+else:
+    print("File di test non trovato.")
