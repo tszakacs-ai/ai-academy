@@ -1,6 +1,10 @@
-
 # 🔒 Anonimizzatore Documenti con AI
 
+<<<<<<< HEAD
+# 🔒 Anonimizzatore Documenti con AI
+
+=======
+>>>>>>> 872bd05d47e119df9771408f0837a758a45eb16b
 Sistema completo per anonimizzazione e analisi intelligente di documenti testuali con protezione privacy GDPR.
 
 ## 🚀 Funzionalità
@@ -203,7 +207,11 @@ Per supporto e domande:
 
 ---
 
+<<<<<<< HEAD
 **⚡ Quick Start**: `pip install -r requirements.txt && streamlit run main.py`
 =======
 
 
+=======
+**⚡ Quick Start**: `pip install -r requirements.txt && streamlit run main.py`
+>>>>>>> 872bd05d47e119df9771408f0837a758a45eb16b

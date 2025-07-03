@@ -1,83 +1,23 @@
-Mittente (Mandante):
-Mario Rossi – mario.rossi@email.com
-Responsabile Acquisti – Azienda Alfa S.r.l.
+Da: mario.rossi85@email.com
+A: supporto@smartdocs.srl
+Data: 20 Giugno 2025, 12:30
+Oggetto: Richiesta Cambio IBAN e Chiarimenti Fattura N. 734/2025
 
-Destinatario:
-Lucia Bianchi – lucia.bianchi@forniturebellezza.it
-Commerciale – Forniture Bellezza S.p.A.
+Spett.le SmartDocs Srl,
 
-Oggetto: Richiesta preventivo aggiornato – Fornitura prodotti linea benessere
+Mi chiamo Mario Rossi e vi contatto in qualità di vostro cliente con Codice Fiscale RSSMRA85M01H501Z.
 
-Corpo mail:
+Vi scrivo in merito all'ultima fattura, la N. 734/2025, che presenta un importo che non mi torna. Vorrei ricevere dei chiarimenti in merito.
 
-Gentile Dott.ssa Bianchi,
+Cogliendo l'occasione, vorrei anche aggiornare le mie coordinate bancarie per la domiciliazione dei pagamenti futuri. Il mio attuale indirizzo di fatturazione, che vi prego di non modificare, è Via Garibaldi 10, 20121 Milano (MI).
 
-Con la presente Le scrivo per richiedere un preventivo aggiornato relativo alla fornitura dei prodotti della linea benessere, in particolare per i codici già ordinati lo scorso trimestre.
+Il vecchio IBAN da disattivare è IT60X0542811101000000123456.
 
-Vorremmo valutare una nuova fornitura a partire da luglio, con eventuali scontistiche riservate ai clienti fidelizzati.
+Vi prego di addebitare le prossime fatture sul mio nuovo conto corrente, il cui IBAN è IT12Y0306909606100000012345.
 
-Resto in attesa di un Suo cortese riscontro e Le porgo cordiali saluti.
+Per qualsiasi necessità o per fornirmi i chiarimenti richiesti, potete contattarmi telefonicamente al numero 333 1234567.
 
+In attesa di un vostro gentile riscontro, porgo cordiali saluti.
+
+Distinti saluti,
 Mario Rossi
-Responsabile Acquisti
-Azienda Alfa S.r.l.
-mario.rossi@email.com
-Tel: +39 345 678 9123
-
-Eccoti altre **due mail** nello **stesso identico formato**:
-
----
-
-**Mittente (Mandante):**
-Mario Rossi – [mario.rossi@email.com](mailto:mario.rossi@email.com)
-Responsabile Acquisti – Azienda Alfa S.r.l.
-
-**Destinatario:**
-Francesca Verdi – [f.verdi@officinatecnica.it](mailto:f.verdi@officinatecnica.it)
-Ufficio Commerciale – Officina Tecnica S.p.A.
-
-**Oggetto:** Verifica disponibilità componenti – Ordine #FT-204
-
-**Corpo mail:**
-
-Gentile Dott.ssa Verdi,
-
-Le scrivo per richiedere aggiornamenti sulla disponibilità dei componenti ordinati con il codice #FT-204 del mese scorso.
-
-Stiamo valutando un'estensione dell’ordine e abbiamo urgenza di conoscere eventuali variazioni nei tempi di consegna o nei prezzi unitari.
-
-Resto a disposizione per qualsiasi chiarimento e attendo un Suo cortese riscontro.
-
-Mario Rossi
-Responsabile Acquisti
-Azienda Alfa S.r.l.
-[mario.rossi@email.com](mailto:mario.rossi@email.com)
-Tel: +39 345 678 9123
-
-
-**Mittente (Mandante):**
-Mario Rossi – [mario.rossi@email.com](mailto:mario.rossi@email.com)
-Responsabile Acquisti – Azienda Alfa S.r.l.
-
-**Destinatario:**
-Luca Neri – [luca.neri@packagingglobal.com](mailto:luca.neri@packagingglobal.com)
-Account Manager – Packaging Global S.r.l.
-
-**Oggetto:** Richiesta listino aggiornato – Imballaggi 2025
-
-**Corpo mail:**
-
-Buongiorno Sig. Neri,
-
-Con la presente Le richiedo il listino prezzi aggiornato per l’anno 2025, relativo ai vostri prodotti per l’imballaggio alimentare.
-
-Saremmo interessati a conoscere eventuali sconti per ordini superiori ai 500 pezzi, da includere nella pianificazione del prossimo trimestre.
-
-In attesa di un Suo gentile riscontro, porgo distinti saluti.
-
-Mario Rossi
-Responsabile Acquisti
-Azienda Alfa S.r.l.
-[mario.rossi@email.com](mailto:mario.rossi@email.com)
-Tel: +39 345 678 9123
-

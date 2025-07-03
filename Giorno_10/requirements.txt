@@ -1,9 +1,19 @@
 streamlit
 transformers
 langchain
+<<<<<<< HEAD
 openai
+=======
+openai==1.88.0
+>>>>>>> 872bd05d47e119df9771408f0837a758a45eb16b
 python-dotenv
 crewai
 faiss-cpu
 pandas
+<<<<<<< HEAD
 numpy
+=======
+numpy
+langchain-openai
+langchain-community
+>>>>>>> 872bd05d47e119df9771408f0837a758a45eb16b
