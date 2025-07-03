@@ -28,7 +28,7 @@ def preprocess(text):
     return ' '.join(words)
 
 
-spam_dataset = pd.read_csv('Giorno_12\esercizi\palmina_angelini\spam.csv', encoding = 'latin-1')
+spam_dataset = pd.read_csv('Giorno_12\studenti\palmina_angelini\spam.csv', encoding = 'latin-1')
 
 # Tieni solo le prime due colonne
 spam_dataset = spam_dataset.iloc[:, :2]
