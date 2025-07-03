@@ -1,0 +1,6 @@
+ANALISI DEL RISCHIO APP RICONOSCIMENTO SPAM SMS
+
+Il programma si basa su una semplice applicazione di Naive-Bayes, con cui classifica gli SMS in spam o ham (o in negative, neutron e positive). Prima viene applicate una vettorizzazione ai messaggi e in seguito viene applicato il modello.
+L'addestramento è stato fatto per intero utilizzando il dataset sms-spam-detecion-dataset presente su Kaggle, che risulta bilanciato tra le due classi.
+Dalla confusion matrix si osserva che sul test set la recall (in questo caso il valore più importante) è molto vicino a 1, possibili miglioramenti possono essere ottenuti con un dataset più grande/vario o utulizzando modelli più complessi.
+In questo caso tutto il processo avviene in locale, ma in caso di una grande mole di informazioni sarebbe necessaria una eventuale implementazione in cloud, che potrebbe essere rischioso in quanto gli SMS possono contenere informazioni personali. In questo caso è necessaria l'implementazione di un modello NER per la censura dei dati sensibili, il livello di rischio in questo caso è il livello di rischio è limitato.
