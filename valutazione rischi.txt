@@ -1,0 +1,5 @@
+Il rischio è limitato/alto, visto che vengono coinvolte informazioni personali. Tuttavia essendoci l'aonimizzazione in locale e un controllo manuale il rischio è principalmente limitato.
+Gli obblighi da applicare sono quindi informare l'utente prima dell'utilizzo dell'app (in questo caso prima dell'invio dei documenti) e tenere un log di tutte le interazioni e documenti caricati.
+Il rischio principale potrebbe venire da una combinazione di errori sia AI che umani, in cui ad esempio un dato non viene anonimizzato dalla NER e sfugge anche al controllo umano, in questo caso i dati personali verrebbero inviati a GPT nel cloud, rendendo possibile una fuga di informazioni.
+Bisogna quindi far presente questo possible rischio all'utente, e in caso di reclami assicurarsi mediante i log delle operazioni che non ci sia stata un'effettiva fuga di dati sensibili.
+
