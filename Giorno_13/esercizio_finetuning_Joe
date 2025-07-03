@@ -35,9 +35,18 @@ def genera_sms_fake(label, n=10):
             "Fammi sapere quando sei libero.",
             "Buon compleanno!"
         ]
-    # Se n > 10, ripeti e taglia
     sms_list = (base * ((n // len(base)) + 1))[:n]
     return pd.DataFrame({'label': [label]*len(sms_list), 'message': sms_list})
+
+# Funzione semplice per assegnare sentiment ai messaggi non spam
+def assegna_sentiment(msg):
+    msg = msg.lower()
+    if any(word in msg for word in ["grazie", "complimenti", "buon compleanno", "a presto", "aiuto"]):
+        return "positivo"
+    elif any(word in msg for word in ["scusa", "problema", "ritardo", "dimenticato", "non posso"]):
+        return "negativo"
+    else:
+        return "neutro"
 
 # Carica dataset originale
 df = pd.read_csv('Giorno_13/spam.csv', encoding='latin1')
@@ -56,10 +65,17 @@ nuovi_ham = genera_sms_fake('ham', n_nuovi_ham)
 
 # Unisci i nuovi dati al dataset originale
 df_aug = pd.concat([df, nuovi_spam, nuovi_ham], ignore_index=True)
-print(f"Nuovo dataset: {df_aug.shape[0]} messaggi")
 
-# Train/test split
-X_train, X_test, y_train, y_test = train_test_split(df_aug['message'], df_aug['label'], test_size=0.2, random_state=42)
+# Cambia etichette: spam -> negativo, ham -> sentiment (positivo/negativo/neutro)
+df_aug['sentiment'] = df_aug.apply(
+    lambda row: 'negativo' if row['label'] == 'spam' else assegna_sentiment(row['message']),
+    axis=1
+)
+
+print(df_aug[['message', 'label', 'sentiment']].head(10))
+
+# Train/test split per sentiment
+X_train, X_test, y_train, y_test = train_test_split(df_aug['message'], df_aug['sentiment'], test_size=0.2, random_state=42)
 
 # TfidfVectorizer
 vectorizer = TfidfVectorizer(stop_words='english')
@@ -77,14 +93,15 @@ y_pred = model.predict(X_test_vec)
 print(classification_report(y_test, y_pred))
 
 # Matrice di confusione
-cm = confusion_matrix(y_test, y_pred, labels=['ham', 'spam'])
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['ham', 'spam'])
+labels_sentiment = ['negativo', 'neutro', 'positivo']
+cm = confusion_matrix(y_test, y_pred, labels=labels_sentiment)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels_sentiment)
 disp.plot(cmap=plt.cm.Blues)
-plt.title("Matrice di Confusione (Fine-tuning)")
+plt.title("Matrice di Confusione (Sentiment Analysis)")
 plt.show()
 
-# Valuta nuovi messaggi da file di testo
-test_file = 'Giorno_13/messaggi test.txt'
+# Valuta nuovi messaggi da file di testo (path assoluto come richiesto)
+test_file = r"C:\Users\YW452WU\OneDrive - EY\Documents\GitHub\ai-academy\Giorno_12\messaggi test.txt"
 if os.path.exists(test_file):
     with open(test_file, encoding='utf-8') as f:
         nuovi_messaggi = [line.strip().lower() for line in f if line.strip()]
@@ -96,7 +113,11 @@ if os.path.exists(test_file):
         print(f"[{pred.upper()}] {msg}")
 
     conteggio = Counter(predizioni)
-    print(f"\nTotale HAM: {conteggio.get('ham', 0)}")
-    print(f"Totale SPAM: {conteggio.get('spam', 0)}")
+    print(f"\nTotale NEGATIVO: {conteggio.get('negativo', 0)}")
+    print(f"Totale NEUTRO: {conteggio.get('neutro', 0)}")
+    print(f"Totale POSITIVO: {conteggio.get('positivo', 0)}")
 else:
     print("File di test non trovato.")
+
+# Domanda finale
+print("\nMetodo di transfer learning descritto nell'esercizio: DISTILLATION")
