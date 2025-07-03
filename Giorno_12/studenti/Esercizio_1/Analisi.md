@@ -1,0 +1,4 @@
+Progetto di computer vision volto a analizzare all'interno di una catena di supermercati quali sono gli scaffali e le sezioni dove si sofferma maggiormente lo sguardo dei consumatori.
+Rischio: alto
+Considerazioni: necessario rendere anonimi i caratteri facciali non necessari così che non si possa risalire all'identità del consumatore ma siano tracciati solo gli occhi dove visibili, nel momento in cui si identificasse il consumatore come minorenne escluderlo del tutto dal riconoscimento.
+Strumenti: oltre i controlli interni al codice istituire audit periodici sugli output così da accertarsi che non stia avvenendo alcun tipo di profilazione e che si stiano identificando solo le aree di maggior interesse in un dato periodo.
