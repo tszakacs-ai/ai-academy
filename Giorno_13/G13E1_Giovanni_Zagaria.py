@@ -3,6 +3,10 @@ from transformers import pipeline
 from pathlib import Path
 import re
 import matplotlib.pyplot as plt
+import openai
+import os
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
  
 # Inizializza pipeline NER
 ner_pipeline = pipeline("ner", model="dslim/bert-base-NER", aggregation_strategy="simple")
@@ -171,3 +175,55 @@ plt.title("Grafo Entità-Relazioni", fontsize=16)
 plt.axis('off')
 plt.tight_layout()
 plt.show()
+
+# --- Integrazione esercizio 2 ---
+
+create_cliente_fattura_query = '''
+CREATE (c:Cliente {nome: "Mario Rossi"})
+CREATE (f:Fattura {numero: "INV2025"})
+CREATE (c)-[:HA_RICEVUTO]->(f)
+'''
+
+match_fattura_query = '''
+MATCH (f:Fattura)
+WHERE f.importo > 1000
+RETURN f.numero, f.importo
+'''
+
+domanda = "Quali clienti hanno ricevuto una fattura con importo superiore a 1000 euro?"
+
+cypher_query = '''
+MATCH (c:Cliente)-[:HA_RICEVUTO]->(f:Fattura)
+WHERE f.importo > 1000
+RETURN c.nome AS cliente, f.numero AS numero_fattura, f.importo AS importo
+'''
+
+risposta_query = [
+    {"cliente": "Mario Rossi", "numero_fattura": "INV2025", "importo": 1500},
+    {"cliente": "Luca Bianchi", "numero_fattura": "INV2026", "importo": 2000},
+]
+
+
+def riformula_risposta(risposta_query, domanda):
+    tabella = "\n".join(
+        [
+            f"- {r['cliente']} ha ricevuto la fattura {r['numero_fattura']} di importo {r['importo']} euro"
+            for r in risposta_query
+        ]
+    )
+    prompt = (
+        f"Domanda business: {domanda}\n"
+        f"Risposta tabellare:\n{tabella}\n"
+        "Riformula la risposta in linguaggio naturale chiaro e sintetico per un manager."
+    )
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=150,
+        temperature=0.3,
+    )
+    return completion.choices[0].message.content.strip()
+
+
+risposta_naturale = riformula_risposta(risposta_query, domanda)
+print(risposta_naturale)
