@@ -1,0 +1,28 @@
+FATTURA N. 2024-001
+Data emissione: 15/03/2024
+Scadenza pagamento: 30/04/2024
+
+CLIENTE:
+Mario Rossi
+Via Roma 123, Milano
+Email: mario.rossi@email.com
+Codice Fiscale: RSSMRA80A01F205X
+
+FORNITORE:
+ACME Consulting SpA
+Corso Buenos Aires 45, Milano
+Partita IVA: 12345678901
+Email: info@acmeconsulting.it
+
+DESCRIZIONE SERVIZI:
+- Consulenza informatica: €1.200,00
+- Sviluppo software: €800,00
+- Supporto tecnico: €300,00
+
+TOTALE FATTURA: €2.300,00
+
+Modalità di pagamento:
+Bonifico bancario su IBAN: IT60X0542811101000000123456
+
+Grazie per la collaborazione.
+ACME Consulting SpA

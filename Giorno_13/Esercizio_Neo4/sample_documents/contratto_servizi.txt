@@ -1,0 +1,38 @@
+CONTRATTO DI PRESTAZIONE SERVIZI
+
+Contratto stipulato il 01/01/2024 tra:
+
+COMMITTENTE:
+Giulia Bianchi
+Codice Fiscale: BNCGLY85M41H501Z
+Email: giulia.bianchi@azienda.com
+Telefono: +39 335 1234567
+
+PRESTATORE:
+TechSolutions SRL
+Sede legale: Via Dante 67, Roma
+Partita IVA: 98765432100
+Rappresentante: Marco Verdi
+
+OGGETTO:
+Sviluppo applicazione mobile per gestione clienti
+
+DURATA:
+Dal 01/01/2024 al 31/12/2024
+
+COMPENSO:
+Giulia Bianchi corrisponderà a TechSolutions SRL 
+l'importo di €2.500,00 mensili.
+
+Il pagamento avverrà entro il 15 di ogni mese
+tramite bonifico bancario.
+
+SEDE LAVORI:
+I servizi saranno erogati presso gli uffici di
+TechSolutions SRL in Via Dante 67, Roma.
+
+Responsabile di progetto: Marco Verdi
+Email progetto: marco.verdi@techsolutions.it
+
+Firma Committente: Giulia Bianchi
+Firma Prestatore: Marco Verdi per TechSolutions SRL
