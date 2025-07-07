@@ -7,7 +7,7 @@ from dataclasses import dataclass
 import pandas as pd
 import numpy as np
 from config import RagClients, AppConfig
-from rag_system import search_documents, QueryResult
+from rag_system import search_documents, QueryResult, generate_rag_response
 
 # --- Dataclasses per la gestione delle email ---
 @dataclass
@@ -312,3 +312,33 @@ def display_email_page(clients: RagClients, config: AppConfig):
                     st.toast("Bozza salvata con successo!")
     else:
         st.info("Seleziona un'email dalla sidebar per visualizzarla e analizzarla.")
+
+def adversarial_evaluator(response: str) -> tuple[bool, str]:
+    """
+    Valuta la risposta GPT per bias o espressioni discriminatorie.
+    Ritorna (True, "OK") se la risposta è accettabile, altrimenti (False, motivo).
+    """
+    bias_keywords = ['stupido', 'inferiore', 'razza', 'donna', 'uomo']
+    for word in bias_keywords:
+        if word in response.lower():
+            return False, f"Bias rilevato: '{word}'"
+    return True, "OK"
+
+def genera_risposta_email(email_anon, clients, config):
+    # ...existing code per generare la risposta...
+    risposta_gpt, fonti = generate_rag_response(
+        clients,
+        query=email_anon,
+        relevant_docs=[],  # o i chunk trovati
+        model_deployment=config.AZURE_CHAT_DEPLOYMENT,
+        chat_history=None
+    )
+    # --- Valutazione avversariale ---
+    ok, msg = adversarial_evaluator(risposta_gpt)
+    if not ok:
+        # Qui puoi decidere se rigenerare, mostrare avviso, loggare, ecc.
+        st.warning(f"⚠️ Risposta bloccata per rischio bias: {msg}")
+        # Ad esempio: return None, fonti
+        return None, fonti
+    # ...existing code...
+    return risposta_gpt, fonti
