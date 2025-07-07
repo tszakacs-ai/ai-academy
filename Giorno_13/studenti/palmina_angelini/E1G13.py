@@ -71,7 +71,8 @@ X_test_tfidf = tfidf.transform(X_test)
 model = LogisticRegression()
 model.fit(X_train_tfidf, y_train)
 
-y_pred = model.predict(X_test_tfidf)  
+y_pred = model.predict(X_test_tfidf) 
+ 
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')
 print(classification_report(y_test, y_pred, target_names=['ham', 'spam']))
