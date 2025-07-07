@@ -1,0 +1,11 @@
+version: "3.9"
+ 
+services:
+  streamlit:
+    build: .
+    image: moca
+    ports:
+      - "8501:8501"
+    # Se vuoi montare tutto il progetto per sviluppo live, usa:
+    # volumes:
+    #   - .:/app
