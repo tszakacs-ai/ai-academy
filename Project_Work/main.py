@@ -19,7 +19,6 @@ def main() -> None:
     )
 
     st.sidebar.header("⚙️ Configurazione")
-    folder_path = st.sidebar.text_input("📂 Cartella documenti", value=DEFAULT_FOLDER_PATH)
 
     if "chats" not in st.session_state:
         st.session_state.chats = []
@@ -29,7 +28,7 @@ def main() -> None:
     if st.sidebar.button("➕ Nuova chat"):
         new_chat_id = len(st.session_state.chats)
         try:
-            new_pipeline = RAGPipeline(folder_path)
+            new_pipeline = RAGPipeline()
         except Exception as e:
             st.sidebar.error(f"Errore creazione pipeline: {e}")
             return
@@ -50,7 +49,9 @@ def main() -> None:
             index=st.session_state.active_chat_id or 0,
         )
         st.session_state.active_chat_id = chat_names.index(selected_chat_name)
-    uploaded_files = st.sidebar.file_uploader("⬆️ Carica file .txt", type=["txt"], accept_multiple_files=True)
+    uploaded_files = st.sidebar.file_uploader(
+        "⬆️ Carica file .pdf", type=["pdf"], accept_multiple_files=True
+    )
 
 
     if st.session_state.active_chat_id is not None and st.session_state.chats:

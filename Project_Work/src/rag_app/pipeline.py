@@ -1,18 +1,18 @@
 from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
 
-from .loader import TextFileLoader
+from .loader import PdfFileLoader
+from PyPDF2 import PdfReader
 from .embedding import AdaEmbeddingModel, LangchainAdaWrapper
 from .anonymizer import TextAnonymizer
 from .chat_model import ChatCompletionModel
 from .bias import BiasChecker
 
 class RAGPipeline:
-    def __init__(self, folder_path: str) -> None:
+    def __init__(self) -> None:
         self.anonymizer = TextAnonymizer()
         self.documents = []
-        self.folder_path = folder_path
-        self.load_documents_from_folder(folder_path)
+        self.folder_path = None
 
         ada_model = AdaEmbeddingModel()
         self.embedding_wrapper = LangchainAdaWrapper(ada_model)
@@ -23,7 +23,7 @@ class RAGPipeline:
         self._build_vectorstore()
 
     def load_documents_from_folder(self, folder_path: str) -> None:
-        loader = TextFileLoader(folder_path)
+        loader = PdfFileLoader(folder_path)
         results = loader.load()
         for doc in results:
             self.documents.append(
@@ -33,7 +33,8 @@ class RAGPipeline:
     def add_uploaded_files(self, uploaded_files) -> None:
         for uploaded_file in uploaded_files:
             try:
-                content = uploaded_file.getvalue().decode("utf-8")
+                reader = PdfReader(uploaded_file)
+                content = "\n".join(page.extract_text() or "" for page in reader.pages)
                 self.documents.append(
                     Document(page_content=content, metadata={"file_name": uploaded_file.name})
                 )

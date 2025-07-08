@@ -16,9 +16,8 @@ Le variabili sensibili vanno definite in un file `.env` posto nella stessa carte
 
 ```
 PROJECT_ENDPOINT=https://your-azure-endpoint
-DEFAULT_FOLDER_PATH=./Dataset
 ```
-`PROJECT_ENDPOINT` è obbligatoria per connettersi ad Azure AI Project, mentre `DEFAULT_FOLDER_PATH` indica la cartella da cui caricare i documenti di default.
+`PROJECT_ENDPOINT` è obbligatoria per connettersi ad Azure AI Project.
 
-Avviata l'applicazione, è possibile caricare uno o più file `.txt` dalla sidebar usando il widget di upload o modificare il percorso della cartella se necessario.
+Avviata l'applicazione, è possibile caricare uno o più file `.pdf` dalla sidebar usando il widget di upload.
 

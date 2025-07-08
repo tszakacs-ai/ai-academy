@@ -1,7 +1,10 @@
 from pathlib import Path
 
-class TextFileLoader:
-    """Carica tutti i file .txt da una cartella."""
+from PyPDF2 import PdfReader
+
+
+class PdfFileLoader:
+    """Carica tutti i file .pdf da una cartella."""
 
     def __init__(self, folder_path: str) -> None:
         self.folder_path = Path(folder_path)
@@ -12,9 +15,10 @@ class TextFileLoader:
 
     def load(self) -> list[dict]:
         results = []
-        for file in self.folder_path.glob("*.txt"):
+        for file in self.folder_path.glob("*.pdf"):
             try:
-                content = file.read_text(encoding="utf-8")
+                reader = PdfReader(str(file))
+                content = "\n".join(page.extract_text() or "" for page in reader.pages)
                 results.append({"file_name": file.name, "content": content})
             except Exception as e:  # pragma: no cover - logging
                 print(f"Errore nella lettura di {file.name}: {e}")
