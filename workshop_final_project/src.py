@@ -191,6 +191,9 @@ def fill_template_for_all_docs(pipeline):
         progress.progress((idx+1)/len(pipeline.documents), text=f"Completato {idx+1}/{len(pipeline.documents)}")
     progress.empty()
     df = pd.DataFrame(rows)
+    # Ensure that exported Excel cells are always filled
+    if not df.empty:
+        df[TEMPLATE_FIELDS] = df[TEMPLATE_FIELDS].replace("", "Da compilare")
     return df
 
 
@@ -292,6 +295,9 @@ def fill_template_for_all_files(pipeline):
         progress.progress((idx+1)/len(files), text=f"Completato {idx+1}/{len(files)}")
     progress.empty()
     df = pd.DataFrame(rows)
+    # Ensure that exported Excel cells are always filled
+    if not df.empty:
+        df[TEMPLATE_FIELDS] = df[TEMPLATE_FIELDS].replace("", "Da compilare")
     return df
 
 
