@@ -2,7 +2,11 @@ from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
 
 from .loader import PdfFileLoader
-from PyPDF2 import PdfReader
+
+try:
+    from PyPDF2 import PdfReader  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover - library optional
+    PdfReader = None
 from .embedding import AdaEmbeddingModel, LangchainAdaWrapper
 from .anonymizer import TextAnonymizer
 from .chat_model import ChatCompletionModel
@@ -31,6 +35,11 @@ class RAGPipeline:
             )
 
     def add_uploaded_files(self, uploaded_files) -> None:
+        if PdfReader is None:
+            raise ImportError(
+                "PyPDF2 non installato. Esegui 'pip install PyPDF2' per poter leggere i PDF."
+            )
+
         for uploaded_file in uploaded_files:
             try:
                 reader = PdfReader(uploaded_file)

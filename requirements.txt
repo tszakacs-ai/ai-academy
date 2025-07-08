@@ -1,1 +1,0 @@
--r Giorno_11/requirements.txt
