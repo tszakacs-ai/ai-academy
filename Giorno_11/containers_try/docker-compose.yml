@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    image: containers
+    
+    ports:
+      - "8501:8501"
+    # Se vuoi montare la cartella locale per sviluppo live, decommenta la riga sotto:
+    # volumes:
+    #   - .:/app
