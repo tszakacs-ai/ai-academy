@@ -3,6 +3,7 @@ from langchain.schema import Document
 from PyPDF2 import PdfReader
 import io
 
+
 from .embedding import AdaEmbeddingModel, LangchainAdaWrapper
 from .anonymizer import TextAnonymizer
 from .chat_model import ChatCompletionModel
@@ -30,6 +31,7 @@ class RAGPipeline:
                     content = "".join(page.extract_text() or "" for page in reader.pages)
                 else:
                     content = uploaded_file.getvalue().decode("utf-8")
+
                 self.documents.append(
                     Document(page_content=content, metadata={"file_name": uploaded_file.name})
                 )

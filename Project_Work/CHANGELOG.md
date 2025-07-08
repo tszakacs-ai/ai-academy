@@ -8,3 +8,4 @@
 
 ## 0.3.0
 - Supporto al caricamento di documenti PDF nell'app Streamlit.
+
