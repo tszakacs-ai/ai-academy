@@ -16,6 +16,10 @@ basato su `transformers` che rileva eventuali espressioni tossiche o
 discriminatorie. In caso di rischio viene registrato un log e l'utente riceve un
 avviso.
 
+È possibile caricare documenti in formato **.txt** o **.pdf** dalla barra
+laterale dell'app. I PDF vengono convertiti in testo automaticamente prima di
+eseguire l'analisi.
+
 ## Configurazione
 Le variabili sensibili vanno definite in un file `.env` posto nella stessa cartella. Un esempio di contenuto:
 

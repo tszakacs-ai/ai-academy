@@ -50,7 +50,9 @@ def main() -> None:
         )
         st.session_state.active_chat_id = chat_names.index(selected_chat_name)
 
-    uploaded_files = st.sidebar.file_uploader("⬆️ Carica file .txt", type=["txt"], accept_multiple_files=True)
+    uploaded_files = st.sidebar.file_uploader(
+        "⬆️ Carica file .txt o .pdf", type=["txt", "pdf"], accept_multiple_files=True
+    )
 
     if st.session_state.active_chat_id is not None and st.session_state.chats:
         chat = st.session_state.chats[st.session_state.active_chat_id]
