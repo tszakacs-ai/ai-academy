@@ -223,14 +223,16 @@ def get_full_texts_per_file(pipeline):
 
 # Funzione per estrarre i campi dal documento usando il modello di chat
 
-def extract_fields_from_doc(chat_model, page_content):
+def extract_fields_from_doc(chat_model, page_content, file_name=""):
     MAX_INPUT_LENGTH = 12000  # puoi variare se necessario
     if len(page_content) > MAX_INPUT_LENGTH:
-        st.warning(f"Documento troppo lungo ({len(page_content)} caratteri). Taglio a {MAX_INPUT_LENGTH}.")
+        st.warning(
+            f"Documento troppo lungo ({len(page_content)} caratteri). Taglio a {MAX_INPUT_LENGTH}."
+        )
         page_content = page_content[:MAX_INPUT_LENGTH]
 
-    st.info(f"Estrazione da file ({len(page_content)} caratteri): anteprima testo ↓")
-    st.code(page_content[:400])
+    if file_name:
+        st.info(f"Sto cercando...\n[{file_name}]")
 
     prompt = """
     Estrai dal seguente bando i seguenti campi:
@@ -289,15 +291,22 @@ def extract_fields_from_doc(chat_model, page_content):
 def fill_template_for_all_files(pipeline):
     full_texts = get_full_texts_per_file(pipeline)
     rows = []
-    progress = st.progress(0, text="Estrazione in corso...")
     files = list(full_texts.keys())
-    for idx, file in enumerate(files):
+    total_steps = len(files) * len(TEMPLATE_FIELDS)
+    step = 0
+    progress = st.progress(0, text="Estrazione in corso...")
+    for file in files:
         text = full_texts[file]
-        result = extract_fields_from_doc(pipeline.chat_model, text)
-        row = {field: result.get(field, "") for field in TEMPLATE_FIELDS}
+        row = {}
+        for field in TEMPLATE_FIELDS:
+            st.info(f"Sto cercando...\n[{file}] - Campo: {field}")
+            question = TEMPLATE_QUESTIONS[field]
+            answer = pipeline.chat_model.ask_about_document(text, question)
+            row[field] = answer.strip()
+            step += 1
+            progress.progress(step / total_steps, text=f"Completato {step}/{total_steps}")
         row["File"] = file
         rows.append(row)
-        progress.progress((idx+1)/len(files), text=f"Completato {idx+1}/{len(files)}")
     progress.empty()
     df = pd.DataFrame(rows)
     # Ensure that exported Excel cells are always filled
