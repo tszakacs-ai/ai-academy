@@ -3,11 +3,6 @@
 Questa directory contiene la versione rifattorizzata del progetto del giorno 8.
 La struttura segue uno schema classico per progetti Python:
 
-- `src/` codice sorgente dell'applicazione
-- `Dataset/` cartella con i documenti di esempio
-- `tests/` script di test automatici
-- `notebooks/` notebook Jupyter per esperimenti
-- `docs/` documentazione aggiuntiva
 
 Il punto di ingresso dell'applicazione è `main.py`. Rispetto alla versione del
 giorno 9 viene introdotto un controllo automatico sulle risposte generate dal
@@ -23,7 +18,7 @@ Le variabili sensibili vanno definite in un file `.env` posto nella stessa carte
 PROJECT_ENDPOINT=https://your-azure-endpoint
 DEFAULT_FOLDER_PATH=./Dataset
 ```
-
 `PROJECT_ENDPOINT` è obbligatoria per connettersi ad Azure AI Project, mentre `DEFAULT_FOLDER_PATH` indica la cartella da cui caricare i documenti di default.
 
 Avviata l'applicazione, è possibile caricare uno o più file `.txt` dalla sidebar usando il widget di upload o modificare il percorso della cartella se necessario.
+
