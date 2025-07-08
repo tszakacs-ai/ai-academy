@@ -45,3 +45,18 @@ for i in range(5):
     print(df['text'].iloc[i])
     print(f"Prediction: {predict_spam(df['text'].iloc[i])}")
     print()
+
+# ===================================================
+
+# Aggiunta di nuovi messaggi per testare la funzione di predizione
+new_messages = pd.read_csv("Giorno_12\studenti\messaggi_aggiuntivi.csv", encoding='latin-1', sep=',')
+new_messages.columns = ['label', 'text']
+
+print(f"\n\nPercentage of new messages added: {len(new_messages) / len(df) * 100:.2f}%")
+
+print("\n\nPredictions for first 5 new messages:")
+for i in range(5):
+    print(f"\nNew Message {i+1}:")
+    print(new_messages['text'].iloc[i])
+    print(f"Prediction: {predict_spam(new_messages['text'].iloc[i])}")
+    print()
