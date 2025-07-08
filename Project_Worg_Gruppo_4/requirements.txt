@@ -1,7 +1,0 @@
-streamlit
-python-dotenv
-azure-identity
-azure-ai-projects
-langchain
-transformers
-faiss-cpu
