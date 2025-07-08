@@ -5,3 +5,7 @@
 
 ## 0.2.0
 - Aggiunto controllo automatico di fairness sulle risposte del modello GPT tramite `BiasChecker`.
+
+## 0.3.0
+- Supporto al caricamento di documenti PDF nell'app Streamlit.
+
