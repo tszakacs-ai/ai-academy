@@ -14,8 +14,13 @@ adult_data = pd.read_csv(file_path + 'adult.data', sep=' ', na_values=' ?',
 # print(adult_data.head())
 
 
+<<<<<<< HEAD
 # print(f'Count of elements in sex column:\n{adult_data['sex'].value_counts()}\n')
 # print(f'Count of elements in race column:\n{adult_data["race"].value_counts()}\n')
+=======
+print(f'Count of elements in sex column:\n{adult_data['sex'].value_counts()}\n')
+print(f'Count of elements in race column:\n{adult_data["race"].value_counts()}\n')
+>>>>>>> features/joanna-benkakitie
 
 # Split the dataset into training and testing sets
 X = adult_data.drop('income', axis=1)
