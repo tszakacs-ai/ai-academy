@@ -46,6 +46,11 @@ for i in range(5):
     print(f"Prediction: {predict_spam(df['text'].iloc[i])}")
     print()
 
+
+print("===================================================")
+
+# ===================================================
+# Fine-tuning del modello con nuovi messaggi
 # ===================================================
 
 # Aggiunta di nuovi messaggi per testare la funzione di predizione
@@ -60,3 +65,37 @@ for i in range(5):
     print(new_messages['text'].iloc[i])
     print(f"Prediction: {predict_spam(new_messages['text'].iloc[i])}")
     print()
+
+print("===================================================")
+
+
+# ===================================================
+# Sentiment analysis
+# ===================================================
+import os, certifi
+os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
+
+from transformers import pipeline
+
+# Merge dei dataset
+df_all = pd.concat([df, new_messages], ignore_index=True)
+
+# Inizializzazione pipeline Hugging Face
+classifier = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+
+# Analisi del sentiment
+def classify_sentiment(text):
+    try:
+        result = classifier(text[:512])[0]  # Troncamento per evitare input troppo lunghi
+        return result['label']  # POSITIVE o NEGATIVE
+    except Exception as e:
+        return "ERROR"
+
+# Applicazione del modello
+print("Sto eseguendo la classificazione... (potrebbe richiedere qualche minuto)")
+df_all['sentiment'] = df_all['text'].apply(classify_sentiment)
+
+print("\n\nSentiment Analysis Results:")
+print(df_all[['text', 'sentiment']].head(10))
+
+print("===================================================")
