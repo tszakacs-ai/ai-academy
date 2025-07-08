@@ -6,7 +6,7 @@ from src.rag_app.pipeline import RAGPipeline
 
 load_dotenv()
 
-DEFAULT_FOLDER_PATH = os.getenv("DEFAULT_FOLDER_PATH", "./data")
+DEFAULT_FOLDER_PATH = os.getenv("DEFAULT_FOLDER_PATH", "./Dataset")
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"  # solo per evitare warning su Windows
 
 
