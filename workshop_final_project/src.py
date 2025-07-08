@@ -157,18 +157,18 @@ TEMPLATE_FIELDS = [
 ]
 
 TEMPLATE_QUESTIONS = {
-    "Ente erogatore": "Indica il nome esatto dell’ente erogatore di questo bando. Se non presente, lascia vuoto.",
-    "Titolo dell'avviso": "Qual è il titolo ufficiale dell’avviso di questo bando? Se non presente, lascia vuoto.",
-    "Descrizione aggiuntiva": "Fornisci una breve descrizione aggiuntiva (2-3 frasi) del bando, se disponibile.",
-    "Beneficiari": "Elenca i beneficiari previsti da questo bando. Se non sono indicati chiaramente, lascia vuoto.",
-    "Apertura": "Qual è la data di apertura del bando (formato GG/MM/AAAA)? Se non presente, lascia vuoto.",
-    "Chiusura": "Qual è la data di chiusura del bando (formato GG/MM/AAAA)? Se non presente, lascia vuoto.",
-    "Dotazione finanziaria": "Qual è la dotazione finanziaria totale del bando? Se non presente, lascia vuoto.",
-    "Contributo": "Qual è il contributo previsto per i beneficiari? Se non presente, lascia vuoto.",
-    "Note": "Aggiungi eventuali note rilevanti (massimo 2 frasi). Se non ci sono, lascia vuoto.",
-    "Link": "Indica il link ufficiale a questo bando se presente. Altrimenti lascia vuoto.",
-    "Key Words": "Scrivi le parole chiave rilevanti per questo bando, separate da virgola.",
-    "Aperto (si/no)": "Il bando è ancora aperto? Rispondi solo 'si' o 'no'. Se la data di chiusura è già passata, rispondi 'no'. Se non è possibile determinare, lascia vuoto."
+    "Ente erogatore": "Indica il nome esatto dell’ente erogatore di questo bando. Cerca l'informazione nel testo o deducila dal contesto e usa 'Da compilare' solo se non è proprio reperibile.",
+    "Titolo dell'avviso": "Qual è il titolo ufficiale dell’avviso di questo bando? Analizza attentamente il documento e scrivi 'Da compilare' solo se non riesci a individuarlo o dedurlo.",
+    "Descrizione aggiuntiva": "Fornisci una breve descrizione aggiuntiva (2-3 frasi) del bando. Se non trovi nulla nemmeno cercando sinonimi o parafrasi, allora scrivi 'Da compilare'.",
+    "Beneficiari": "Elenca i beneficiari previsti da questo bando. Se non sono indicati o non puoi ricavarli indirettamente, scrivi 'Da compilare'.",
+    "Apertura": "Qual è la data di apertura del bando (formato GG/MM/AAAA)? Se non è presente in alcuna forma e non puoi dedurla, scrivi 'Da compilare'.",
+    "Chiusura": "Qual è la data di chiusura del bando (formato GG/MM/AAAA)? Se non viene mai menzionata e non puoi desumerla, scrivi 'Da compilare'.",
+    "Dotazione finanziaria": "Qual è la dotazione finanziaria totale del bando? Cerca eventuali importi indicati o riferimenti simili e usa 'Da compilare' solo in mancanza totale di dati.",
+    "Contributo": "Qual è il contributo previsto per i beneficiari? Inserisci 'Da compilare' solo se nel testo non compare nulla che possa farlo intuire.",
+    "Note": "Aggiungi eventuali note rilevanti (massimo 2 frasi). Se, dopo aver letto tutto, non hai nulla da segnalare, scrivi 'Da compilare'.",
+    "Link": "Indica il link ufficiale a questo bando se presente. Se non è riportato o non è possibile dedurlo, scrivi 'Da compilare'.",
+    "Key Words": "Scrivi le parole chiave rilevanti per questo bando, separate da virgola. Solo se davvero non emergono, inserisci 'Da compilare'.",
+    "Aperto (si/no)": "Il bando è ancora aperto? Rispondi solo 'si' o 'no'. Se la data di chiusura è già passata, rispondi 'no'. Usa 'Da compilare' esclusivamente se non puoi stabilirlo neppure indirettamente."
 }
 
 
@@ -191,6 +191,13 @@ def fill_template_for_all_docs(pipeline):
         progress.progress((idx+1)/len(pipeline.documents), text=f"Completato {idx+1}/{len(pipeline.documents)}")
     progress.empty()
     df = pd.DataFrame(rows)
+    # Ensure that exported Excel cells are always filled
+    if not df.empty:
+        df[TEMPLATE_FIELDS] = (
+            df[TEMPLATE_FIELDS]
+            .replace(r"^\s*$", "Da compilare", regex=True)
+            .fillna("Da compilare")
+        )
     return df
 
 
@@ -241,21 +248,22 @@ def extract_fields_from_doc(chat_model, page_content):
     - Aperto (si/no)
 
     Restituisci solo le risposte in formato JSON (senza alcun testo extra), con le chiavi corrispondenti.
-    Se non hai informazioni su un campo, lascia la stringa vuota ("").
+    Cerca di dedurre le informazioni anche quando non sono esplicitamente dichiarate.
+    Scrivi "Da compilare" solo se, dopo un'attenta analisi del testo, non riesci a ricavare alcun dato.
     Esempio di output:
     {
-    "Ente erogatore": "",
-    "Titolo dell'avviso": "",
-    "Descrizione aggiuntiva": "",
-    "Beneficiari": "",
-    "Apertura": "",
-    "Chiusura": "",
-    "Dotazione finanziaria": "",
-    "Contributo": "",
-    "Note": "",
-    "Link": "",
-    "Key Words": "",
-    "Aperto (si/no)": ""
+    "Ente erogatore": "Da compilare",
+    "Titolo dell'avviso": "Da compilare",
+    "Descrizione aggiuntiva": "Da compilare",
+    "Beneficiari": "Da compilare",
+    "Apertura": "Da compilare",
+    "Chiusura": "Da compilare",
+    "Dotazione finanziaria": "Da compilare",
+    "Contributo": "Da compilare",
+    "Note": "Da compilare",
+    "Link": "Da compilare",
+    "Key Words": "Da compilare",
+    "Aperto (si/no)": "Da compilare"
     }
 
     Bando:
@@ -292,6 +300,13 @@ def fill_template_for_all_files(pipeline):
         progress.progress((idx+1)/len(files), text=f"Completato {idx+1}/{len(files)}")
     progress.empty()
     df = pd.DataFrame(rows)
+    # Ensure that exported Excel cells are always filled
+    if not df.empty:
+        df[TEMPLATE_FIELDS] = (
+            df[TEMPLATE_FIELDS]
+            .replace(r"^\s*$", "Da compilare", regex=True)
+            .fillna("Da compilare")
+        )
     return df
 
 
