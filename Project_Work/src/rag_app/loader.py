@@ -1,6 +1,9 @@
 from pathlib import Path
 
-from PyPDF2 import PdfReader
+try:
+    from PyPDF2 import PdfReader  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover - library optional
+    PdfReader = None
 
 
 class PdfFileLoader:
@@ -14,6 +17,10 @@ class PdfFileLoader:
             raise NotADirectoryError(f"Non è una directory: {folder_path}")
 
     def load(self) -> list[dict]:
+        if PdfReader is None:
+            raise ImportError(
+                "PyPDF2 non installato. Esegui 'pip install PyPDF2' per poter leggere i PDF."
+            )
         results = []
         for file in self.folder_path.glob("*.pdf"):
             try:

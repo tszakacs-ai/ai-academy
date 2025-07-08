@@ -21,3 +21,9 @@ PROJECT_ENDPOINT=https://your-azure-endpoint
 
 Avviata l'applicazione, è possibile caricare uno o più file `.pdf` dalla sidebar usando il widget di upload.
 
+Poiché il progetto non include più un `requirements.txt`, assicurati di installare manualmente le dipendenze necessarie. In particolare è richiesto il pacchetto `PyPDF2` per leggere i file PDF:
+
+```bash
+pip install PyPDF2
+```
+

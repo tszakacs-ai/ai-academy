@@ -6,6 +6,9 @@ from src.rag_app.pipeline import RAGPipeline
 
 load_dotenv()
 
+# Disabilita il file watcher di Streamlit per evitare errori su file temporanei
+os.environ.setdefault("STREAMLIT_SERVER_FILE_WATCHER_TYPE", "none")
+
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"  # solo per evitare warning su Windows
 
 
