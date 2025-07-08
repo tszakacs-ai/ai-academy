@@ -1,0 +1,9 @@
+METRICHE NER + GPT
+
+Per il modello NER possono essere utilizzate le metriche classiche, potrebbe risultare molto utile utilizzare la F1, essendo una media armonica tra precision e recall. Minimizzare F1 significa assicurarci contemporaneamente che ci sono pochi falsi positive e falsi negative. Questo vuol dire che pochi dati sensibili vengono tralasciati (e in quell caso sarebbero soggetti a controllo umano), e pochi dati verrebbero erroneamente censurati anche se non sono informaizoni sensibili. Quest'ultimo punto è importante perché potrebbero essere informazioni utili a GPT per riassumere o analizzare il contrnuto del document.
+In questo caso i test possono essere fatti con dei documenti controllati e anonimizzati da un agente umano.
+
+Per GPT ci sono diverse metriche, per quanto riguarda la funzione riassuntiva e di analsi basterebbero metriche più classiche come BLEU, ma essendoci anche una funzione di creazioe di riposte al document e di chatbot la metrica migliore è BERTScore.
+
+
+
