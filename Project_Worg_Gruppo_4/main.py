@@ -6,7 +6,6 @@ from src.rag_app.pipeline import RAGPipeline
 
 load_dotenv()
 
-DEFAULT_FOLDER_PATH = os.getenv("DEFAULT_FOLDER_PATH", "./Dataset")
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"  # solo per evitare warning su Windows
 
 
@@ -51,8 +50,8 @@ def main() -> None:
             index=st.session_state.active_chat_id or 0,
         )
         st.session_state.active_chat_id = chat_names.index(selected_chat_name)
+    uploaded_files = st.sidebar.file_uploader("⬆️ Carica file .txt", type=["txt"], accept_multiple_files=True)
 
-    uploaded_files = st.sidebar.file_uploader("⬆️ Carica file .txt", type=["pdf"], accept_multiple_files=True)
 
     if st.session_state.active_chat_id is not None and st.session_state.chats:
         chat = st.session_state.chats[st.session_state.active_chat_id]
