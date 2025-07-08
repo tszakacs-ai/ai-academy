@@ -1,0 +1,4 @@
+Documento,Azienda,Data,Importo,NumeroFattura,Prodotto
+fattura1.txt,Alfa Srl,5 giugno 2024,2000 euro,n.123,Prodotto X
+fattura2.txt,Beta Srl,10 giugno 2024,3500 euro,n.124,Prodotto Y
+contratto1.txt,Delta Srl,1 maggio 2024,5000 euro,nan,Prodotto X

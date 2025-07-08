@@ -1,0 +1,32 @@
+ESERCIZIO - FREQUENCY_PENALTY NEI LLM
+
+1. Scenario e prompt errato:
+
+Scenario:
+Devi preparare brevi descrizioni da inserire nel sito web per una nuova linea di prodotti, ciascuna descrizione deve essere interessante e diversa.
+
+Prompt fornito (da correggere):
+“Scrivi una breve descrizione per ciascun prodotto della nuova linea:
+- Shampoo FreshClean
+- Balsamo FreshClean
+- Gel FreshClean
+Le descrizioni devono mettere in evidenza il nome FreshClean e i benefici di ciascun prodotto.”
+
+2. Spiegazione dell'errore:
+
+Il prompt, così com'è formulato, tende a generare descrizioni molto simili tra loro, con ripetizioni eccessive del nome "FreshClean" e strutture linguistiche ripetitive. Questo accade perché non viene incentivata la varietà lessicale e stilistica. Nei modelli LLM, questo comportamento può essere mitigato usando il parametro frequency_penalty, che penalizza la ripetizione di parole già usate. Tuttavia, anche il prompt deve essere progettato per incoraggiare la diversità.
+
+3. Prompt corretto (ottimizzato per varietà e penalizzazione delle ripetizioni):
+
+“Scrivi una descrizione unica e coinvolgente per ciascun prodotto della nuova linea FreshClean:
+- Shampoo FreshClean
+- Balsamo FreshClean
+- Gel FreshClean
+
+Ogni descrizione deve:
+- Evidenziare i benefici specifici del prodotto
+- Utilizzare uno stile e un lessico diversi per ciascun testo
+- Evitare ripetizioni inutili
+- Mantenere un tono promozionale e creativo
+
+Assicurati che ogni descrizione sia originale e distintiva rispetto alle altre.”
