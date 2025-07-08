@@ -6,7 +6,6 @@ from src.rag_app.pipeline import RAGPipeline
 
 load_dotenv()
 
-DEFAULT_FOLDER_PATH = os.getenv("DEFAULT_FOLDER_PATH", "./data")
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"  # solo per evitare warning su Windows
 
 
@@ -20,7 +19,6 @@ def main() -> None:
     )
 
     st.sidebar.header("⚙️ Configurazione")
-    folder_path = st.sidebar.text_input("📂 Cartella documenti", value=DEFAULT_FOLDER_PATH)
 
     if "chats" not in st.session_state:
         st.session_state.chats = []
@@ -30,7 +28,7 @@ def main() -> None:
     if st.sidebar.button("➕ Nuova chat"):
         new_chat_id = len(st.session_state.chats)
         try:
-            new_pipeline = RAGPipeline(folder_path)
+            new_pipeline = RAGPipeline()
         except Exception as e:
             st.sidebar.error(f"Errore creazione pipeline: {e}")
             return
