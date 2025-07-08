@@ -1,0 +1,23 @@
+Analisi limiti e rischi modello classificazione SMS spam
+
+Performance osservata:
+Accuracy globale: 98%
+Recall Spam: 0.87: significa che il 13% degli spam non viene riconosciuto (falsi negativi)
+Precision Spam: 0.99: pochi falsi positivi, ma se accadono, possono avere impatti.
+
+Rischi secondo EU AI Act
+Tipo errore                                         Rischio
+Falsi negativi (Spam classificato come Ham)         Email di phishing o truffe non intercettate, rischio di danni finanziari o reputazionali          
+Falsi positivi (Ham classificato come Spam)         Perdita di comunicazioni aziendali legittime, inefficienze operative, possibile danno al business 
+
+Se il modello gestisce comunicazioni aziendali o personali, anche senza essere "High Risk" ai sensi EU AI Act, deve rispettare:
+- Trasparenza verso l’utente: Informare dipendenti/utenti che il filtro è AI-based e specificare che il sistema potrebbe sbagliare e indicare come segnalare errori
+- Auditabilità e logging: Mantenere log delle decisioni del modello (messaggio ricevuto, classificazione, data, utente) e consentire la revisione periodica dei log per individuare falsi positivi/negativi sistematici
+
+- Documentazione e test richiesti
+Documento                                             Contenuto
+Descrizione sistema AI                                Architettura, scopo, dataset usato, tipo di modello, metriche
+Valutazione dei rischi AI                             Analisi dei rischi etici, di sicurezza e bias
+Registro attività AI                                  Log operativi, query, risposte, classificazioni 
+DPIA                                                  Se analizza dati personali degli utenti (ad esempio, SMS con info sensibili)
+Rapporti di validazione                               Metriche su test set, con evidenza di precision, recall, confusion matrix
