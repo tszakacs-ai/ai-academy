@@ -1,0 +1,9 @@
+L'economia è una disciplina fondamentale che studia il modo in cui le società gestiscono risorse limitate per soddisfare i bisogni e i desideri degli individui. Essa si suddivide principalmente in due grandi rami: la microeconomia e la macroeconomia.
+
+La microeconomia si occupa delle decisioni prese da singoli individui, famiglie e imprese. Analizza come questi agenti economici interagiscono nei mercati, determinando prezzi, quantità prodotte e consumate, e la distribuzione delle risorse. Temi centrali della microeconomia sono la domanda e l'offerta, l'elasticità, la teoria della produzione, i costi e la formazione dei prezzi nei diversi tipi di mercato, come la concorrenza perfetta e il monopolio.
+
+La macroeconomia, invece, si concentra sui fenomeni economici aggregati, come il prodotto interno lordo (PIL), il tasso di disoccupazione, l'inflazione e la crescita economica. Studia le politiche economiche adottate dai governi, come la politica fiscale (spesa pubblica e tassazione) e la politica monetaria (controllo della quantità di moneta e dei tassi di interesse), per influenzare l'andamento dell'economia nazionale e internazionale.
+
+Un altro aspetto importante dell'economia è lo studio delle crisi economiche, delle disuguaglianze sociali e della sostenibilità ambientale. L'economia moderna cerca di trovare un equilibrio tra crescita economica, equità sociale e tutela dell'ambiente, promuovendo modelli di sviluppo sostenibile.
+
+Infine, l'economia si avvale di strumenti matematici, statistici e informatici per analizzare dati, formulare previsioni e valutare l'efficacia delle politiche economiche. Grazie a queste analisi, è possibile comprendere meglio i complessi meccanismi che regolano la vita economica delle società e contribuire a prendere decisioni più consapevoli.

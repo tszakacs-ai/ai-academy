@@ -2,7 +2,6 @@ from typing import List
 
 # Codice sporco da pulire
 
-# Translated into English to use an unique and coherent universal language
 def process_lists(list_1: List[int], list_2: List[int], num3: int) -> List[int]:
     """
     Performs conditional operations on two lists of integers and a number constant

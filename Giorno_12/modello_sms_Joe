@@ -1,0 +1,63 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import LinearSVC
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
+from collections import Counter
+import matplotlib.pyplot as plt
+
+# Carica dataset
+df = pd.read_csv(r'C:\Users\YW452WU\OneDrive - EY\Documents\GitHub\ai-academy\Giorno_12\spam.csv', sep=',', header=0, encoding='latin1')
+df = df[['v1', 'v2']]  # Tieni solo le colonne utili
+df.columns = ['label', 'message']  # Rinomina le colonne
+print(df.columns)
+
+# Rimuovi righe con valori mancanti
+df = df.dropna(subset=['message'])
+
+# Preprocessing semplice
+df['message'] = df['message'].str.lower()
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(df['message'], df['label'], test_size=0.2, random_state=42)
+
+# TfidfVectorizer
+vectorizer = TfidfVectorizer(stop_words='english')
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+# Modello SVM
+model = LinearSVC()
+model.fit(X_train_vec, y_train)
+
+# Predizioni
+y_pred = model.predict(X_test_vec)
+
+# Report
+print(classification_report(y_test, y_pred))
+
+# Matrice di confusione
+cm = confusion_matrix(y_test, y_pred, labels=['ham', 'spam'])
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['ham', 'spam'])
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Matrice di Confusione")
+plt.show()
+
+# Valuta nuovi messaggi da file di testo
+with open(r'C:\Users\YW452WU\OneDrive - EY\Documents\GitHub\ai-academy\Giorno_12\messaggi test.txt', encoding='utf-8') as f:
+    nuovi_messaggi = [line.strip().lower() for line in f if line.strip()]
+
+# Trasforma i messaggi con il TfidfVectorizer già addestrato
+nuovi_messaggi_vec = vectorizer.transform(nuovi_messaggi)
+
+# Predici spam/ham
+predizioni = model.predict(nuovi_messaggi_vec)
+
+# Stampa risultati
+for msg, pred in zip(nuovi_messaggi, predizioni):
+    print(f"[{pred.upper()}] {msg}")
+
+# Conta e stampa quanti sono ham e quanti spam
+conteggio = Counter(predizioni)
+print(f"\nTotale HAM: {conteggio.get('ham', 0)}")
+print(f"Totale SPAM: {conteggio.get('spam', 0)}")

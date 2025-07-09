@@ -1,0 +1,20 @@
+ESERCIZIO - CORREZIONE DI TOP-P
+
+Scenario:
+Un'azienda deve inviare una risposta standard e precisa a tutti i clienti che chiedono chiarimenti sulla fatturazione.
+
+Prompt errato:
+"Rispondi in modo gentile e originale a ogni cliente che ci chiede spiegazioni sulla propria fattura, variando il testo per ogni risposta."
+
+1. Identifica e spiega l'errore:
+Errore: Il prompt chiede di variare il testo per ogni risposta, ma lo scenario richiede una risposta standard e precisa.
+Spiegazione: In un contesto aziendale come la fatturazione, è importante che le risposte siano coerenti, chiare e uniformi per evitare malintesi. Chiedere variazioni creative introduce variabilità indesiderata, che può compromettere la chiarezza e la professionalità.
+
+2. Quanto sarebbe il valore top-p del prompt sbagliato?
+Il valore top-p (nucleus sampling) controlla la diversità delle risposte generate. Un prompt che chiede originalità e variazione implica un top-p alto, ad esempio:
+top-p ≈ 0.9 – 1.0
+Questo permette al modello di esplorare molteplici possibilità, ma non è adatto a risposte standardizzate.
+
+3. Correggi l'errore:
+Prompt corretto:
+"Rispondi in modo chiaro, professionale e coerente a ogni cliente che chiede spiegazioni sulla propria fattura, utilizzando un testo standardizzato e preciso."

@@ -1,1 +1,66 @@
+# Ambiente virtuale
+.venv/
+env/
+venv/
+ENV/
+
+# File di ambiente e variabili segrete
 .env
+.env.*
+
+# File Python compilati
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Directory di cache
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Configurazioni IDE/editor (esempi)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# File di log
+*.log
+
+# File temporanei e backup
+*.tmp
+*.bak
+*.swp
+*~
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Test coverage
+.coverage
+htmlcov/
+
+# File SQLite di esempio o database temporanei
+*.sqlite3
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Pytest cache
+.pytest_cache/
+
+# Pipenv files
+Pipfile.lock
+
+# mypy type checker
+.mypy_cache/
+
+# Cython debug symbols
+cython_debug/
+

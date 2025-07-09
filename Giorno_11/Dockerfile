@@ -1,5 +1,7 @@
-FROM python:3.10.11
+FROM python:3.12-slim
 WORKDIR /app
+COPY esercizio_g11_joe.py .
+COPY .env .
 RUN pip install python-dotenv
-COPY . .
-CMD ["python", "saluta.py"]
+CMD  ["python", "esercizio_g11_joe.py"]
+
