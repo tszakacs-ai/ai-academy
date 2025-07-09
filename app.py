@@ -6,7 +6,7 @@ and runs its ``main`` function. Hugging Face automatically runs
 execution.
 """
 
-from Giorno_11.main import main
+from src.main import main
 
 if __name__ == "__main__":
     main()
