@@ -2,10 +2,14 @@ from transformers import pipeline
 import re
 import networkx as nx
 
+# Inizializza la pipeline NER
 ner_pipe = pipeline("ner", model="Davlan/bert-base-multilingual-cased-ner-hrl", aggregation_strategy="simple")
 
-text = ("Mario Rossi ha ricevuto un bonifico sull'IBAN IT60X054281101000000123456"
-        "La fattura n.123 emessa da Alfa Srl a Beta Srl il 5 giugno 2024 per un importo di 2000 Euro.")
+# Unisci i testi in una singola stringa
+text = (
+    "Mario Rossi ha ricevuto un bonifico sull'IBAN IT60X054281101000000123456 "
+    "La fattura n.123 emessa da Alfa Srl a Beta Srl il 5 giugno 2024 per un importo di 2000 Euro."
+)
 entities = ner_pipe(text)
 
 # Regex per le date
@@ -31,7 +35,7 @@ for entity in entities:
 # Estrazione delle entità
 orgs = [e for e in entities if e['entity_group'] == 'ORG']
 pers = [e for e in entities if e['entity_group'] == 'PER']
-loc = [e for e in entities if e['entity_group'] == 'LOC']
+locs = [e for e in entities if e['entity_group'] == 'LOC']
 dates = [e for e in entities if e['entity_group'] == 'DATE']
 currencies = [e for e in entities if e['entity_group'] == 'CURRENCY']
 
@@ -42,14 +46,14 @@ G = nx.DiGraph()
 G.add_node(invoice_node, tipo="Fattura") # Nodo centrale
 
 for org in orgs:
-    G.add_node(Org['word'], tipo="ORG")
+    G.add_node(org['word'], tipo="ORG")
     G.add_edge(invoice_node, org['word'], tipo="emesso da")
 for per in pers:
     G.add_node(per['word'], tipo="PER")
     G.add_edge(invoice_node, per['word'], tipo="emesso a")
-for l in loc:
-    G.add_node(l['word'], tipo="LOC")
-    G.add_edge(invoice_node, loc['word'], tipo="località") 
+for loc in locs:
+    G.add_node(loc['word'], tipo="LOC")
+    G.add_edge(invoice_node, loc['word'], tipo="località")
 for date in dates:
     G.add_node(date['word'], tipo="Data")
     G.add_edge(invoice_node, date['word'], tipo="data")
