@@ -1,21 +1,18 @@
 import os
 import io
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Dict, Any
+
 import streamlit as st
 from dotenv import load_dotenv
-from langchain.schema import Document
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-from langchain.embeddings.base import Embeddings
-from azure.identity import DefaultAzureCredential
-from azure.ai.projects import AIProjectClient
 import pandas as pd
-import time
 import json
 import re
 from datetime import datetime
+
+from src.rag_app import RAGPipeline
+from src.utils import safe_gpt_call
 
 # Carica le variabili d'ambiente all'avvio dell'applicazione.
 # Questo è fondamentale per configurare le credenziali Azure e gli endpoint.
@@ -28,207 +25,6 @@ TMP_UPLOADS_PATH.mkdir(exist_ok=True) # Crea la cartella se non esiste
 SAVED_CHATS_FOLDER = "saved_chats" # Cartella per salvare le conversazioni
 Path(SAVED_CHATS_FOLDER).mkdir(exist_ok=True) # Crea la cartella se non esiste
 
-# --- DEFINIZIONI DEI MODELLI AZURE E WRAPPER ---
-
-# Classe base per l'inizializzazione del client Azure AI Project.
-# Gestisce il caricamento dell'endpoint e l'autenticazione.
-class AIProjectClientDefinition:
-    def __init__(self):
-        # Recupera l'endpoint del progetto dalle variabili d'ambiente.
-        endpoint = os.getenv("PROJECT_ENDPOINT")
-        if not endpoint:
-            # Se l'endpoint non è definito, mostra un errore critico e ferma l'app Streamlit.
-            st.error("ERRORE: PROJECT_ENDPOINT non definito nel file .env. Assicurati che il file .env sia presente e configurato correttamente.")
-            st.stop() # Ferma l'esecuzione dell'applicazione.
-        self.endpoint = endpoint
-        try:
-            # Inizializza AIProjectClient con l'endpoint e le credenziali Azure di default.
-            self.client = AIProjectClient(
-                endpoint=self.endpoint,
-                azure_endpoint=self.endpoint, # Duplicato per compatibilità, se necessario.
-                credential=DefaultAzureCredential(), # Usa le credenziali Azure configurate nell'ambiente.
-            )
-        except Exception as e:
-            # Cattura qualsiasi errore durante l'inizializzazione e ferma l'app.
-            st.exception(f"ERRORE CRITICO: Impossibile inizializzare AIProjectClient. Controlla le tue credenziali Azure e l'endpoint. Dettagli: {e}")
-            st.stop() # Ferma l'esecuzione in caso di errore critico.
-
-# Wrapper per il modello di embedding Ada di Azure OpenAI.
-# Estende AIProjectClientDefinition per riutilizzare l'inizializzazione del client.
-class AdaEmbeddingModel(AIProjectClientDefinition):
-    def __init__(self, model_name: str = "text-embedding-ada-002"):
-        super().__init__() # Chiama il costruttore della classe base.
-        self.model_name = model_name
-        # Ottiene il client specifico per le operazioni di embedding da Azure OpenAI.
-        self.azure_client = self.client.inference.get_azure_openai_client(api_version="2023-05-15")
-    
-    # Metodo per generare l'embedding di un singolo testo.
-    def embed_text(self, text: str) -> List[float]:
-        response = self.azure_client.embeddings.create(input=[text], model=self.model_name)
-        return response.data[0].embedding
-
-# Wrapper per integrare il modello AdaEmbeddingModel con Langchain.
-# Langchain richiede un'interfaccia Embeddings specifica.
-class LangchainAdaWrapper(Embeddings):
-    def __init__(self, ada_model: AdaEmbeddingModel):
-        self.ada_model = ada_model # Riferimento al modello AdaEmbeddingModel.
-    
-    # Genera embedding per una lista di documenti.
-    def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        # Delega la chiamata al metodo embed_text del modello Ada.
-        # Per grandi quantità di testi, si potrebbe ottimizzare con chiamate batch.
-        return [self.ada_model.embed_text(text) for text in texts]
-    
-    # Genera embedding per una singola query.
-    def embed_query(self, text: str) -> List[float]:
-        return self.ada_model.embed_text(text)
-    
-# Wrapper per il modello di completamento chat (GPT) di Azure OpenAI.
-class ChatCompletionModel(AIProjectClientDefinition):
-    def __init__(self, model_name: str = "gpt-4o"):
-        super().__init__() # Chiama il costruttore della classe base.
-        self.model_name = model_name
-        # Ottiene il client specifico per le operazioni di chat completion da Azure OpenAI.
-        self.azure_client = self.client.inference.get_azure_openai_client(api_version="2025-01-01-preview")
-    
-    # Metodo per fare una domanda basata sul contenuto di un documento.
-    def ask_about_document(self, content: str, question: str) -> str:
-        messages = [
-            {"role": "system", "content": "Sei un assistente AI specializzato in analisi di documenti testuali. Fornisci risposte concise e pertinenti basate solo sul contesto fornito. Se non puoi rispondere dal contesto, dì che l'informazione non è disponibile."},
-            {"role": "user", "content": f"Documento:\n{content}\n\nDomanda: {question}"},
-        ]
-        # Esegue la chiamata al modello GPT con gestione dei retry.
-        response = safe_gpt_call(
-            self.azure_client.chat.completions.create,
-            model=self.model_name,
-            messages=messages,
-            max_tokens=512,
-            temperature=0.7, # Bilancia creatività e fedeltà al testo.
-            top_p=1.0,
-        )
-        # safe_gpt_call ora restituisce un oggetto con choices anche in caso di errore,
-        # quindi .choices[0].message.content è sempre sicuro.
-        return response.choices[0].message.content
-
-# Classe principale per la pipeline RAG (Retrieval Augmented Generation).
-# Gestisce il caricamento, l'indicizzazione dei documenti e la risposta alle query.
-class RAGPipeline:
-    def __init__(self):
-        self.documents = [] # Lista di documenti caricati e chunkizzati.
-        # Inizializzazione dei modelli di embedding e chat.
-        ada_model = AdaEmbeddingModel() 
-        self.embedding_wrapper = LangchainAdaWrapper(ada_model)
-        self.vectorstore = None # Vector store (es. FAISS) per la ricerca di similarità.
-        self.retriever = None # Retriever per ottenere documenti rilevanti.
-        self.chat_model = ChatCompletionModel() # Modello per la generazione della risposta.
-
-    # Aggiunge file caricati alla pipeline, li elabora e aggiorna il vector store.
-    def add_uploaded_files(self, uploaded_files):
-        new_documents = []
-        for file in uploaded_files:
-            file_name = file.name
-            try:
-                if file_name.lower().endswith(".txt"):
-                    # Legge il contenuto dei file TXT.
-                    content = file.getvalue().decode("utf-8")
-                    new_documents.append(Document(page_content=content, metadata={"file_name": file_name}))
-                elif file_name.lower().endswith(".pdf"):
-                    # Salva temporaneamente il PDF per permettere a PyPDFLoader di leggerlo.
-                    tmp_path = TMP_UPLOADS_PATH / file_name
-                    with open(tmp_path, "wb") as f:
-                        f.write(file.getvalue())
-                    loader = PyPDFLoader(str(tmp_path))
-                    pages = loader.load() # Carica le pagine dal PDF.
-                    for page in pages:
-                        # Aggiunge il nome del file ai metadati di ogni pagina.
-                        page.metadata["file_name"] = file_name 
-                    
-                    # Suddivide i documenti in chunk più piccoli per il RAG.
-                    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-                    docs = splitter.split_documents(pages)
-                    new_documents.extend(docs)
-                    os.remove(tmp_path) # Rimuove il file temporaneo.
-                else:
-                    st.warning(f"Tipo di file non supportato: {file_name}. Saltato.")
-            except Exception as e:
-                st.error(f"Errore durante l'elaborazione del file '{file_name}': {e}")
-        
-        if new_documents:
-            self.documents.extend(new_documents) # Aggiunge i nuovi documenti.
-            self._build_vectorstore() # Ricostruisce il vector store.
-            st.session_state.info_message = f"✅ {len(uploaded_files)} file elaborati e aggiunti."
-        else:
-            st.session_state.info_message = "ℹ️ Nessun nuovo file valido da elaborare."
-
-    # Costruisce o ricostruisce il vector store FAISS e il retriever.
-    def _build_vectorstore(self):
-        if self.documents:
-            try:
-                # Crea un vector store FAISS dai documenti usando l'embedding wrapper.
-                self.vectorstore = FAISS.from_documents(self.documents, embedding=self.embedding_wrapper)
-                self.retriever = self.vectorstore.as_retriever() # Inizializza il retriever.
-            except Exception as e:
-                st.exception(f"ERRORE: Impossibile creare il Vectorstore. Controlla il modello di embedding e i documenti. Dettagli: {e}")
-                self.vectorstore = None
-                self.retriever = None
-        else:
-            self.vectorstore = None
-            self.retriever = None
-
-    # Risponde a una query dell'utente recuperando documenti rilevanti e generando una risposta.
-    def answer_query(self, query: str) -> str:
-        if not self.retriever:
-            return "Nessun documento caricato o indicizzato per la ricerca. Carica prima dei file."
-        
-        try:
-            # Recupera i documenti più simili alla query.
-            docs_simili = self.retriever.get_relevant_documents(query)
-        except Exception as e:
-            st.error(f"Errore durante il recupero dei documenti: {e}")
-            return f"Spiacente, si è verificato un errore durante la ricerca nei documenti: {e}"
-        
-        if not docs_simili:
-            return "Nessun documento rilevante trovato per la tua domanda."
-        
-        # Concatena il contenuto dei documenti rilevanti per formare il contesto.
-        context_content = "\n\n---\n\n".join([doc.page_content for doc in docs_simili])
-        
-        # Cerca link nel contesto per aggiungere al feedback.
-        link_found = ""
-        link_match = re.search(r'(https?://\S+)', context_content)
-        if link_match:
-            link_found = f"\n\n[Link Rilevante]({link_match.group(0)})"
-
-        # Genera la risposta usando il modello di chat con il contesto.
-        risposta = self.chat_model.ask_about_document(context_content, query)
-
-        # Identifica i file sorgente da cui provengono i documenti rilevanti.
-        source_files = ", ".join(list(set([doc.metadata.get("file_name", "N/A") for doc in docs_simili])))
-        
-        return f"{risposta}\n\n*Fonte/i: {source_files}*{link_found}"
-
-
-# --- FUNZIONI HELPER ---
-
-# Funzione robusta per le chiamate API GPT con gestione dei retry e degli errori.
-def safe_gpt_call(func, *args, max_retries=5, wait_seconds=60, **kwargs):
-    for attempt in range(max_retries):
-        try:
-            return func(*args, **kwargs)
-        except Exception as e:
-            if hasattr(e, "status_code") and e.status_code == 429:
-                # Gestisce il rate limit (troppe richieste).
-                st.warning(f"Rate limit Azure superato! Aspetto {wait_seconds} secondi... (Tentativo {attempt+1}/{max_retries})")
-                time.sleep(wait_seconds)
-            else:
-                # Gestisce altri errori API.
-                st.error(f"Errore durante la chiamata API di Azure OpenAI: {e}")
-                # Restituisce un oggetto fittizio per non interrompere il flusso dell'applicazione,
-                # permettendo di visualizzare l'errore senza crash.
-                return type('obj', (object,), {'choices': [{'message': {'content': f"Errore API: {e}"}}]})() 
-    # Se tutti i retry falliscono.
-    st.error("Superato il numero massimo di retry per il rate limit.")
-    return type('obj', (object,), {'choices': [{'message': {'content': "Errore: Superato il numero massimo di tentativi per il rate limit."}}]})()
 
 
 # --- DOMANDE PER L'ESTRAZIONE STRUTTURATA (Tabella Excel) ---
@@ -766,7 +562,10 @@ def main():
                                     bando_data_row = df_summary[df_summary["File"] == file_name]
                                     if not bando_data_row.empty:
                                         sintesi_data = bando_data_row.iloc[0].to_dict()
-                                        st.markdown(f"**Titolo Avviso:** {sintesi_data.get('Titolo dell\'avviso', 'N/A')}")
+                                        key_titolo = "Titolo dell'avviso"
+                                        st.markdown(
+                                            f"**Titolo Avviso:** {sintesi_data.get(key_titolo, 'N/A')}"
+                                        )
                                         st.markdown(f"**Ente Erogatore:** {sintesi_data.get('Ente erogatore', 'N/A')}")
                                         st.markdown(f"**Sintesi Bando:** {sintesi_data.get('Descrizione aggiuntiva', 'N/A')}")
                                         if sintesi_data.get('Link') and sintesi_data.get('Link') != 'N/A':
