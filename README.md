@@ -12,9 +12,9 @@ pinned: false
 # MOCA AI Normative Consultant
 
 Questo progetto contiene una demo RAG sviluppata durante l'AI Academy.
-La logica dell'applicazione risiede nella cartella `Giorno_11` e viene
+La logica dell'applicazione risiede ora nella cartella `src` e viene
 avviata tramite `app.py` posizionato nella root, necessario per i
 deploy su Hugging Face Spaces.
 
 Per configurare i parametri sensibili creare un file `.env` in
-`Giorno_11/` seguendo l'esempio fornito in `Giorno_11/.env`.
+`src/` seguendo l'esempio fornito in `Giorno_11/.env`.
