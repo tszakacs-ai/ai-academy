@@ -38,7 +38,7 @@ class StreamlitApp:
             new_id = "chat_1"
             st.session_state.chats[new_id] = {
                 "id": new_id,
-                "name": "Nuova Chat 1",
+                "name": "Chat",
                 "pipeline": RAGPipeline(),
                 "uploaded_file_names": set(),
                 "history": [],
@@ -76,7 +76,7 @@ class StreamlitApp:
             st.markdown("---")
             if st.button("➕ Nuova chat", use_container_width=True):
                 new_id = f"chat_{len(st.session_state.chats) + 1}"
-                default_name = f"Nuova Chat {len(st.session_state.chats) + 1}"
+                default_name = f"Chat {len(st.session_state.chats) + 1}"
                 st.session_state.chats[new_id] = {
                     "id": new_id,
                     "name": default_name,
@@ -131,7 +131,7 @@ class StreamlitApp:
         )
 
         with tab_chat:
-            st.subheader(f"💬 Interagisci con i documenti di '{active_chat['name']}'")
+            st.subheader(f"💬 Interagisci con i documenti caricati")
             chat_container = st.container(height=400, border=True)
             for msg in active_chat["history"]:
                 with chat_container.chat_message(msg["role"]):
